@@ -953,7 +953,7 @@ void speichernma(Mitarb *MA) {
 		printf("Datei konnte nicht ge%cffnet werden", 148);
 	}else {
 		
-		for (Z = 0; Z < 102; Z++) {
+		for (Z = 1; Z < 102; Z++) {
 			
 			if (MA[Z].NR == Z) { //Vorteil fprintf geschriebene Datei auch ohne Programm lesbar
 				fprintf(fpma, "%i\n", Z);
@@ -988,7 +988,7 @@ void speichernal(ABT *AT, ABL *AL) {
 	}
 	else {
 
-		for (W = 0; W < 102; W++) {
+		for (W = 1; W < 102; W++) {
 			
 			if (AT[W].ID == W) {
 				fprintf(fpat, "%i\n", AT[W].ID);
