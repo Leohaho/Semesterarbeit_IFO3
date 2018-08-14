@@ -14,6 +14,7 @@ void main(array<String^>^ args) {
 	
 	GlobalClass::save = 1;
 
+
 	Application::EnableVisualStyles();
 	Application::SetCompatibleTextRenderingDefault(false);
 	Semesterarbeit_IFO3::MyForm form;

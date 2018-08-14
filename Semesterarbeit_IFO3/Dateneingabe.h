@@ -1,5 +1,9 @@
 #pragma once
 #include "GlobalClass.h"
+#include "Daten.h"
+
+void read_eingabe();
+void speichern_eingabe();
 
 namespace Semesterarbeit_IFO3 {
 
@@ -10,6 +14,10 @@ namespace Semesterarbeit_IFO3 {
 	using namespace System::Data;
 	using namespace System::Drawing;
 	using namespace Globals;
+
+	static Mitarb MA[100];
+	static ABL AL[100];
+	static ABT AT[100];
 
 	/// <summary>
 	/// Zusammenfassung für Dateneingabe
@@ -36,6 +44,8 @@ namespace Semesterarbeit_IFO3 {
 				delete components;
 			}
 		}
+	private: System::Windows::Forms::Button^  button1;
+	protected:
 
 	private:
 		/// <summary>
@@ -50,12 +60,40 @@ namespace Semesterarbeit_IFO3 {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			this->components = gcnew System::ComponentModel::Container();
-			this->Size = System::Drawing::Size(300,300);
-			this->Text = L"Dateneingabe";
-			this->Padding = System::Windows::Forms::Padding(0);
+			this->button1 = (gcnew System::Windows::Forms::Button());
+			this->SuspendLayout();
+			// 
+			// button1
+			// 
+			this->button1->Location = System::Drawing::Point(95, 86);
+			this->button1->Name = L"button1";
+			this->button1->Size = System::Drawing::Size(101, 25);
+			this->button1->TabIndex = 0;
+			this->button1->Text = L"Speichern";
+			this->button1->UseVisualStyleBackColor = true;
+			this->button1->Click += gcnew System::EventHandler(this, &Dateneingabe::button1_Click);
+			// 
+			// Dateneingabe
+			// 
+			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
+			this->ClientSize = System::Drawing::Size(284, 261);
+			this->Controls->Add(this->button1);
+			this->Name = L"Dateneingabe";
+			this->Text = L"Dateneingabe";
+			this->Load += gcnew System::EventHandler(this, &Dateneingabe::Dateneingabe_Load);
+			this->ResumeLayout(false);
+
 		}
 #pragma endregion
+		
+	private: System::Void Dateneingabe_Load(System::Object^  sender, System::EventArgs^  e) {
+	
+		read_eingabe();
+	}
+	private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
+		speichern_eingabe();
+	}
+
 	};
 }

@@ -75,4 +75,5 @@ void Buffer(char* string);
 void ENTER();
 void Save_abfrage(int save, ABT *AT, ABL *AL, Mitarb *MA);
 
+
 #endif
