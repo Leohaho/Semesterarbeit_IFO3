@@ -14,8 +14,8 @@ typedef struct ABL{
 	char FNR[20];			/*Festnetz*/
 	char mail[100];		/*Mailadresse*/
 	char STR[20];		/*Straﬂe*/
-	char HNR[20];			/*Hausnummer*/
-	char POST[20];			/*Postleitzahl*/
+	char HNR[20];		/*Hausnummer*/
+	char POST[20];		/*Postleitzahl*/
 	char ORT[20];		/*Ort/Stadt*/
 
 };

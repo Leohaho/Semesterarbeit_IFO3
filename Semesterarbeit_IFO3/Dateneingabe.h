@@ -1,4 +1,5 @@
 #pragma once
+#include "GlobalClass.h"
 
 namespace Semesterarbeit_IFO3 {
 
@@ -8,6 +9,7 @@ namespace Semesterarbeit_IFO3 {
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
 	using namespace System::Drawing;
+	using namespace Globals;
 
 	/// <summary>
 	/// Zusammenfassung für Dateneingabe

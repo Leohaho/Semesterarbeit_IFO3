@@ -1,18 +1,18 @@
 #pragma once
 #ifndef MyForm_h
 #define MyForm_h
-#include "Daten.h"
+
 #include "Dateneingabe.h"
 #include "Datenändern.h"
 #include "Datensuchen.h"
 #include "Datenausgabe.h"
 #include "Datenlöschen.h"
+#include "GlobalClass.h"
 
 
-ABL AL[100];
-ABT AT[100];
-Mitarb MA[100];
-int save;
+
+
+
 
 namespace Semesterarbeit_IFO3 {
 
@@ -22,6 +22,7 @@ namespace Semesterarbeit_IFO3 {
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
 	using namespace System::Drawing;
+	using namespace Globals;
 
 	/// <summary>
 	/// Zusammenfassung für MyForm
@@ -55,6 +56,9 @@ namespace Semesterarbeit_IFO3 {
 	private: System::Windows::Forms::Button^  button5;
 	private: System::Windows::Forms::Button^  button6;
 	private: System::Windows::Forms::Button^  button7;
+
+
+
 	protected:
 
 	private:
@@ -170,19 +174,19 @@ namespace Semesterarbeit_IFO3 {
 #pragma endregion
 
 	private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
-		save = 0;
+		GlobalClass::save = 0;
 		Dateneingabe ^ form = gcnew Dateneingabe;
 
 		form->ShowDialog();
 	};
 	private: System::Void button2_Click(System::Object^  sender, System::EventArgs^  e) {
-		save = 0;
+		GlobalClass::save = 0;
 		Datenändern ^ form = gcnew Datenändern;
 
 		form->ShowDialog();
 	}
 	private: System::Void button3_Click(System::Object^  sender, System::EventArgs^  e) {
-		save = 0;
+		GlobalClass::save = 0;
 		Datensuchen ^ form = gcnew Datensuchen;
 
 		form->ShowDialog();
@@ -190,18 +194,17 @@ namespace Semesterarbeit_IFO3 {
 	private: System::Void button4_Click(System::Object^  sender, System::EventArgs^  e) {
 
 		Datenausgabe ^ form = gcnew Datenausgabe;
-
 		form->ShowDialog();
 	}
 	private: System::Void button6_Click(System::Object^  sender, System::EventArgs^  e) {
-		save = 0;
+		GlobalClass::save = 0;
 		Datenlöschen ^ form = gcnew Datenlöschen;
 
 		form->ShowDialog();
 	}
 	private: System::Void button7_Click(System::Object^  sender, System::EventArgs^  e) {
 
-		if (save != 1) {
+		if (GlobalClass::save != 1) {
 			//abfrage Speichern
 		}
 		else {
@@ -210,11 +213,11 @@ namespace Semesterarbeit_IFO3 {
 	}
 	private: System::Void button5_Click(System::Object^  sender, System::EventArgs^  e) {
 		//Datenspeichern
-		save = 1;
-		speichernma(MA);
-		speichernal(AT, AL);
+		GlobalClass::save = 1;
+		
 	}
-	};
+	
+};
 }
 
 #endif
