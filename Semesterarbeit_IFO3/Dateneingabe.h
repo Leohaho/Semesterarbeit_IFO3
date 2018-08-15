@@ -1,9 +1,13 @@
+#ifndef Dateneingabe_H
+#define Dateneingabe_H
+
 #pragma once
 #include "GlobalClass.h"
 #include "Daten.h"
 
 void read_eingabe();
 void speichern_eingabe();
+void ausgabe_test(char *test);
 
 namespace Semesterarbeit_IFO3 {
 
@@ -15,9 +19,6 @@ namespace Semesterarbeit_IFO3 {
 	using namespace System::Drawing;
 	using namespace Globals;
 
-	static Mitarb MA[100];
-	static ABL AL[100];
-	static ABT AT[100];
 
 	/// <summary>
 	/// Zusammenfassung für Dateneingabe
@@ -83,6 +84,8 @@ namespace Semesterarbeit_IFO3 {
 	private: System::Windows::Forms::Label^  lbl_abteilungsname;
 	private: System::Windows::Forms::TextBox^  txt_abteilungsname;
 	private: System::Windows::Forms::TextBox^  txt_abteilungsid;
+	private: System::Windows::Forms::Button^  button1;
+
 
 
 
@@ -138,6 +141,7 @@ namespace Semesterarbeit_IFO3 {
 			this->lbl_abteilungsname = (gcnew System::Windows::Forms::Label());
 			this->txt_abteilungsname = (gcnew System::Windows::Forms::TextBox());
 			this->txt_abteilungsid = (gcnew System::Windows::Forms::TextBox());
+			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->SuspendLayout();
 			// 
 			// btn_speichern
@@ -424,11 +428,22 @@ namespace Semesterarbeit_IFO3 {
 			this->txt_abteilungsid->Size = System::Drawing::Size(100, 20);
 			this->txt_abteilungsid->TabIndex = 32;
 			// 
+			// button1
+			// 
+			this->button1->Location = System::Drawing::Point(354, 169);
+			this->button1->Name = L"button1";
+			this->button1->Size = System::Drawing::Size(140, 32);
+			this->button1->TabIndex = 33;
+			this->button1->Text = L"test";
+			this->button1->UseVisualStyleBackColor = true;
+			this->button1->Click += gcnew System::EventHandler(this, &Dateneingabe::button1_Click_1);
+			// 
 			// Dateneingabe
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(595, 454);
+			this->Controls->Add(this->button1);
 			this->Controls->Add(this->txt_abteilungsid);
 			this->Controls->Add(this->txt_abteilungsname);
 			this->Controls->Add(this->lbl_abteilungsname);
@@ -543,5 +558,16 @@ namespace Semesterarbeit_IFO3 {
 		txt_abteilungsid->Visible = true;
 		//Sichtbarkeit der Felder bei Abteilungen
 	}
+private: System::Void button1_Click_1(System::Object^  sender, System::EventArgs^  e) {
+	char test[20];
+	
+
+	ausgabe_test(test);
+	String ^test2 = gcnew String(test);
+	txt_vorname->Text = test2;
+
+}
 };
 }
+
+#endif

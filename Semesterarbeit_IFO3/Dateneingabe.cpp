@@ -14,3 +14,7 @@ void read_eingabe() {
 	readal(AT, AL);
 	readma(MA);
 }
+
+void ausgabe_test(char *test) {
+	strcpy(test, MA[1].NA);
+}
