@@ -8,9 +8,9 @@
 void read_eingabe();
 void speichern_eingabe();
 void ausgabe_test(char *test);
-//void form_laden(Mitarb Mitarbeiter_Send[100], ABL Abteilungsleiter_Send[100], ABT Abteilung_Send[100]);
-void datensatz_laden(char *laden_na, char *laden_vna, char *laden_em, char *laden_ej, char *laden_str, char *laden_hnr, char *laden_post, char *laden_ort, char *laden_mnr, char *laden_fnr, char *laden_mail, char *laden_ab, char *laden_vg, char *laden_nr, int zähler);
-
+void datensatz_laden_mitarbeiter(char *laden_na, char *laden_vna, char *laden_em, char *laden_ej, char *laden_str, char *laden_hnr, char *laden_post, char *laden_ort, char *laden_mnr, char *laden_fnr, char *laden_mail, char *laden_ab, char *laden_vg, char *laden_nr, int zähler);
+void datensatz_speichern_mitarbeiter(char *speichern_na, char *speichern_vna, char *speichern_em, char *speichern_ej, char *speichern_str, char *speichern_hnr, char *speichern_post, char *speichern_ort, char *speichern_mnr, char *speichern_fnr, char *speichern_mail, char *speichern_ab, char *speichern_vg, char *speichern_nr, int specihern_zähler);
+void datensatz_laden_abteilung(char *laden_na, char *laden_str, char *laden_hnr, char *laden_post, char *laden_ort, char *laden_abl, char *laden_nr, int laden_zähler);
 
 namespace Semesterarbeit_IFO3 {
 
@@ -49,8 +49,9 @@ namespace Semesterarbeit_IFO3 {
 			}
 		}
 	private: System::Windows::Forms::Button^  btn_speichern;
+	private: System::Windows::Forms::Button^  btn_abbrechen;
 	protected:
-	private: System::Windows::Forms::Button^  button2;
+
 	private: System::Windows::Forms::Label^  lbl_mitarbeiternummer;
 	private: System::Windows::Forms::TextBox^  txt_mitarbeiternummer;
 	private: System::Windows::Forms::Label^  lbl_vorname;
@@ -90,6 +91,7 @@ namespace Semesterarbeit_IFO3 {
 	private: System::Windows::Forms::Button^  btn_ausgabe;
 
 	private: System::Windows::Forms::Label^  lbl_error_mitarbeiternr;
+	private: System::Windows::Forms::Label^  lbl_error_abteilungsid;
 
 
 
@@ -114,7 +116,7 @@ namespace Semesterarbeit_IFO3 {
 		void InitializeComponent(void)
 		{
 			this->btn_speichern = (gcnew System::Windows::Forms::Button());
-			this->button2 = (gcnew System::Windows::Forms::Button());
+			this->btn_abbrechen = (gcnew System::Windows::Forms::Button());
 			this->lbl_mitarbeiternummer = (gcnew System::Windows::Forms::Label());
 			this->txt_mitarbeiternummer = (gcnew System::Windows::Forms::TextBox());
 			this->lbl_vorname = (gcnew System::Windows::Forms::Label());
@@ -149,6 +151,7 @@ namespace Semesterarbeit_IFO3 {
 			this->txt_abteilungsid = (gcnew System::Windows::Forms::TextBox());
 			this->btn_ausgabe = (gcnew System::Windows::Forms::Button());
 			this->lbl_error_mitarbeiternr = (gcnew System::Windows::Forms::Label());
+			this->lbl_error_abteilungsid = (gcnew System::Windows::Forms::Label());
 			this->SuspendLayout();
 			// 
 			// btn_speichern
@@ -161,15 +164,15 @@ namespace Semesterarbeit_IFO3 {
 			this->btn_speichern->UseVisualStyleBackColor = true;
 			this->btn_speichern->Click += gcnew System::EventHandler(this, &Dateneingabe::button1_Click);
 			// 
-			// button2
+			// btn_abbrechen
 			// 
-			this->button2->Location = System::Drawing::Point(456, 400);
-			this->button2->Name = L"button2";
-			this->button2->Size = System::Drawing::Size(101, 25);
-			this->button2->TabIndex = 1;
-			this->button2->Text = L"Abbrechen";
-			this->button2->UseVisualStyleBackColor = true;
-			this->button2->Click += gcnew System::EventHandler(this, &Dateneingabe::button2_Click);
+			this->btn_abbrechen->Location = System::Drawing::Point(456, 400);
+			this->btn_abbrechen->Name = L"btn_abbrechen";
+			this->btn_abbrechen->Size = System::Drawing::Size(101, 25);
+			this->btn_abbrechen->TabIndex = 1;
+			this->btn_abbrechen->Text = L"Abbrechen";
+			this->btn_abbrechen->UseVisualStyleBackColor = true;
+			this->btn_abbrechen->Click += gcnew System::EventHandler(this, &Dateneingabe::button2_Click);
 			// 
 			// lbl_mitarbeiternummer
 			// 
@@ -438,6 +441,7 @@ namespace Semesterarbeit_IFO3 {
 			this->txt_abteilungsid->Size = System::Drawing::Size(100, 20);
 			this->txt_abteilungsid->TabIndex = 32;
 			this->txt_abteilungsid->Visible = false;
+			this->txt_abteilungsid->TextChanged += gcnew System::EventHandler(this, &Dateneingabe::txt_abteilungsid_TextChanged);
 			// 
 			// btn_ausgabe
 			// 
@@ -461,11 +465,23 @@ namespace Semesterarbeit_IFO3 {
 			this->lbl_error_mitarbeiternr->UseCompatibleTextRendering = true;
 			this->lbl_error_mitarbeiternr->Visible = false;
 			// 
+			// lbl_error_abteilungsid
+			// 
+			this->lbl_error_abteilungsid->AutoSize = true;
+			this->lbl_error_abteilungsid->ForeColor = System::Drawing::Color::Red;
+			this->lbl_error_abteilungsid->Location = System::Drawing::Point(246, 71);
+			this->lbl_error_abteilungsid->Name = L"lbl_error_abteilungsid";
+			this->lbl_error_abteilungsid->Size = System::Drawing::Size(105, 13);
+			this->lbl_error_abteilungsid->TabIndex = 36;
+			this->lbl_error_abteilungsid->Text = L"Abteilungs ID belegt!";
+			this->lbl_error_abteilungsid->Visible = false;
+			// 
 			// Dateneingabe
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(595, 454);
+			this->Controls->Add(this->lbl_error_abteilungsid);
 			this->Controls->Add(this->lbl_error_mitarbeiternr);
 			this->Controls->Add(this->btn_ausgabe);
 			this->Controls->Add(this->txt_abteilungsid);
@@ -499,7 +515,7 @@ namespace Semesterarbeit_IFO3 {
 			this->Controls->Add(this->lbl_vorname);
 			this->Controls->Add(this->txt_mitarbeiternummer);
 			this->Controls->Add(this->lbl_mitarbeiternummer);
-			this->Controls->Add(this->button2);
+			this->Controls->Add(this->btn_abbrechen);
 			this->Controls->Add(this->btn_speichern);
 			this->Name = L"Dateneingabe";
 			this->Text = L"Dateneingabe";
@@ -511,22 +527,49 @@ namespace Semesterarbeit_IFO3 {
 #pragma endregion
 
 	private: System::Void Dateneingabe_Load(System::Object^  sender, System::EventArgs^  e) {
-	
+
 		read_eingabe();
-		//Beim laden des Fenster werden die Mitarbeiterdaten aus der Textdatei in die Variablen geladen
 	}
+	//Beim laden des Fenster werden die Mitarbeiterdaten aus der Textdatei in die Variablen geladen
 	private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
 		
-		speichern_eingabe();
-		//Bei drücken von Speichern werden die Variablen in der textdatei gespeichert
-	}
+		char speichern_na[20];
+		char speichern_vna[20];
+		char speichern_em[20];
+		char speichern_ej[20];
+		char speichern_str[20];
+		char speichern_hnr[20];
+		char speichern_post[20];
+		char speichern_ort[20];
+		char speichern_mnr[20];
+		char speichern_fnr[20];
+		char speichern_mail[20];
+		char speichern_ab[20];
+		char speichern_vg[20];
+		char speichern_nr[20];
 
+		String ^na;
+		txt_name->Text = na;
+		sprintf(speichern_na, "%s", na);
+
+		String ^mitarbeiternummer = txt_mitarbeiternummer->Text;
+		char text[20];
+		sprintf(text, "%s", mitarbeiternummer);
+		int speichern_zähler = atoi(text);
+
+
+		datensatz_speichern_mitarbeiter(speichern_na, speichern_vna, speichern_em, speichern_ej, speichern_str, speichern_hnr, speichern_post, speichern_ort, speichern_mnr, speichern_fnr, speichern_mail, speichern_ab, speichern_vg, speichern_nr, speichern_zähler);
+
+		speichern_eingabe();
+		
+	}
+	//Bei drücken von Speichern werden die Variablen in der textdatei gespeichert
 	private: System::Void button2_Click(System::Object^  sender, System::EventArgs^  e) {
 
 		this->Close();
-		//Bei drücken von Abbrechen wird das Fenster geschlossen
+		
 	}
-
+	//Bei drücken von Abbrechen wird das Fenster geschlossen
 	private: System::Void rdo_mitarbeiter_CheckedChanged(System::Object^  sender, System::EventArgs^  e) {
 
 		lbl_abteilungsid->Visible = false;
@@ -543,8 +586,9 @@ namespace Semesterarbeit_IFO3 {
 		txt_vorname->Visible = true;
 		lbl_name->Visible = true;
 		txt_name->Visible = true;
-		//Sichtbarkeit der Felder bei Mitarbeiter
+		
 	}
+	//Sichtbarkeit der Felder bei Mitarbeiter
 	private: System::Void rdo_abteilungsleiter_CheckedChanged(System::Object^  sender, System::EventArgs^  e) {
 
 		lbl_abteilungsid->Visible = false;
@@ -561,9 +605,9 @@ namespace Semesterarbeit_IFO3 {
 		txt_vorname->Visible = true;
 		lbl_name->Visible = true;
 		txt_name->Visible = true;
-		//Sichtbarkeit der Felder bei Abteilungleiter
+		
 	}
-	
+	//Sichtbarkeit der Felder bei Abteilungleiter
 	private: System::Void rdo_abteilung_CheckedChanged(System::Object^  sender, System::EventArgs^  e) {
 
 		lbl_vorname->Visible = false;
@@ -580,9 +624,9 @@ namespace Semesterarbeit_IFO3 {
 
 		lbl_abteilungsid->Visible = true;
 		txt_abteilungsid->Visible = true;
-		//Sichtbarkeit der Felder bei Abteilungen
+		
 	}
-	
+	//Sichtbarkeit der Felder bei Abteilungen
 	private: System::Void button1_Click_1(System::Object^  sender, System::EventArgs^  e) {
 
 		char laden_na[20];
@@ -599,9 +643,9 @@ namespace Semesterarbeit_IFO3 {
 		char laden_ab[20];
 		char laden_vg[20];
 		char laden_nr[20];
-		int zähler = 33;
+		int zähler = 10;
 
-		datensatz_laden(laden_na, laden_vna, laden_em, laden_ej, laden_str, laden_hnr, laden_post, laden_ort, laden_mnr, laden_fnr, laden_mail, laden_ab, laden_vg, laden_nr, zähler);
+		datensatz_laden_mitarbeiter(laden_na, laden_vna, laden_em, laden_ej, laden_str, laden_hnr, laden_post, laden_ort, laden_mnr, laden_fnr, laden_mail, laden_ab, laden_vg, laden_nr, zähler);
 
 		String ^test3 = gcnew String(laden_na);
 		txt_name->Text = test3;
@@ -609,9 +653,8 @@ namespace Semesterarbeit_IFO3 {
 		String ^test4 = gcnew String(laden_nr);
 		txt_mitarbeiternummer->Text = test4;
 
-		lbl_error_mitarbeiternr->Visible = false;
 	}
-	
+	//Ausgabe des engegeben Mitarbeiter nur zum TESTEN
 	private: System::Void txt_mitarbeiternummer_TextChanged(System::Object^  sender, System::EventArgs^  e) {
 
 		char laden_na[20];
@@ -634,18 +677,52 @@ namespace Semesterarbeit_IFO3 {
 		sprintf(text, "%s", mitarbeiternummer);
 		int zähler = atoi(text);
 
-		datensatz_laden(laden_na, laden_vna, laden_em, laden_ej, laden_str, laden_hnr, laden_post, laden_ort, laden_mnr, laden_fnr, laden_mail, laden_ab, laden_vg, laden_nr, zähler);
+		datensatz_laden_mitarbeiter(laden_na, laden_vna, laden_em, laden_ej, laden_str, laden_hnr, laden_post, laden_ort, laden_mnr, laden_fnr, laden_mail, laden_ab, laden_vg, laden_nr, zähler);
 
 		if (*laden_na != '\0')
 		{
 			lbl_error_mitarbeiternr->Visible = true;
-
+			btn_speichern->Visible = false;
 		}
 		if (*laden_na == '\0')
 		{
 			lbl_error_mitarbeiternr->Visible = false;
+			btn_speichern->Visible = true;
 		}
 	}
+	//Prüfung ob Mitarbeiternummer schon vorhanden ist
+	private: System::Void txt_abteilungsid_TextChanged(System::Object^  sender, System::EventArgs^  e) {
+
+		char laden_na[20];
+		char laden_str[20];
+		char laden_hnr[20];
+		char laden_post[20];
+		char laden_ort[20];
+		char laden_mail[20];
+		char laden_abl[20];
+		char laden_nr[20];
+
+		String ^abteilungsid = txt_abteilungsid->Text;
+		char text[20];
+		sprintf(text, "%s", abteilungsid);
+		int zähler = atoi(text);
+
+		datensatz_laden_abteilung(laden_na, laden_str, laden_hnr, laden_post, laden_ort, laden_abl, laden_nr, zähler);
+
+		if (*laden_na != '\0')
+		{
+			lbl_error_abteilungsid->Visible = true;
+			btn_speichern->Visible = false;
+
+		}
+		if (*laden_na == '\0')
+		{
+			lbl_error_abteilungsid->Visible = false;
+			btn_speichern->Visible = true;
+		}
+
+	}
+	//Prüfung ob Abteilungs ID schon vorhanden ist
 };
 }
 
