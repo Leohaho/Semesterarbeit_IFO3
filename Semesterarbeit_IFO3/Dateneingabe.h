@@ -8,6 +8,9 @@
 void read_eingabe();
 void speichern_eingabe();
 void ausgabe_test(char *test);
+//void form_laden(Mitarb Mitarbeiter_Send[100], ABL Abteilungsleiter_Send[100], ABT Abteilung_Send[100]);
+void datensatz_laden(char *laden_na, char *laden_vna, char *laden_em, char *laden_ej, char *laden_str, char *laden_hnr, char *laden_post, char *laden_ort, char *laden_mnr, char *laden_fnr, char *laden_mail, char *laden_ab, char *laden_vg, char *laden_nr, int zähler);
+
 
 namespace Semesterarbeit_IFO3 {
 
@@ -84,7 +87,10 @@ namespace Semesterarbeit_IFO3 {
 	private: System::Windows::Forms::Label^  lbl_abteilungsname;
 	private: System::Windows::Forms::TextBox^  txt_abteilungsname;
 	private: System::Windows::Forms::TextBox^  txt_abteilungsid;
-	private: System::Windows::Forms::Button^  button1;
+	private: System::Windows::Forms::Button^  btn_ausgabe;
+
+	private: System::Windows::Forms::Label^  lbl_error_mitarbeiternr;
+
 
 
 
@@ -141,12 +147,13 @@ namespace Semesterarbeit_IFO3 {
 			this->lbl_abteilungsname = (gcnew System::Windows::Forms::Label());
 			this->txt_abteilungsname = (gcnew System::Windows::Forms::TextBox());
 			this->txt_abteilungsid = (gcnew System::Windows::Forms::TextBox());
-			this->button1 = (gcnew System::Windows::Forms::Button());
+			this->btn_ausgabe = (gcnew System::Windows::Forms::Button());
+			this->lbl_error_mitarbeiternr = (gcnew System::Windows::Forms::Label());
 			this->SuspendLayout();
 			// 
 			// btn_speichern
 			// 
-			this->btn_speichern->Location = System::Drawing::Point(34, 390);
+			this->btn_speichern->Location = System::Drawing::Point(34, 400);
 			this->btn_speichern->Name = L"btn_speichern";
 			this->btn_speichern->Size = System::Drawing::Size(101, 25);
 			this->btn_speichern->TabIndex = 0;
@@ -156,7 +163,7 @@ namespace Semesterarbeit_IFO3 {
 			// 
 			// button2
 			// 
-			this->button2->Location = System::Drawing::Point(456, 390);
+			this->button2->Location = System::Drawing::Point(456, 400);
 			this->button2->Name = L"button2";
 			this->button2->Size = System::Drawing::Size(101, 25);
 			this->button2->TabIndex = 1;
@@ -179,6 +186,7 @@ namespace Semesterarbeit_IFO3 {
 			this->txt_mitarbeiternummer->Name = L"txt_mitarbeiternummer";
 			this->txt_mitarbeiternummer->Size = System::Drawing::Size(100, 20);
 			this->txt_mitarbeiternummer->TabIndex = 3;
+			this->txt_mitarbeiternummer->TextChanged += gcnew System::EventHandler(this, &Dateneingabe::txt_mitarbeiternummer_TextChanged);
 			// 
 			// lbl_vorname
 			// 
@@ -224,6 +232,7 @@ namespace Semesterarbeit_IFO3 {
 			// rdo_mitarbeiter
 			// 
 			this->rdo_mitarbeiter->AutoSize = true;
+			this->rdo_mitarbeiter->Checked = true;
 			this->rdo_mitarbeiter->Location = System::Drawing::Point(188, 35);
 			this->rdo_mitarbeiter->Name = L"rdo_mitarbeiter";
 			this->rdo_mitarbeiter->Size = System::Drawing::Size(74, 17);
@@ -404,6 +413,7 @@ namespace Semesterarbeit_IFO3 {
 			this->lbl_abteilungsid->Size = System::Drawing::Size(70, 13);
 			this->lbl_abteilungsid->TabIndex = 29;
 			this->lbl_abteilungsid->Text = L"Abteilungs ID";
+			this->lbl_abteilungsid->Visible = false;
 			// 
 			// lbl_abteilungsname
 			// 
@@ -427,23 +437,37 @@ namespace Semesterarbeit_IFO3 {
 			this->txt_abteilungsid->Name = L"txt_abteilungsid";
 			this->txt_abteilungsid->Size = System::Drawing::Size(100, 20);
 			this->txt_abteilungsid->TabIndex = 32;
+			this->txt_abteilungsid->Visible = false;
 			// 
-			// button1
+			// btn_ausgabe
 			// 
-			this->button1->Location = System::Drawing::Point(354, 169);
-			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(140, 32);
-			this->button1->TabIndex = 33;
-			this->button1->Text = L"test";
-			this->button1->UseVisualStyleBackColor = true;
-			this->button1->Click += gcnew System::EventHandler(this, &Dateneingabe::button1_Click_1);
+			this->btn_ausgabe->Location = System::Drawing::Point(246, 400);
+			this->btn_ausgabe->Name = L"btn_ausgabe";
+			this->btn_ausgabe->Size = System::Drawing::Size(101, 25);
+			this->btn_ausgabe->TabIndex = 33;
+			this->btn_ausgabe->Text = L"Ausgabe";
+			this->btn_ausgabe->UseVisualStyleBackColor = true;
+			this->btn_ausgabe->Click += gcnew System::EventHandler(this, &Dateneingabe::button1_Click_1);
+			// 
+			// lbl_error_mitarbeiternr
+			// 
+			this->lbl_error_mitarbeiternr->AutoSize = true;
+			this->lbl_error_mitarbeiternr->ForeColor = System::Drawing::Color::Red;
+			this->lbl_error_mitarbeiternr->Location = System::Drawing::Point(246, 97);
+			this->lbl_error_mitarbeiternr->Name = L"lbl_error_mitarbeiternr";
+			this->lbl_error_mitarbeiternr->Size = System::Drawing::Size(147, 17);
+			this->lbl_error_mitarbeiternr->TabIndex = 35;
+			this->lbl_error_mitarbeiternr->Text = L"Mitarbeiternrnummer belegt!";
+			this->lbl_error_mitarbeiternr->UseCompatibleTextRendering = true;
+			this->lbl_error_mitarbeiternr->Visible = false;
 			// 
 			// Dateneingabe
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(595, 454);
-			this->Controls->Add(this->button1);
+			this->Controls->Add(this->lbl_error_mitarbeiternr);
+			this->Controls->Add(this->btn_ausgabe);
 			this->Controls->Add(this->txt_abteilungsid);
 			this->Controls->Add(this->txt_abteilungsname);
 			this->Controls->Add(this->lbl_abteilungsname);
@@ -485,7 +509,7 @@ namespace Semesterarbeit_IFO3 {
 
 		}
 #pragma endregion
-		
+
 	private: System::Void Dateneingabe_Load(System::Object^  sender, System::EventArgs^  e) {
 	
 		read_eingabe();
@@ -558,15 +582,70 @@ namespace Semesterarbeit_IFO3 {
 		txt_abteilungsid->Visible = true;
 		//Sichtbarkeit der Felder bei Abteilungen
 	}
-private: System::Void button1_Click_1(System::Object^  sender, System::EventArgs^  e) {
-	char test[20];
 	
+	private: System::Void button1_Click_1(System::Object^  sender, System::EventArgs^  e) {
 
-	ausgabe_test(test);
-	String ^test2 = gcnew String(test);
-	txt_vorname->Text = test2;
+		char laden_na[20];
+		char laden_vna[20];
+		char laden_em[20];
+		char laden_ej[20];
+		char laden_str[20];
+		char laden_hnr[20];
+		char laden_post[20];
+		char laden_ort[20];
+		char laden_mnr[20];
+		char laden_fnr[20];
+		char laden_mail[20];
+		char laden_ab[20];
+		char laden_vg[20];
+		char laden_nr[20];
+		int zähler = 33;
 
-}
+		datensatz_laden(laden_na, laden_vna, laden_em, laden_ej, laden_str, laden_hnr, laden_post, laden_ort, laden_mnr, laden_fnr, laden_mail, laden_ab, laden_vg, laden_nr, zähler);
+
+		String ^test3 = gcnew String(laden_na);
+		txt_name->Text = test3;
+
+		String ^test4 = gcnew String(laden_nr);
+		txt_mitarbeiternummer->Text = test4;
+
+		lbl_error_mitarbeiternr->Visible = false;
+	}
+	
+	private: System::Void txt_mitarbeiternummer_TextChanged(System::Object^  sender, System::EventArgs^  e) {
+
+		char laden_na[20];
+		char laden_vna[20];
+		char laden_em[20];
+		char laden_ej[20];
+		char laden_str[20];
+		char laden_hnr[20];
+		char laden_post[20];
+		char laden_ort[20];
+		char laden_mnr[20];
+		char laden_fnr[20];
+		char laden_mail[20];
+		char laden_ab[20];
+		char laden_vg[20];
+		char laden_nr[20];
+
+		String ^mitarbeiternummer = txt_mitarbeiternummer->Text;
+		char text[20];
+		sprintf(text, "%s", mitarbeiternummer);
+		int zähler = atoi(text);
+
+		datensatz_laden(laden_na, laden_vna, laden_em, laden_ej, laden_str, laden_hnr, laden_post, laden_ort, laden_mnr, laden_fnr, laden_mail, laden_ab, laden_vg, laden_nr, zähler);
+
+		if (*laden_na != '\0')
+		{
+			lbl_error_mitarbeiternr->Visible = true;
+
+		}
+		if (*laden_na == '\0')
+		{
+			lbl_error_mitarbeiternr->Visible = false;
+		}
+	}
 };
 }
 
