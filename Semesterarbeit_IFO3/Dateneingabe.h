@@ -450,6 +450,7 @@ namespace Semesterarbeit_IFO3 {
 			this->txt_abteilungsname->Name = L"txt_abteilungsname";
 			this->txt_abteilungsname->Size = System::Drawing::Size(100, 20);
 			this->txt_abteilungsname->TabIndex = 31;
+			this->txt_abteilungsname->TextChanged += gcnew System::EventHandler(this, &Dateneingabe::txt_abteilungsname_TextChanged);
 			// 
 			// txt_abteilungsid
 			// 
@@ -799,6 +800,16 @@ namespace Semesterarbeit_IFO3 {
 
 	}
 	//Prüfung ob Abteilungs ID schon vorhanden ist
+	private: System::Void txt_abteilungsname_TextChanged(System::Object^  sender, System::EventArgs^  e) {
+
+
+
+		if (rdo_abteilung->Checked==true)
+		{
+
+		}
+
+	}
 };
 }
 

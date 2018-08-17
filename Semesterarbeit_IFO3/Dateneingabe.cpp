@@ -88,7 +88,20 @@ void datensatz_speichern_abteilung() {
 
 }
 
-void datensatz_laden_abteilungsleiter() {
+void datensatz_laden_abteilungsleiter(char *laden_na, char *laden_vna, char *laden_str, char *laden_hnr, char *laden_post, char *laden_ort, char *laden_mnr, char *laden_fnr, char *laden_mail, char *laden_ab, int laden_zähler) {
+
+	int zähler = laden_zähler;
+
+	strcpy(laden_na, MA[zähler].NA);
+	strcpy(laden_vna, MA[zähler].VNA);
+	strcpy(laden_str, MA[zähler].STR);
+	strcpy(laden_hnr, MA[zähler].HNR);
+	strcpy(laden_post, MA[zähler].POST);
+	strcpy(laden_ort, MA[zähler].ORT);
+	strcpy(laden_mnr, MA[zähler].MNR);
+	strcpy(laden_fnr, MA[zähler].FNR);
+	strcpy(laden_mail, MA[zähler].mail);
+	strcpy(laden_ab, MA[zähler].AB);
 
 }
 
