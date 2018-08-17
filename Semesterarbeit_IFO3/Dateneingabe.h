@@ -92,6 +92,8 @@ namespace Semesterarbeit_IFO3 {
 
 	private: System::Windows::Forms::Label^  lbl_error_mitarbeiternr;
 	private: System::Windows::Forms::Label^  lbl_error_abteilungsid;
+	private: System::Windows::Forms::HelpProvider^  helpProvider1;
+
 
 
 
@@ -152,6 +154,7 @@ namespace Semesterarbeit_IFO3 {
 			this->btn_ausgabe = (gcnew System::Windows::Forms::Button());
 			this->lbl_error_mitarbeiternr = (gcnew System::Windows::Forms::Label());
 			this->lbl_error_abteilungsid = (gcnew System::Windows::Forms::Label());
+			this->helpProvider1 = (gcnew System::Windows::Forms::HelpProvider());
 			this->SuspendLayout();
 			// 
 			// btn_speichern
@@ -271,7 +274,12 @@ namespace Semesterarbeit_IFO3 {
 			// 
 			// cbx_monat
 			// 
+			this->cbx_monat->DropDownStyle = System::Windows::Forms::ComboBoxStyle::DropDownList;
 			this->cbx_monat->FormattingEnabled = true;
+			this->cbx_monat->Items->AddRange(gcnew cli::array< System::Object^  >(12) {
+				L"1", L"2", L"3", L"4", L"5", L"6", L"7", L"8",
+					L"9", L"10", L"11", L"12"
+			});
 			this->cbx_monat->Location = System::Drawing::Point(112, 353);
 			this->cbx_monat->Name = L"cbx_monat";
 			this->cbx_monat->Size = System::Drawing::Size(51, 21);
@@ -279,7 +287,16 @@ namespace Semesterarbeit_IFO3 {
 			// 
 			// cbx_jahr
 			// 
+			this->cbx_jahr->DropDownStyle = System::Windows::Forms::ComboBoxStyle::DropDownList;
 			this->cbx_jahr->FormattingEnabled = true;
+			this->cbx_jahr->Items->AddRange(gcnew cli::array< System::Object^  >(70) {
+				L"1950", L"1951", L"1952", L"1953", L"1954", L"1955",
+					L"1956", L"1957", L"1958", L"1959", L"1960", L"1961", L"1962", L"1963", L"1964", L"1965", L"1966", L"1967", L"1968", L"1969",
+					L"1970", L"1971", L"1972", L"1973", L"1974", L"1975", L"1976", L"1977", L"1978", L"1979", L"1980", L"1981", L"1982", L"1983",
+					L"1984", L"1985", L"1986", L"1987", L"1988", L"1989", L"1990", L"1991", L"1992", L"1993", L"1994", L"1995", L"1996", L"1997",
+					L"1998", L"1999", L"2000", L"2001", L"2002", L"2003", L"2004", L"2005", L"2006", L"2007", L"2008", L"2009", L"2010", L"2011",
+					L"2012", L"2013", L"2014", L"2015", L"2016", L"2017", L"2018", L"2019"
+			});
 			this->cbx_jahr->Location = System::Drawing::Point(210, 353);
 			this->cbx_jahr->Name = L"cbx_jahr";
 			this->cbx_jahr->Size = System::Drawing::Size(51, 21);
@@ -548,15 +565,58 @@ namespace Semesterarbeit_IFO3 {
 		char speichern_vg[20];
 		char speichern_nr[20];
 
-		String ^na;
-		txt_name->Text = na;
-		sprintf(speichern_na, "%s", na);
-
-		String ^mitarbeiternummer = txt_mitarbeiternummer->Text;
+		String ^nr = txt_mitarbeiternummer->Text;
 		char text[20];
-		sprintf(text, "%s", mitarbeiternummer);
+		sprintf(text, "%s", nr);
 		int speichern_z‰hler = atoi(text);
 
+		String ^na;
+		na = txt_name->Text;
+		sprintf(speichern_na, "%s", na);
+
+		String ^vna;
+		vna = txt_vorname->Text;
+		sprintf(speichern_vna, "%s", vna);
+
+		sprintf(speichern_mail, "%s.%s@daddeldu.com", vna, na);
+
+		String ^str;
+		str = txt_strasse->Text;
+		sprintf(speichern_str, "%s", str);
+
+		String ^hnr;
+		hnr = txt_hausnummer->Text;
+		sprintf(speichern_hnr, "%s", hnr);
+
+		String ^post;
+		post = txt_postleitzahl->Text;
+		sprintf(speichern_post, "%s", post);
+
+		String ^ort;
+		ort = txt_wohnort->Text;
+		sprintf(speichern_ort, "%s", ort);
+
+		String ^mnr;
+		mnr = txt_mobilnummer->Text;
+		sprintf(speichern_mnr, "%s", mnr);
+
+		String ^fnr;
+		fnr = txt_festnetznummer->Text;
+		sprintf(speichern_fnr, "%s", fnr);
+
+		String ^em;
+		em = cbx_monat->Text;
+		sprintf(speichern_em, "%s", em);
+
+		String ^ej;
+		ej = cbx_jahr->Text;
+		sprintf(speichern_ej, "%s", ej);
+
+		String ^ab;
+		ab = txt_abteilungsname->Text;
+		sprintf(speichern_ab, "%s", ab);
+
+		sprintf(speichern_vg, "test");
 
 		datensatz_speichern_mitarbeiter(speichern_na, speichern_vna, speichern_em, speichern_ej, speichern_str, speichern_hnr, speichern_post, speichern_ort, speichern_mnr, speichern_fnr, speichern_mail, speichern_ab, speichern_vg, speichern_nr, speichern_z‰hler);
 
@@ -643,16 +703,32 @@ namespace Semesterarbeit_IFO3 {
 		char laden_ab[20];
 		char laden_vg[20];
 		char laden_nr[20];
-		int z‰hler = 10;
+		int z‰hler;
+
+		String ^mitarbeiternummer;
+		mitarbeiternummer = txt_mitarbeiternummer->Text;
+		char text[20];
+		sprintf(text, "%s", mitarbeiternummer);
+		z‰hler = atoi(text);
 
 		datensatz_laden_mitarbeiter(laden_na, laden_vna, laden_em, laden_ej, laden_str, laden_hnr, laden_post, laden_ort, laden_mnr, laden_fnr, laden_mail, laden_ab, laden_vg, laden_nr, z‰hler);
 
-		String ^test3 = gcnew String(laden_na);
-		txt_name->Text = test3;
-
-		String ^test4 = gcnew String(laden_nr);
-		txt_mitarbeiternummer->Text = test4;
-
+		String ^na = gcnew String(laden_na);
+		String ^nr = gcnew String(laden_nr);
+		String ^mail = gcnew String(laden_mail);
+		String ^vna = gcnew String(laden_vna);
+		String ^em = gcnew String(laden_em);
+		String ^ej = gcnew String(laden_ej);
+		String ^str = gcnew String(laden_str);
+		String ^hnr = gcnew String(laden_hnr);
+		String ^post = gcnew String(laden_post);
+		String ^ort = gcnew String(laden_ort);
+		String ^mnr = gcnew String(laden_mnr);
+		String ^fnr = gcnew String(laden_fnr);
+		String ^ab = gcnew String(laden_ab);
+		String ^vg = gcnew String(laden_vg);
+		
+		MessageBox::Show("Mitarbeiternummer: "+nr+"\nAbteilungsname: "+ab+"\nVorname: "+vna+"\nName: "+na+"\nStraﬂe: "+str+"\nHausnummer: "+hnr+"\nPostleitzahl: "+post+"\nWohnort: "+ort+"\nFestnetznummer: "+fnr+"\nMobilnummer: " +mnr+ "\nEintrittsmonat: "+em+"\nEintrittsjahr: "+ej+"\nVorgesetzer: "+vg+"\n");
 	}
 	//Ausgabe des engegeben Mitarbeiter nur zum TESTEN
 	private: System::Void txt_mitarbeiternummer_TextChanged(System::Object^  sender, System::EventArgs^  e) {

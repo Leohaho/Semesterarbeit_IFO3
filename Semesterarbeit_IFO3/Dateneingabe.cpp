@@ -64,11 +64,7 @@ void datensatz_speichern_mitarbeiter(char *speichern_na, char *speichern_vna, ch
 	strcpy(MA[zähler].mail, speichern_mail);
 	strcpy(MA[zähler].AB, speichern_ab);
 	strcpy(MA[zähler].VG, speichern_vg);
-	
-	std::string text = speichern_nr;
-	int mitarbeiternummer = std::atoi(text.c_str());
-	
-	MA[zähler].NR = mitarbeiternummer;
+	MA[zähler].NR = zähler;
 }
 
 void datensatz_laden_abteilung(char *laden_na, char *laden_str, char *laden_hnr, char *laden_post, char *laden_ort, char *laden_abl, char *laden_nr, int laden_zähler) {
