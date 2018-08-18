@@ -1,14 +1,70 @@
-0
-
-
-
-
-
-
-
-
-
-
-
-
-
+1
+Bruns
+Gaston
+8
+2013
+Am Schlosspark
+3
+21646
+Halvesbostel
+8876545678
+687564
+Gaston.Bruns@daddeldu.com
+BT
+Ingo Wilkens
+33
+Jacobs
+Alex
+9
+2008
+Am Bahnhof
+6
+21640
+Horneburg
+765432345
+32455
+Alex.Jacobs@daddeldu.com
+Produktion
+Orsen Naber
+56
+Gramberg
+Vico
+4
+1986
+WÅlkensweg
+8
+21258
+Heidenau
+846267425
+235673465
+Vico.Gramberg@daddeldu.com
+Produktion
+Orsen Naber
+65
+Frerichs
+Claire
+12
+2012
+Jutestr.
+92
+21680
+Stade
+543234354
+123574343
+Claire.Frerichs@daddeldu.com
+Produktion
+Orsen Naber
+98
+Meyer
+Polly
+6
+2002
+Postweg
+8
+21397
+Vastorf
+744664
+34675
+Polly.Meyer@daddeldu.com
+BT
+Ingo Wilkens

@@ -7,12 +7,14 @@
 #include "Datensuchen.h"
 #include "Datenausgabe.h"
 #include "Datenlöschen.h"
+//#include "Header.h"
 
 
 ABL AL[100];
 ABT AT[100];
 Mitarb MA[100];
 int save;
+int test = 1;
 
 namespace Semesterarbeit_IFO3 {
 
@@ -31,6 +33,7 @@ namespace Semesterarbeit_IFO3 {
 	public:
 		MyForm(void)
 		{
+			int getTest();
 			InitializeComponent();
 			//
 			//TODO: Konstruktorcode hier hinzufügen.
@@ -200,7 +203,7 @@ namespace Semesterarbeit_IFO3 {
 		form->ShowDialog();
 	}
 	private: System::Void button7_Click(System::Object^  sender, System::EventArgs^  e) {
-
+		Close();
 		if (save != 1) {
 			//abfrage Speichern
 		}
@@ -217,4 +220,8 @@ namespace Semesterarbeit_IFO3 {
 	};
 }
 
+int getTest()
+{
+	return test;
+}
 #endif
