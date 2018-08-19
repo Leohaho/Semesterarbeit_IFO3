@@ -7,10 +7,12 @@
 
 void read_eingabe();
 void speichern_eingabe();
-void ausgabe_test(char *test);
-void datensatz_laden_mitarbeiter(char *laden_na, char *laden_vna, char *laden_em, char *laden_ej, char *laden_str, char *laden_hnr, char *laden_post, char *laden_ort, char *laden_mnr, char *laden_fnr, char *laden_mail, char *laden_ab, char *laden_vg, char *laden_nr, int zähler);
+void datensatz_laden_mitarbeiter(char *laden_na, char *laden_vna, char *laden_em, char *laden_ej, char *laden_str, char *laden_hnr, char *laden_post, char *laden_ort, char *laden_mnr, char *laden_fnr, char *laden_mail, char *laden_ab, char *laden_vg, char *laden_nr, int laden_zähler);
 void datensatz_speichern_mitarbeiter(char *speichern_na, char *speichern_vna, char *speichern_em, char *speichern_ej, char *speichern_str, char *speichern_hnr, char *speichern_post, char *speichern_ort, char *speichern_mnr, char *speichern_fnr, char *speichern_mail, char *speichern_ab, char *speichern_vg, char *speichern_nr, int specihern_zähler);
-void datensatz_laden_abteilung(char *laden_na, char *laden_str, char *laden_hnr, char *laden_post, char *laden_ort, char *laden_abl, char *laden_nr, int laden_zähler);
+void datensatz_laden_abteilung(char *laden_na, char *laden_str, char *laden_hnr, char *laden_post, char *laden_ort, char *laden_abl, char *laden_nr, char *laden_st, int laden_zähler);
+void datensatz_speichern_abteilung(char *speichern_str, char *speichern_hnr, char *speichern_post, char *speichern_ort, char *speichern_ab, char *speichern_id, char *speichern_abl, char *speichern_st, int speichern_zähler);
+void datensatz_laden_abteilungsleiter(char *laden_na, char *laden_vna, char *laden_str, char *laden_hnr, char *laden_post, char *laden_ort, char *laden_mnr, char *laden_fnr, char *laden_mail, char *laden_ab, int laden_zähler, char *laden_atid, char *laden_atfa, char *laden_atabl);
+void datensatz_speichern_abteilungsleiter(char *speichern_na, char *speichern_vna, char *speichern_str, char *speichern_hnr, char *speichern_post, char *speichern_ort, char *speichern_mnr, char *speichern_fnr, char *speichern_mail, char *speichern_ab, char *speichern_abl, int speichern_zähler);
 
 namespace Semesterarbeit_IFO3 {
 
@@ -93,6 +95,11 @@ namespace Semesterarbeit_IFO3 {
 	private: System::Windows::Forms::Label^  lbl_error_mitarbeiternr;
 	private: System::Windows::Forms::Label^  lbl_error_abteilungsid;
 	private: System::Windows::Forms::HelpProvider^  helpProvider1;
+	private: System::Windows::Forms::Label^  lbl_error_abteilung;
+	private: System::Windows::Forms::Label^  lbl_error_abteilungsleiter;
+	private: System::Windows::Forms::Label^  lbl_error_abteilungsname;
+	private: System::Windows::Forms::Label^  lbl_standort;
+	private: System::Windows::Forms::TextBox^  txt_standort;
 
 
 
@@ -155,11 +162,16 @@ namespace Semesterarbeit_IFO3 {
 			this->lbl_error_mitarbeiternr = (gcnew System::Windows::Forms::Label());
 			this->lbl_error_abteilungsid = (gcnew System::Windows::Forms::Label());
 			this->helpProvider1 = (gcnew System::Windows::Forms::HelpProvider());
+			this->lbl_error_abteilung = (gcnew System::Windows::Forms::Label());
+			this->lbl_error_abteilungsleiter = (gcnew System::Windows::Forms::Label());
+			this->lbl_error_abteilungsname = (gcnew System::Windows::Forms::Label());
+			this->lbl_standort = (gcnew System::Windows::Forms::Label());
+			this->txt_standort = (gcnew System::Windows::Forms::TextBox());
 			this->SuspendLayout();
 			// 
 			// btn_speichern
 			// 
-			this->btn_speichern->Location = System::Drawing::Point(34, 400);
+			this->btn_speichern->Location = System::Drawing::Point(34, 425);
 			this->btn_speichern->Name = L"btn_speichern";
 			this->btn_speichern->Size = System::Drawing::Size(101, 25);
 			this->btn_speichern->TabIndex = 0;
@@ -169,7 +181,7 @@ namespace Semesterarbeit_IFO3 {
 			// 
 			// btn_abbrechen
 			// 
-			this->btn_abbrechen->Location = System::Drawing::Point(456, 400);
+			this->btn_abbrechen->Location = System::Drawing::Point(456, 425);
 			this->btn_abbrechen->Name = L"btn_abbrechen";
 			this->btn_abbrechen->Size = System::Drawing::Size(101, 25);
 			this->btn_abbrechen->TabIndex = 1;
@@ -197,7 +209,7 @@ namespace Semesterarbeit_IFO3 {
 			// lbl_vorname
 			// 
 			this->lbl_vorname->AutoSize = true;
-			this->lbl_vorname->Location = System::Drawing::Point(12, 149);
+			this->lbl_vorname->Location = System::Drawing::Point(12, 175);
 			this->lbl_vorname->Name = L"lbl_vorname";
 			this->lbl_vorname->Size = System::Drawing::Size(49, 13);
 			this->lbl_vorname->TabIndex = 4;
@@ -205,7 +217,7 @@ namespace Semesterarbeit_IFO3 {
 			// 
 			// txt_vorname
 			// 
-			this->txt_vorname->Location = System::Drawing::Point(112, 145);
+			this->txt_vorname->Location = System::Drawing::Point(112, 171);
 			this->txt_vorname->Name = L"txt_vorname";
 			this->txt_vorname->Size = System::Drawing::Size(100, 20);
 			this->txt_vorname->TabIndex = 5;
@@ -213,7 +225,7 @@ namespace Semesterarbeit_IFO3 {
 			// lbl_name
 			// 
 			this->lbl_name->AutoSize = true;
-			this->lbl_name->Location = System::Drawing::Point(12, 175);
+			this->lbl_name->Location = System::Drawing::Point(12, 201);
 			this->lbl_name->Name = L"lbl_name";
 			this->lbl_name->Size = System::Drawing::Size(35, 13);
 			this->lbl_name->TabIndex = 6;
@@ -221,7 +233,7 @@ namespace Semesterarbeit_IFO3 {
 			// 
 			// txt_name
 			// 
-			this->txt_name->Location = System::Drawing::Point(112, 171);
+			this->txt_name->Location = System::Drawing::Point(112, 197);
 			this->txt_name->Name = L"txt_name";
 			this->txt_name->Size = System::Drawing::Size(100, 20);
 			this->txt_name->TabIndex = 7;
@@ -280,7 +292,7 @@ namespace Semesterarbeit_IFO3 {
 				L"1", L"2", L"3", L"4", L"5", L"6", L"7", L"8",
 					L"9", L"10", L"11", L"12"
 			});
-			this->cbx_monat->Location = System::Drawing::Point(112, 353);
+			this->cbx_monat->Location = System::Drawing::Point(112, 379);
 			this->cbx_monat->Name = L"cbx_monat";
 			this->cbx_monat->Size = System::Drawing::Size(51, 21);
 			this->cbx_monat->TabIndex = 12;
@@ -297,7 +309,7 @@ namespace Semesterarbeit_IFO3 {
 					L"1998", L"1999", L"2000", L"2001", L"2002", L"2003", L"2004", L"2005", L"2006", L"2007", L"2008", L"2009", L"2010", L"2011",
 					L"2012", L"2013", L"2014", L"2015", L"2016", L"2017", L"2018", L"2019"
 			});
-			this->cbx_jahr->Location = System::Drawing::Point(210, 353);
+			this->cbx_jahr->Location = System::Drawing::Point(210, 379);
 			this->cbx_jahr->Name = L"cbx_jahr";
 			this->cbx_jahr->Size = System::Drawing::Size(51, 21);
 			this->cbx_jahr->TabIndex = 13;
@@ -305,7 +317,7 @@ namespace Semesterarbeit_IFO3 {
 			// lbl_eintrittsdatum
 			// 
 			this->lbl_eintrittsdatum->AutoSize = true;
-			this->lbl_eintrittsdatum->Location = System::Drawing::Point(12, 357);
+			this->lbl_eintrittsdatum->Location = System::Drawing::Point(12, 383);
 			this->lbl_eintrittsdatum->Name = L"lbl_eintrittsdatum";
 			this->lbl_eintrittsdatum->Size = System::Drawing::Size(70, 13);
 			this->lbl_eintrittsdatum->TabIndex = 14;
@@ -314,7 +326,7 @@ namespace Semesterarbeit_IFO3 {
 			// lbl_monat
 			// 
 			this->lbl_monat->AutoSize = true;
-			this->lbl_monat->Location = System::Drawing::Point(168, 357);
+			this->lbl_monat->Location = System::Drawing::Point(168, 383);
 			this->lbl_monat->Name = L"lbl_monat";
 			this->lbl_monat->Size = System::Drawing::Size(37, 13);
 			this->lbl_monat->TabIndex = 15;
@@ -323,7 +335,7 @@ namespace Semesterarbeit_IFO3 {
 			// lbl_jahr
 			// 
 			this->lbl_jahr->AutoSize = true;
-			this->lbl_jahr->Location = System::Drawing::Point(266, 357);
+			this->lbl_jahr->Location = System::Drawing::Point(266, 383);
 			this->lbl_jahr->Name = L"lbl_jahr";
 			this->lbl_jahr->Size = System::Drawing::Size(27, 13);
 			this->lbl_jahr->TabIndex = 16;
@@ -332,7 +344,7 @@ namespace Semesterarbeit_IFO3 {
 			// lbl_strasse
 			// 
 			this->lbl_strasse->AutoSize = true;
-			this->lbl_strasse->Location = System::Drawing::Point(12, 201);
+			this->lbl_strasse->Location = System::Drawing::Point(12, 227);
 			this->lbl_strasse->Name = L"lbl_strasse";
 			this->lbl_strasse->Size = System::Drawing::Size(38, 13);
 			this->lbl_strasse->TabIndex = 17;
@@ -340,7 +352,7 @@ namespace Semesterarbeit_IFO3 {
 			// 
 			// txt_strasse
 			// 
-			this->txt_strasse->Location = System::Drawing::Point(112, 197);
+			this->txt_strasse->Location = System::Drawing::Point(112, 223);
 			this->txt_strasse->Name = L"txt_strasse";
 			this->txt_strasse->Size = System::Drawing::Size(100, 20);
 			this->txt_strasse->TabIndex = 18;
@@ -348,7 +360,7 @@ namespace Semesterarbeit_IFO3 {
 			// lbl_hausnummer
 			// 
 			this->lbl_hausnummer->AutoSize = true;
-			this->lbl_hausnummer->Location = System::Drawing::Point(12, 227);
+			this->lbl_hausnummer->Location = System::Drawing::Point(12, 253);
 			this->lbl_hausnummer->Name = L"lbl_hausnummer";
 			this->lbl_hausnummer->Size = System::Drawing::Size(69, 13);
 			this->lbl_hausnummer->TabIndex = 19;
@@ -356,7 +368,7 @@ namespace Semesterarbeit_IFO3 {
 			// 
 			// txt_hausnummer
 			// 
-			this->txt_hausnummer->Location = System::Drawing::Point(112, 223);
+			this->txt_hausnummer->Location = System::Drawing::Point(112, 249);
 			this->txt_hausnummer->Name = L"txt_hausnummer";
 			this->txt_hausnummer->Size = System::Drawing::Size(100, 20);
 			this->txt_hausnummer->TabIndex = 20;
@@ -364,7 +376,7 @@ namespace Semesterarbeit_IFO3 {
 			// lbl_postleitzahl
 			// 
 			this->lbl_postleitzahl->AutoSize = true;
-			this->lbl_postleitzahl->Location = System::Drawing::Point(12, 253);
+			this->lbl_postleitzahl->Location = System::Drawing::Point(12, 279);
 			this->lbl_postleitzahl->Name = L"lbl_postleitzahl";
 			this->lbl_postleitzahl->Size = System::Drawing::Size(60, 13);
 			this->lbl_postleitzahl->TabIndex = 21;
@@ -372,7 +384,7 @@ namespace Semesterarbeit_IFO3 {
 			// 
 			// txt_postleitzahl
 			// 
-			this->txt_postleitzahl->Location = System::Drawing::Point(112, 249);
+			this->txt_postleitzahl->Location = System::Drawing::Point(112, 275);
 			this->txt_postleitzahl->Name = L"txt_postleitzahl";
 			this->txt_postleitzahl->Size = System::Drawing::Size(100, 20);
 			this->txt_postleitzahl->TabIndex = 22;
@@ -380,7 +392,7 @@ namespace Semesterarbeit_IFO3 {
 			// lbl_ort
 			// 
 			this->lbl_ort->AutoSize = true;
-			this->lbl_ort->Location = System::Drawing::Point(12, 279);
+			this->lbl_ort->Location = System::Drawing::Point(12, 305);
 			this->lbl_ort->Name = L"lbl_ort";
 			this->lbl_ort->Size = System::Drawing::Size(48, 13);
 			this->lbl_ort->TabIndex = 23;
@@ -388,7 +400,7 @@ namespace Semesterarbeit_IFO3 {
 			// 
 			// txt_wohnort
 			// 
-			this->txt_wohnort->Location = System::Drawing::Point(112, 275);
+			this->txt_wohnort->Location = System::Drawing::Point(112, 301);
 			this->txt_wohnort->Name = L"txt_wohnort";
 			this->txt_wohnort->Size = System::Drawing::Size(100, 20);
 			this->txt_wohnort->TabIndex = 24;
@@ -396,7 +408,7 @@ namespace Semesterarbeit_IFO3 {
 			// lbl_festnetznummer
 			// 
 			this->lbl_festnetznummer->AutoSize = true;
-			this->lbl_festnetznummer->Location = System::Drawing::Point(12, 305);
+			this->lbl_festnetznummer->Location = System::Drawing::Point(12, 331);
 			this->lbl_festnetznummer->Name = L"lbl_festnetznummer";
 			this->lbl_festnetznummer->Size = System::Drawing::Size(84, 13);
 			this->lbl_festnetznummer->TabIndex = 25;
@@ -405,7 +417,7 @@ namespace Semesterarbeit_IFO3 {
 			// lbl_mobilnummer
 			// 
 			this->lbl_mobilnummer->AutoSize = true;
-			this->lbl_mobilnummer->Location = System::Drawing::Point(12, 331);
+			this->lbl_mobilnummer->Location = System::Drawing::Point(12, 357);
 			this->lbl_mobilnummer->Name = L"lbl_mobilnummer";
 			this->lbl_mobilnummer->Size = System::Drawing::Size(69, 13);
 			this->lbl_mobilnummer->TabIndex = 26;
@@ -413,14 +425,14 @@ namespace Semesterarbeit_IFO3 {
 			// 
 			// txt_festnetznummer
 			// 
-			this->txt_festnetznummer->Location = System::Drawing::Point(112, 301);
+			this->txt_festnetznummer->Location = System::Drawing::Point(112, 327);
 			this->txt_festnetznummer->Name = L"txt_festnetznummer";
 			this->txt_festnetznummer->Size = System::Drawing::Size(100, 20);
 			this->txt_festnetznummer->TabIndex = 27;
 			// 
 			// txt_mobilnummer
 			// 
-			this->txt_mobilnummer->Location = System::Drawing::Point(112, 327);
+			this->txt_mobilnummer->Location = System::Drawing::Point(112, 353);
 			this->txt_mobilnummer->Name = L"txt_mobilnummer";
 			this->txt_mobilnummer->Size = System::Drawing::Size(100, 20);
 			this->txt_mobilnummer->TabIndex = 28;
@@ -463,7 +475,7 @@ namespace Semesterarbeit_IFO3 {
 			// 
 			// btn_ausgabe
 			// 
-			this->btn_ausgabe->Location = System::Drawing::Point(246, 400);
+			this->btn_ausgabe->Location = System::Drawing::Point(246, 425);
 			this->btn_ausgabe->Name = L"btn_ausgabe";
 			this->btn_ausgabe->Size = System::Drawing::Size(101, 25);
 			this->btn_ausgabe->TabIndex = 33;
@@ -477,9 +489,9 @@ namespace Semesterarbeit_IFO3 {
 			this->lbl_error_mitarbeiternr->ForeColor = System::Drawing::Color::Red;
 			this->lbl_error_mitarbeiternr->Location = System::Drawing::Point(246, 97);
 			this->lbl_error_mitarbeiternr->Name = L"lbl_error_mitarbeiternr";
-			this->lbl_error_mitarbeiternr->Size = System::Drawing::Size(147, 17);
+			this->lbl_error_mitarbeiternr->Size = System::Drawing::Size(136, 17);
 			this->lbl_error_mitarbeiternr->TabIndex = 35;
-			this->lbl_error_mitarbeiternr->Text = L"Mitarbeiternrnummer belegt!";
+			this->lbl_error_mitarbeiternr->Text = L"Mitarbeiternummer belegt!";
 			this->lbl_error_mitarbeiternr->UseCompatibleTextRendering = true;
 			this->lbl_error_mitarbeiternr->Visible = false;
 			// 
@@ -494,11 +506,68 @@ namespace Semesterarbeit_IFO3 {
 			this->lbl_error_abteilungsid->Text = L"Abteilungs ID belegt!";
 			this->lbl_error_abteilungsid->Visible = false;
 			// 
+			// lbl_error_abteilung
+			// 
+			this->lbl_error_abteilung->AutoSize = true;
+			this->lbl_error_abteilung->ForeColor = System::Drawing::Color::Red;
+			this->lbl_error_abteilung->Location = System::Drawing::Point(246, 121);
+			this->lbl_error_abteilung->Name = L"lbl_error_abteilung";
+			this->lbl_error_abteilung->Size = System::Drawing::Size(124, 17);
+			this->lbl_error_abteilung->TabIndex = 37;
+			this->lbl_error_abteilung->Text = L"Abteilung existiert nicht!";
+			this->lbl_error_abteilung->UseCompatibleTextRendering = true;
+			this->lbl_error_abteilung->Visible = false;
+			// 
+			// lbl_error_abteilungsleiter
+			// 
+			this->lbl_error_abteilungsleiter->AutoSize = true;
+			this->lbl_error_abteilungsleiter->ForeColor = System::Drawing::Color::Red;
+			this->lbl_error_abteilungsleiter->Location = System::Drawing::Point(246, 121);
+			this->lbl_error_abteilungsleiter->Name = L"lbl_error_abteilungsleiter";
+			this->lbl_error_abteilungsleiter->Size = System::Drawing::Size(119, 17);
+			this->lbl_error_abteilungsleiter->TabIndex = 38;
+			this->lbl_error_abteilungsleiter->Text = L"Abteilungsleiter belegt!";
+			this->lbl_error_abteilungsleiter->UseCompatibleTextRendering = true;
+			this->lbl_error_abteilungsleiter->Visible = false;
+			// 
+			// lbl_error_abteilungsname
+			// 
+			this->lbl_error_abteilungsname->AutoSize = true;
+			this->lbl_error_abteilungsname->ForeColor = System::Drawing::Color::Red;
+			this->lbl_error_abteilungsname->Location = System::Drawing::Point(246, 121);
+			this->lbl_error_abteilungsname->Name = L"lbl_error_abteilungsname";
+			this->lbl_error_abteilungsname->Size = System::Drawing::Size(168, 17);
+			this->lbl_error_abteilungsname->TabIndex = 39;
+			this->lbl_error_abteilungsname->Text = L"Abteilungsname existiert bereits!";
+			this->lbl_error_abteilungsname->UseCompatibleTextRendering = true;
+			this->lbl_error_abteilungsname->Visible = false;
+			// 
+			// lbl_standort
+			// 
+			this->lbl_standort->AutoSize = true;
+			this->lbl_standort->Location = System::Drawing::Point(12, 149);
+			this->lbl_standort->Name = L"lbl_standort";
+			this->lbl_standort->Size = System::Drawing::Size(80, 13);
+			this->lbl_standort->TabIndex = 40;
+			this->lbl_standort->Text = L"Standort/Etage";
+			// 
+			// txt_standort
+			// 
+			this->txt_standort->Location = System::Drawing::Point(112, 145);
+			this->txt_standort->Name = L"txt_standort";
+			this->txt_standort->Size = System::Drawing::Size(100, 20);
+			this->txt_standort->TabIndex = 41;
+			// 
 			// Dateneingabe
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(595, 454);
+			this->ClientSize = System::Drawing::Size(595, 471);
+			this->Controls->Add(this->txt_standort);
+			this->Controls->Add(this->lbl_standort);
+			this->Controls->Add(this->lbl_error_abteilungsname);
+			this->Controls->Add(this->lbl_error_abteilungsleiter);
+			this->Controls->Add(this->lbl_error_abteilung);
 			this->Controls->Add(this->lbl_error_abteilungsid);
 			this->Controls->Add(this->lbl_error_mitarbeiternr);
 			this->Controls->Add(this->btn_ausgabe);
@@ -565,64 +634,192 @@ namespace Semesterarbeit_IFO3 {
 		char speichern_ab[20];
 		char speichern_vg[20];
 		char speichern_nr[20];
-
-		String ^nr = txt_mitarbeiternummer->Text;
-		char text[20];
-		sprintf(text, "%s", nr);
-		int speichern_zähler = atoi(text);
-
-		String ^na;
-		na = txt_name->Text;
-		sprintf(speichern_na, "%s", na);
-
-		String ^vna;
-		vna = txt_vorname->Text;
-		sprintf(speichern_vna, "%s", vna);
-
-		sprintf(speichern_mail, "%s.%s@daddeldu.com", vna, na);
-
-		String ^str;
-		str = txt_strasse->Text;
-		sprintf(speichern_str, "%s", str);
-
-		String ^hnr;
-		hnr = txt_hausnummer->Text;
-		sprintf(speichern_hnr, "%s", hnr);
-
-		String ^post;
-		post = txt_postleitzahl->Text;
-		sprintf(speichern_post, "%s", post);
-
-		String ^ort;
-		ort = txt_wohnort->Text;
-		sprintf(speichern_ort, "%s", ort);
-
-		String ^mnr;
-		mnr = txt_mobilnummer->Text;
-		sprintf(speichern_mnr, "%s", mnr);
-
-		String ^fnr;
-		fnr = txt_festnetznummer->Text;
-		sprintf(speichern_fnr, "%s", fnr);
-
-		String ^em;
-		em = cbx_monat->Text;
-		sprintf(speichern_em, "%s", em);
-
-		String ^ej;
-		ej = cbx_jahr->Text;
-		sprintf(speichern_ej, "%s", ej);
-
-		String ^ab;
-		ab = txt_abteilungsname->Text;
-		sprintf(speichern_ab, "%s", ab);
-
-		sprintf(speichern_vg, "test");
-
-		datensatz_speichern_mitarbeiter(speichern_na, speichern_vna, speichern_em, speichern_ej, speichern_str, speichern_hnr, speichern_post, speichern_ort, speichern_mnr, speichern_fnr, speichern_mail, speichern_ab, speichern_vg, speichern_nr, speichern_zähler);
-
-		speichern_eingabe();
+		char speichern_id[20];
+		char speichern_abl[20];
+		char speichern_st[20];
 		
+		int speichern_zähler;
+
+		char laden_na[20];
+		char laden_vna[20];
+		char laden_str[20];
+		char laden_hnr[20];
+		char laden_post[20];
+		char laden_ort[20];
+		char laden_mnr[20];
+		char laden_fnr[20];
+		char laden_mail[20];
+		char laden_ab[20];
+		char laden_atfa[20];
+		char laden_atid[20];
+		char laden_atabl[20];
+		char laden_st[20];
+
+		int done = 1;
+		int zähler = 0;
+		int laden_zähler = 0;
+
+		if (rdo_mitarbeiter->Checked==true)//Mitarbeiter speichern
+		{
+			String ^nr = txt_mitarbeiternummer->Text;
+			char text[20];
+			sprintf(text, "%s", nr);
+			speichern_zähler = atoi(text);
+
+			String ^na;
+			na = txt_name->Text;
+			sprintf(speichern_na, "%s", na);
+
+			String ^vna;
+			vna = txt_vorname->Text;
+			sprintf(speichern_vna, "%s", vna);
+
+			sprintf(speichern_mail, "%s.%s@daddeldu.com", vna, na);
+
+			String ^str;
+			str = txt_strasse->Text;
+			sprintf(speichern_str, "%s", str);
+
+			String ^hnr;
+			hnr = txt_hausnummer->Text;
+			sprintf(speichern_hnr, "%s", hnr);
+
+			String ^post;
+			post = txt_postleitzahl->Text;
+			sprintf(speichern_post, "%s", post);
+
+			String ^ort;
+			ort = txt_wohnort->Text;
+			sprintf(speichern_ort, "%s", ort);
+
+			String ^mnr;
+			mnr = txt_mobilnummer->Text;
+			sprintf(speichern_mnr, "%s", mnr);
+
+			String ^fnr;
+			fnr = txt_festnetznummer->Text;
+			sprintf(speichern_fnr, "%s", fnr);
+
+			String ^em;
+			em = cbx_monat->Text;
+			sprintf(speichern_em, "%s", em);
+
+			String ^ej;
+			ej = cbx_jahr->Text;
+			sprintf(speichern_ej, "%s", ej);
+
+			String ^ab;
+			ab = txt_abteilungsname->Text;
+			sprintf(speichern_ab, "%s", ab);
+
+			sprintf(speichern_vg, "test");
+
+			datensatz_speichern_mitarbeiter(speichern_na, speichern_vna, speichern_em, speichern_ej, speichern_str, speichern_hnr, speichern_post, speichern_ort, speichern_mnr, speichern_fnr, speichern_mail, speichern_ab, speichern_vg, speichern_nr, speichern_zähler);
+
+			speichern_eingabe();
+		}
+		
+		if (rdo_abteilungsleiter->Checked == true)//Abteilungsleiter speichern
+		{
+			String ^na;
+			na = txt_name->Text;
+			sprintf(speichern_na, "%s", na);
+
+			String ^vna;
+			vna = txt_vorname->Text;
+			sprintf(speichern_vna, "%s", vna);
+
+			sprintf(speichern_mail, "%s.%s@daddeldu.com", vna, na);
+
+			String ^str;
+			str = txt_strasse->Text;
+			sprintf(speichern_str, "%s", str);
+
+			String ^hnr;
+			hnr = txt_hausnummer->Text;
+			sprintf(speichern_hnr, "%s", hnr);
+
+			String ^post;
+			post = txt_postleitzahl->Text;
+			sprintf(speichern_post, "%s", post);
+
+			String ^ort;
+			ort = txt_wohnort->Text;
+			sprintf(speichern_ort, "%s", ort);
+
+			String ^mnr;
+			mnr = txt_mobilnummer->Text;
+			sprintf(speichern_mnr, "%s", mnr);
+
+			String ^fnr;
+			fnr = txt_festnetznummer->Text;
+			sprintf(speichern_fnr, "%s", fnr);
+
+			String ^ab;
+			ab = txt_abteilungsname->Text;
+			sprintf(speichern_ab, "%s", ab);
+
+			do//Abteilungsleitername wird Abteilung zugeordnet
+			{
+				zähler++;
+				laden_zähler = zähler;
+				datensatz_laden_abteilungsleiter(laden_na, laden_vna, laden_str, laden_hnr, laden_post, laden_ort, laden_mnr, laden_fnr, laden_mail, laden_ab, laden_zähler, laden_atid, laden_atfa, laden_atabl);
+				if (strcmp(speichern_ab, laden_atfa) == 0)
+				{
+					strcpy(speichern_abl, speichern_na);
+					done = 0;
+				}
+				if (zähler == 100)
+				{
+					done = 0;
+				}
+			} while (done == 1);
+
+			datensatz_speichern_abteilungsleiter(speichern_na, speichern_vna, speichern_str, speichern_hnr, speichern_post, speichern_ort, speichern_mnr, speichern_fnr, speichern_mail, speichern_ab, speichern_abl, speichern_zähler);
+
+			speichern_eingabe();
+
+		}
+
+		if (rdo_abteilung->Checked == true)//Abteilung speichern
+		{
+
+			String ^str;
+			str = txt_strasse->Text;
+			sprintf(speichern_str, "%s", str);
+
+			String ^hnr;
+			hnr = txt_hausnummer->Text;
+			sprintf(speichern_hnr, "%s", hnr);
+
+			String ^post;
+			post = txt_postleitzahl->Text;
+			sprintf(speichern_post, "%s", post);
+
+			String ^ort;
+			ort = txt_wohnort->Text;
+			sprintf(speichern_ort, "%s", ort);
+
+			String ^ab;
+			ab = txt_abteilungsname->Text;
+			sprintf(speichern_ab, "%s", ab);
+
+			String ^id = txt_abteilungsid->Text;
+			char text[20];
+			sprintf(text, "%s", id);
+			speichern_zähler = atoi(text);
+
+			String ^st;
+			st = txt_standort->Text;
+			sprintf(speichern_st, "%s", st);
+
+			sprintf(speichern_abl, "Nicht besetzt");
+
+			datensatz_speichern_abteilung(speichern_str, speichern_hnr, speichern_post, speichern_ort, speichern_ab, speichern_id, speichern_abl, speichern_st, speichern_zähler);
+
+			speichern_eingabe();
+
+		}
 	}
 	//Bei drücken von Speichern werden die Variablen in der textdatei gespeichert
 	private: System::Void button2_Click(System::Object^  sender, System::EventArgs^  e) {
@@ -635,6 +832,8 @@ namespace Semesterarbeit_IFO3 {
 
 		lbl_abteilungsid->Visible = false;
 		txt_abteilungsid->Visible = false;
+		lbl_standort->Visible = false;
+		txt_standort->Visible = false;
 
 		lbl_mitarbeiternummer->Visible = true;
 		txt_mitarbeiternummer->Visible = true;
@@ -661,6 +860,8 @@ namespace Semesterarbeit_IFO3 {
 		lbl_jahr->Visible = false;
 		cbx_monat->Visible = false;
 		cbx_jahr->Visible = false;
+		lbl_standort->Visible = false;
+		txt_standort->Visible = false;
 
 		lbl_vorname->Visible = true;
 		txt_vorname->Visible = true;
@@ -685,6 +886,8 @@ namespace Semesterarbeit_IFO3 {
 
 		lbl_abteilungsid->Visible = true;
 		txt_abteilungsid->Visible = true;
+		lbl_standort->Visible = true;
+		txt_standort->Visible = true;
 		
 	}
 	//Sichtbarkeit der Felder bei Abteilungen
@@ -704,15 +907,17 @@ namespace Semesterarbeit_IFO3 {
 		char laden_ab[20];
 		char laden_vg[20];
 		char laden_nr[20];
-		int zähler;
+		char laden_id[20];
+		char laden_abl[20];
+		int laden_zähler;
 
 		String ^mitarbeiternummer;
 		mitarbeiternummer = txt_mitarbeiternummer->Text;
 		char text[20];
 		sprintf(text, "%s", mitarbeiternummer);
-		zähler = atoi(text);
+		laden_zähler = atoi(text);
 
-		datensatz_laden_mitarbeiter(laden_na, laden_vna, laden_em, laden_ej, laden_str, laden_hnr, laden_post, laden_ort, laden_mnr, laden_fnr, laden_mail, laden_ab, laden_vg, laden_nr, zähler);
+		datensatz_laden_mitarbeiter(laden_na, laden_vna, laden_em, laden_ej, laden_str, laden_hnr, laden_post, laden_ort, laden_mnr, laden_fnr, laden_mail, laden_ab, laden_vg, laden_nr, laden_zähler);
 
 		String ^na = gcnew String(laden_na);
 		String ^nr = gcnew String(laden_nr);
@@ -778,13 +983,14 @@ namespace Semesterarbeit_IFO3 {
 		char laden_mail[20];
 		char laden_abl[20];
 		char laden_nr[20];
+		char laden_st[20];
 
 		String ^abteilungsid = txt_abteilungsid->Text;
 		char text[20];
 		sprintf(text, "%s", abteilungsid);
 		int zähler = atoi(text);
 
-		datensatz_laden_abteilung(laden_na, laden_str, laden_hnr, laden_post, laden_ort, laden_abl, laden_nr, zähler);
+		datensatz_laden_abteilung(laden_na, laden_str, laden_hnr, laden_post, laden_ort, laden_abl, laden_nr, laden_st, zähler);
 
 		if (*laden_na != '\0')
 		{
@@ -802,14 +1008,128 @@ namespace Semesterarbeit_IFO3 {
 	//Prüfung ob Abteilungs ID schon vorhanden ist
 	private: System::Void txt_abteilungsname_TextChanged(System::Object^  sender, System::EventArgs^  e) {
 
+		char laden_na[20];
+		char laden_vna[20];
+		char laden_str[20];
+		char laden_hnr[20];
+		char laden_post[20];
+		char laden_ort[20];
+		char laden_mnr[20];
+		char laden_fnr[20];
+		char laden_mail[20];
+		char laden_ab[20];
+		char laden_atfa[20];
+		char laden_atid[20];
+		char laden_atabl[20];
+		int done = 1;
+		int zähler = 0;
+		int laden_zähler = 0;
 
+		lbl_error_abteilungsname->Visible = false;
+		lbl_error_abteilung->Visible = false;
+		lbl_error_abteilungsleiter->Visible = false;
 
-		if (rdo_abteilung->Checked==true)
+		char text[20];
+		String ^abteilungsname = txt_abteilungsname->Text;
+		sprintf(text, "%s", abteilungsname);
+
+		if (rdo_mitarbeiter->Checked==true)//Mitarbeiter
 		{
-
+			lbl_error_abteilungsleiter->Visible = false;
+			lbl_error_abteilungsname->Visible = false;
+			do//Abfrage ob Abteilungs existiert
+			{
+				zähler++;
+				laden_zähler = zähler;
+				datensatz_laden_abteilungsleiter(laden_na, laden_vna, laden_str, laden_hnr, laden_post, laden_ort, laden_mnr, laden_fnr, laden_mail, laden_ab, laden_zähler, laden_atid, laden_atfa, laden_atabl);
+				if (strcmp(text, laden_atfa) == 0)
+				{
+					lbl_error_abteilung->Visible = false;
+					btn_speichern->Visible = true;
+					done = 0;
+				}
+				else
+				{
+					lbl_error_abteilung->Visible = true;
+					btn_speichern->Visible = false;
+				}
+				if (zähler == 100)
+				{
+					done = 0;
+				}
+			} while (done == 1);
 		}
 
+		if (rdo_abteilungsleiter->Checked==true)//Abteilungsleiter
+		{
+			lbl_error_abteilungsname->Visible = false;
+			do//Abfrage ob Abteilungs existiert
+			{
+				zähler++;
+				laden_zähler = zähler;
+				datensatz_laden_abteilungsleiter(laden_na, laden_vna, laden_str, laden_hnr, laden_post, laden_ort, laden_mnr, laden_fnr, laden_mail, laden_ab, laden_zähler, laden_atid, laden_atfa, laden_atabl);
+				if (strcmp(text, laden_atfa) == 0)
+				{
+					lbl_error_abteilung->Visible = false;
+					btn_speichern->Visible = true;
+					done = 0;
+				}
+				else
+				{
+					lbl_error_abteilung->Visible = true;
+					btn_speichern->Visible = false;
+				}
+				if (zähler == 100)
+				{
+					done = 0;
+				}
+			} while (done==1);
+			
+			if (done==0)//Abfrage wenn eine Abteilung existiert ob eine Abteilungsleiter vorhanden ist
+			{
+					laden_zähler = 9;
+					datensatz_laden_abteilungsleiter(laden_na, laden_vna, laden_str, laden_hnr, laden_post, laden_ort, laden_mnr, laden_fnr, laden_mail, laden_ab, laden_zähler, laden_atid, laden_atfa, laden_atabl);
+					if (strcmp(laden_atabl,"Nicht besetzt")==0)
+					{
+						lbl_error_abteilungsleiter->Visible = false;
+						btn_speichern->Visible = true;
+					}
+					else
+					{
+						lbl_error_abteilungsleiter->Visible = true;
+						btn_speichern->Visible = false;
+					}
+
+			}
+		}
+		if (rdo_abteilung->Checked==true)//Abteilung
+		{
+			lbl_error_abteilungsleiter->Visible = false;
+			lbl_error_abteilung->Visible = false;
+			do//Abfrage ob ein Abteilungsname schon vorhanden ist
+			{
+				zähler++;
+				laden_zähler = zähler;
+				datensatz_laden_abteilungsleiter(laden_na, laden_vna, laden_str, laden_hnr, laden_post, laden_ort, laden_mnr, laden_fnr, laden_mail, laden_ab, laden_zähler, laden_atid, laden_atfa, laden_atabl);
+				if (strcmp(text, laden_atfa) == 0)
+				{
+					lbl_error_abteilungsname->Visible = true;
+					btn_speichern->Visible = false;
+					done = 0;
+				}
+				else
+				{
+					lbl_error_abteilungsname->Visible = false;
+					btn_speichern->Visible = true;
+				}
+				if (zähler == 100)
+				{
+					done = 0;
+				}
+			} while (done == 1);
+		}
 	}
+	//Prüfung ob Abteilung vorhanden ist bzw Abteilungsleiter besetzt ist
 };
 }
 

@@ -18,11 +18,6 @@ void read_eingabe() {
 	readma(MA);
 }
 
-void ausgabe_test(char *test) {
-	strcpy(test, MA[1].NA);
-}
-
-
 void datensatz_laden_mitarbeiter(char *laden_na, char *laden_vna, char *laden_em, char *laden_ej, char *laden_str, char *laden_hnr, char *laden_post, char *laden_ort, char *laden_mnr, char *laden_fnr,char *laden_mail, char *laden_ab, char *laden_vg, char *laden_nr, int laden_zähler) {
 
 	int zähler = laden_zähler;
@@ -67,7 +62,7 @@ void datensatz_speichern_mitarbeiter(char *speichern_na, char *speichern_vna, ch
 	MA[zähler].NR = zähler;
 }
 
-void datensatz_laden_abteilung(char *laden_na, char *laden_str, char *laden_hnr, char *laden_post, char *laden_ort, char *laden_abl, char *laden_nr, int laden_zähler) {
+void datensatz_laden_abteilung(char *laden_na, char *laden_str, char *laden_hnr, char *laden_post, char *laden_ort, char *laden_abl, char *laden_nr, char *laden_st, int laden_zähler) {
 
 	int zähler = laden_zähler;
 
@@ -84,27 +79,58 @@ void datensatz_laden_abteilung(char *laden_na, char *laden_str, char *laden_hnr,
 	strcpy(laden_nr, out_string);
 }
 
-void datensatz_speichern_abteilung() {
+void datensatz_speichern_abteilung(char *speichern_str, char *speichern_hnr, char *speichern_post, char *speichern_ort, char *speichern_ab, char *speichern_id, char *speichern_abl, char *speichern_st, int speichern_zähler) {
+
+	int zähler = speichern_zähler;
+
+	strcpy(AT[zähler].STR, speichern_str);
+	strcpy(AT[zähler].HNR, speichern_hnr);
+	strcpy(AT[zähler].POST, speichern_post);
+	strcpy(AT[zähler].ORT, speichern_ort);
+	strcpy(AT[zähler].FA, speichern_ab);
+	strcpy(AT[zähler].ABL, speichern_abl);
+	strcpy(AT[zähler].ST, speichern_st);
+	AT[zähler].ID = zähler;
 
 }
 
-void datensatz_laden_abteilungsleiter(char *laden_na, char *laden_vna, char *laden_str, char *laden_hnr, char *laden_post, char *laden_ort, char *laden_mnr, char *laden_fnr, char *laden_mail, char *laden_ab, int laden_zähler) {
+void datensatz_laden_abteilungsleiter(char *laden_na, char *laden_vna, char *laden_str, char *laden_hnr, char *laden_post, char *laden_ort, char *laden_mnr, char *laden_fnr, char *laden_mail, char *laden_ab, int laden_zähler, char *laden_atid, char *laden_atfa, char *laden_atabl) {
 
 	int zähler = laden_zähler;
 
-	strcpy(laden_na, MA[zähler].NA);
-	strcpy(laden_vna, MA[zähler].VNA);
-	strcpy(laden_str, MA[zähler].STR);
-	strcpy(laden_hnr, MA[zähler].HNR);
-	strcpy(laden_post, MA[zähler].POST);
-	strcpy(laden_ort, MA[zähler].ORT);
-	strcpy(laden_mnr, MA[zähler].MNR);
-	strcpy(laden_fnr, MA[zähler].FNR);
-	strcpy(laden_mail, MA[zähler].mail);
-	strcpy(laden_ab, MA[zähler].AB);
+	strcpy(laden_na, AL[zähler].NA);
+	strcpy(laden_vna, AL[zähler].VNA);
+	strcpy(laden_str, AL[zähler].STR);
+	strcpy(laden_hnr, AL[zähler].HNR);
+	strcpy(laden_post, AL[zähler].POST);
+	strcpy(laden_ort, AL[zähler].ORT);
+	strcpy(laden_mnr, AL[zähler].MNR);
+	strcpy(laden_fnr, AL[zähler].FNR);
+	strcpy(laden_mail, AL[zähler].mail);
+	strcpy(laden_ab, AL[zähler].AB);
+	strcpy(laden_atfa, AT[zähler].FA);
+	strcpy(laden_atabl, AT[zähler].ABL);
 
+	const char base_string[] = "";
+	char out_string[20];
+	sprintf(out_string, "%s%d", base_string, AT[zähler].ID);
+	strcpy(laden_atid, out_string);
 }
 
-void datensatz_speichern_abteilungsleiter() {
+void datensatz_speichern_abteilungsleiter(char *speichern_na, char *speichern_vna, char *speichern_str, char *speichern_hnr, char *speichern_post, char *speichern_ort, char *speichern_mnr, char *speichern_fnr, char *speichern_mail, char *speichern_ab, char *speichern_abl, int speichern_zähler) {
 
+	int zähler = speichern_zähler;
+
+	strcpy(AL[zähler].NA, speichern_na);
+	strcpy(AL[zähler].VNA, speichern_vna);
+	strcpy(AL[zähler].STR, speichern_str);
+	strcpy(AL[zähler].HNR, speichern_hnr);
+	strcpy(AL[zähler].POST, speichern_post);
+	strcpy(AL[zähler].ORT, speichern_ort);
+	strcpy(AL[zähler].MNR, speichern_mnr);
+	strcpy(AL[zähler].FNR, speichern_fnr);
+	strcpy(AL[zähler].mail, speichern_mail);
+	strcpy(AL[zähler].AB, speichern_ab);
+	strcpy(AL[zähler].AB, speichern_abl);
+	
 }
