@@ -170,7 +170,7 @@ namespace Semesterarbeit_IFO3 {
 			// 
 			// btn_speichern
 			// 
-			this->btn_speichern->Location = System::Drawing::Point(112, 425);
+			this->btn_speichern->Location = System::Drawing::Point(100, 425);
 			this->btn_speichern->Name = L"btn_speichern";
 			this->btn_speichern->Size = System::Drawing::Size(101, 25);
 			this->btn_speichern->TabIndex = 0;
@@ -180,7 +180,7 @@ namespace Semesterarbeit_IFO3 {
 			// 
 			// btn_abbrechen
 			// 
-			this->btn_abbrechen->Location = System::Drawing::Point(380, 425);
+			this->btn_abbrechen->Location = System::Drawing::Point(395, 425);
 			this->btn_abbrechen->Name = L"btn_abbrechen";
 			this->btn_abbrechen->Size = System::Drawing::Size(101, 25);
 			this->btn_abbrechen->TabIndex = 1;
