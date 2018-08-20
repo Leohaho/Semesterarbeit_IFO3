@@ -90,7 +90,7 @@ namespace Semesterarbeit_IFO3 {
 	private: System::Windows::Forms::Label^  lbl_abteilungsname;
 	private: System::Windows::Forms::TextBox^  txt_abteilungsname;
 	private: System::Windows::Forms::TextBox^  txt_abteilungsid;
-	private: System::Windows::Forms::Button^  btn_ausgabe;
+
 
 	private: System::Windows::Forms::Label^  lbl_error_mitarbeiternr;
 	private: System::Windows::Forms::Label^  lbl_error_abteilungsid;
@@ -158,7 +158,6 @@ namespace Semesterarbeit_IFO3 {
 			this->lbl_abteilungsname = (gcnew System::Windows::Forms::Label());
 			this->txt_abteilungsname = (gcnew System::Windows::Forms::TextBox());
 			this->txt_abteilungsid = (gcnew System::Windows::Forms::TextBox());
-			this->btn_ausgabe = (gcnew System::Windows::Forms::Button());
 			this->lbl_error_mitarbeiternr = (gcnew System::Windows::Forms::Label());
 			this->lbl_error_abteilungsid = (gcnew System::Windows::Forms::Label());
 			this->helpProvider1 = (gcnew System::Windows::Forms::HelpProvider());
@@ -171,7 +170,7 @@ namespace Semesterarbeit_IFO3 {
 			// 
 			// btn_speichern
 			// 
-			this->btn_speichern->Location = System::Drawing::Point(34, 425);
+			this->btn_speichern->Location = System::Drawing::Point(112, 425);
 			this->btn_speichern->Name = L"btn_speichern";
 			this->btn_speichern->Size = System::Drawing::Size(101, 25);
 			this->btn_speichern->TabIndex = 0;
@@ -181,11 +180,11 @@ namespace Semesterarbeit_IFO3 {
 			// 
 			// btn_abbrechen
 			// 
-			this->btn_abbrechen->Location = System::Drawing::Point(456, 425);
+			this->btn_abbrechen->Location = System::Drawing::Point(380, 425);
 			this->btn_abbrechen->Name = L"btn_abbrechen";
 			this->btn_abbrechen->Size = System::Drawing::Size(101, 25);
 			this->btn_abbrechen->TabIndex = 1;
-			this->btn_abbrechen->Text = L"Abbrechen";
+			this->btn_abbrechen->Text = L"Zurück";
 			this->btn_abbrechen->UseVisualStyleBackColor = true;
 			this->btn_abbrechen->Click += gcnew System::EventHandler(this, &Dateneingabe::button2_Click);
 			// 
@@ -473,16 +472,6 @@ namespace Semesterarbeit_IFO3 {
 			this->txt_abteilungsid->Visible = false;
 			this->txt_abteilungsid->TextChanged += gcnew System::EventHandler(this, &Dateneingabe::txt_abteilungsid_TextChanged);
 			// 
-			// btn_ausgabe
-			// 
-			this->btn_ausgabe->Location = System::Drawing::Point(246, 425);
-			this->btn_ausgabe->Name = L"btn_ausgabe";
-			this->btn_ausgabe->Size = System::Drawing::Size(101, 25);
-			this->btn_ausgabe->TabIndex = 33;
-			this->btn_ausgabe->Text = L"Ausgabe";
-			this->btn_ausgabe->UseVisualStyleBackColor = true;
-			this->btn_ausgabe->Click += gcnew System::EventHandler(this, &Dateneingabe::button1_Click_1);
-			// 
 			// lbl_error_mitarbeiternr
 			// 
 			this->lbl_error_mitarbeiternr->AutoSize = true;
@@ -550,6 +539,7 @@ namespace Semesterarbeit_IFO3 {
 			this->lbl_standort->Size = System::Drawing::Size(80, 13);
 			this->lbl_standort->TabIndex = 40;
 			this->lbl_standort->Text = L"Standort/Etage";
+			this->lbl_standort->Visible = false;
 			// 
 			// txt_standort
 			// 
@@ -557,6 +547,7 @@ namespace Semesterarbeit_IFO3 {
 			this->txt_standort->Name = L"txt_standort";
 			this->txt_standort->Size = System::Drawing::Size(100, 20);
 			this->txt_standort->TabIndex = 41;
+			this->txt_standort->Visible = false;
 			// 
 			// Dateneingabe
 			// 
@@ -570,7 +561,6 @@ namespace Semesterarbeit_IFO3 {
 			this->Controls->Add(this->lbl_error_abteilung);
 			this->Controls->Add(this->lbl_error_abteilungsid);
 			this->Controls->Add(this->lbl_error_mitarbeiternr);
-			this->Controls->Add(this->btn_ausgabe);
 			this->Controls->Add(this->txt_abteilungsid);
 			this->Controls->Add(this->txt_abteilungsname);
 			this->Controls->Add(this->lbl_abteilungsname);
@@ -642,6 +632,8 @@ namespace Semesterarbeit_IFO3 {
 
 		char laden_na[20];
 		char laden_vna[20];
+		char laden_em[20];
+		char laden_ej[20];
 		char laden_str[20];
 		char laden_hnr[20];
 		char laden_post[20];
@@ -650,10 +642,13 @@ namespace Semesterarbeit_IFO3 {
 		char laden_fnr[20];
 		char laden_mail[20];
 		char laden_ab[20];
+		char laden_vg[20];
+		char laden_nr[20];
 		char laden_atfa[20];
 		char laden_atid[20];
 		char laden_atabl[20];
 		char laden_st[20];
+		char laden_abl[20];
 
 		int done = 1;
 		int zähler = 0;
@@ -717,6 +712,30 @@ namespace Semesterarbeit_IFO3 {
 			datensatz_speichern_mitarbeiter(speichern_na, speichern_vna, speichern_em, speichern_ej, speichern_str, speichern_hnr, speichern_post, speichern_ort, speichern_mnr, speichern_fnr, speichern_mail, speichern_ab, speichern_vg, speichern_nr, speichern_zähler);
 
 			speichern_eingabe();
+
+			//Ausgabe des eingegebenen Mitarbeiters
+
+			laden_zähler = speichern_zähler;
+
+			datensatz_laden_mitarbeiter(laden_na, laden_vna, laden_em, laden_ej, laden_str, laden_hnr, laden_post, laden_ort, laden_mnr, laden_fnr, laden_mail, laden_ab, laden_vg, laden_nr, laden_zähler);
+
+			String ^sna = gcnew String(laden_na);
+			String ^snr = gcnew String(laden_nr);
+			String ^smail = gcnew String(laden_mail);
+			String ^svna = gcnew String(laden_vna);
+			String ^sem = gcnew String(laden_em);
+			String ^sej = gcnew String(laden_ej);
+			String ^sstr = gcnew String(laden_str);
+			String ^shnr = gcnew String(laden_hnr);
+			String ^spost = gcnew String(laden_post);
+			String ^sort = gcnew String(laden_ort);
+			String ^smnr = gcnew String(laden_mnr);
+			String ^sfnr = gcnew String(laden_fnr);
+			String ^sab = gcnew String(laden_ab);
+			String ^svg = gcnew String(laden_vg);
+
+			MessageBox::Show("Mitarbeiter erfolgreich gespeichert!\n\nMitarbeiternummer: " + snr + "\nAbteilungsname: " + sab + "\nVorname: " + svna + "\nName: " + sna + "\nStraße: " + sstr + "\nHausnummer: " + shnr + "\nPostleitzahl: " + spost + "\nWohnort: " + sort + "\nFestnetznummer: " + sfnr + "\nMobilnummer: " + smnr + "\nEintrittsmonat: " + sem + "\nEintrittsjahr: " + sej + "\nVorgesetzer: " + svg + "\n");
+
 		}
 		
 		if (rdo_abteilungsleiter->Checked == true)//Abteilungsleiter speichern
@@ -766,7 +785,8 @@ namespace Semesterarbeit_IFO3 {
 				datensatz_laden_abteilungsleiter(laden_na, laden_vna, laden_str, laden_hnr, laden_post, laden_ort, laden_mnr, laden_fnr, laden_mail, laden_ab, laden_zähler, laden_atid, laden_atfa, laden_atabl);
 				if (strcmp(speichern_ab, laden_atfa) == 0)
 				{
-					strcpy(speichern_abl, speichern_na);
+					sprintf(speichern_abl, "%s %s", speichern_vna, speichern_na);
+					//strcpy(speichern_abl, speichern_na);
 					done = 0;
 				}
 				if (zähler == 100)
@@ -775,9 +795,33 @@ namespace Semesterarbeit_IFO3 {
 				}
 			} while (done == 1);
 
+			speichern_zähler = zähler;
+
 			datensatz_speichern_abteilungsleiter(speichern_na, speichern_vna, speichern_str, speichern_hnr, speichern_post, speichern_ort, speichern_mnr, speichern_fnr, speichern_mail, speichern_ab, speichern_abl, speichern_zähler);
 
 			speichern_eingabe();
+
+			//Ausgabe des eingegebenen Abteilungsleiters
+
+			laden_zähler = speichern_zähler;
+
+			datensatz_laden_abteilungsleiter(laden_na, laden_vna, laden_str, laden_hnr, laden_post, laden_ort, laden_mnr, laden_fnr, laden_mail, laden_ab, laden_zähler, laden_atid, laden_atfa, laden_atabl);
+
+			String ^sna = gcnew String(laden_na);
+			String ^snr = gcnew String(laden_nr);
+			String ^smail = gcnew String(laden_mail);
+			String ^svna = gcnew String(laden_vna);
+			String ^sstr = gcnew String(laden_str);
+			String ^shnr = gcnew String(laden_hnr);
+			String ^spost = gcnew String(laden_post);
+			String ^sort = gcnew String(laden_ort);
+			String ^smnr = gcnew String(laden_mnr);
+			String ^sfnr = gcnew String(laden_fnr);
+			String ^sab = gcnew String(laden_ab);
+			
+
+			MessageBox::Show("Abteilungsleiter erfolgreich gespeichert!\n\nAbteilungsname: " + sab + "\nVorname: " + svna + "\nName: " + sna + "\nStraße: " + sstr + "\nHausnummer: " + shnr + "\nPostleitzahl: " + spost + "\nWohnort: " + sort + "\nFestnetznummer: " + sfnr + "\nMobilnummer: " + smnr + "\n");
+
 
 		}
 
@@ -813,13 +857,48 @@ namespace Semesterarbeit_IFO3 {
 			st = txt_standort->Text;
 			sprintf(speichern_st, "%s", st);
 
-			sprintf(speichern_abl, "Nicht besetzt");
+			sprintf(speichern_abl, "nicht besetzt");
 
 			datensatz_speichern_abteilung(speichern_str, speichern_hnr, speichern_post, speichern_ort, speichern_ab, speichern_id, speichern_abl, speichern_st, speichern_zähler);
 
 			speichern_eingabe();
 
+			//Ausgabe des eingegebene Abteilung
+
+			laden_zähler = speichern_zähler;
+
+			datensatz_laden_abteilung(laden_na, laden_str, laden_hnr, laden_post, laden_ort, laden_abl, laden_nr, laden_st, laden_zähler);
+
+			String ^sstr = txt_strasse->Text;
+			String ^shnr = txt_hausnummer->Text;
+			String ^spost = txt_postleitzahl->Text;
+			String ^sort = txt_wohnort->Text;
+			String ^smnr = txt_mobilnummer->Text;
+			String ^sfnr = txt_festnetznummer->Text;
+			String ^sab = txt_abteilungsname->Text;
+			String ^sst = txt_standort->Text;
+			String ^sid = txt_abteilungsid->Text;
+	
+			MessageBox::Show("Abteilung erfolgreich gespeichert!\n\nAbteilungs ID: " + sid + "\nAbteilungsname: " + sab + "\nStraße: " + sstr + "\nHausnummer: " + shnr + "\nPostleitzahl: " + spost + "\nWohnort: " + sort + "\nStandort: " + sst + "\nFestnetznummer: " + sfnr + "\nMobilnummer: " + smnr + "\n");
+
 		}
+		//Eingabefelder bereinigen
+		String ^entleeren = "";
+
+		txt_abteilungsid->Text = entleeren;
+		txt_mitarbeiternummer->Text = entleeren;
+		txt_abteilungsname->Text = entleeren;
+		txt_standort->Text = entleeren;
+		txt_vorname->Text = entleeren;
+		txt_name->Text = entleeren;
+		txt_strasse->Text = entleeren;
+		txt_hausnummer->Text = entleeren;
+		txt_postleitzahl->Text = entleeren;
+		txt_wohnort->Text = entleeren;
+		txt_festnetznummer->Text = entleeren;
+		txt_mobilnummer->Text = entleeren;
+		cbx_jahr->SelectedIndex = -1;
+		cbx_monat->SelectedIndex = -1;
 	}
 	//Bei drücken von Speichern werden die Variablen in der textdatei gespeichert
 	private: System::Void button2_Click(System::Object^  sender, System::EventArgs^  e) {
@@ -846,6 +925,24 @@ namespace Semesterarbeit_IFO3 {
 		txt_vorname->Visible = true;
 		lbl_name->Visible = true;
 		txt_name->Visible = true;
+
+		//Eingabefelder bereinigen
+		String ^entleeren = "";
+
+		txt_abteilungsid->Text = entleeren;
+		txt_mitarbeiternummer->Text = entleeren;
+		txt_abteilungsname->Text = entleeren;
+		txt_standort->Text = entleeren;
+		txt_vorname->Text = entleeren;
+		txt_name->Text = entleeren;
+		txt_strasse->Text = entleeren;
+		txt_hausnummer->Text = entleeren;
+		txt_postleitzahl->Text = entleeren;
+		txt_wohnort->Text = entleeren;
+		txt_festnetznummer->Text = entleeren;
+		txt_mobilnummer->Text = entleeren;
+		cbx_jahr->SelectedIndex = -1;
+		cbx_monat->SelectedIndex = -1;
 		
 	}
 	//Sichtbarkeit der Felder bei Mitarbeiter
@@ -868,6 +965,24 @@ namespace Semesterarbeit_IFO3 {
 		lbl_name->Visible = true;
 		txt_name->Visible = true;
 		
+		//Eingabefelder bereinigen
+		String ^entleeren = "";
+
+		txt_abteilungsid->Text = entleeren;
+		txt_mitarbeiternummer->Text = entleeren;
+		txt_abteilungsname->Text = entleeren;
+		txt_standort->Text = entleeren;
+		txt_vorname->Text = entleeren;
+		txt_name->Text = entleeren;
+		txt_strasse->Text = entleeren;
+		txt_hausnummer->Text = entleeren;
+		txt_postleitzahl->Text = entleeren;
+		txt_wohnort->Text = entleeren;
+		txt_festnetznummer->Text = entleeren;
+		txt_mobilnummer->Text = entleeren;
+		cbx_jahr->SelectedIndex = -1;
+		cbx_monat->SelectedIndex = -1;
+
 	}
 	//Sichtbarkeit der Felder bei Abteilungleiter
 	private: System::Void rdo_abteilung_CheckedChanged(System::Object^  sender, System::EventArgs^  e) {
@@ -888,55 +1003,27 @@ namespace Semesterarbeit_IFO3 {
 		txt_abteilungsid->Visible = true;
 		lbl_standort->Visible = true;
 		txt_standort->Visible = true;
+
+		//Eingabefelder bereinigen
+		String ^entleeren = "";
+
+		txt_abteilungsid->Text = entleeren;
+		txt_mitarbeiternummer->Text = entleeren;
+		txt_abteilungsname->Text = entleeren;
+		txt_standort->Text = entleeren;
+		txt_vorname->Text = entleeren;
+		txt_name->Text = entleeren;
+		txt_strasse->Text = entleeren;
+		txt_hausnummer->Text = entleeren;
+		txt_postleitzahl->Text = entleeren;
+		txt_wohnort->Text = entleeren;
+		txt_festnetznummer->Text = entleeren;
+		txt_mobilnummer->Text = entleeren;
+		cbx_jahr->SelectedIndex = -1;
+		cbx_monat->SelectedIndex = -1;
 		
 	}
 	//Sichtbarkeit der Felder bei Abteilungen
-	private: System::Void button1_Click_1(System::Object^  sender, System::EventArgs^  e) {
-
-		char laden_na[20];
-		char laden_vna[20];
-		char laden_em[20];
-		char laden_ej[20];
-		char laden_str[20];
-		char laden_hnr[20];
-		char laden_post[20];
-		char laden_ort[20];
-		char laden_mnr[20];
-		char laden_fnr[20];
-		char laden_mail[20];
-		char laden_ab[20];
-		char laden_vg[20];
-		char laden_nr[20];
-		char laden_id[20];
-		char laden_abl[20];
-		int laden_zähler;
-
-		String ^mitarbeiternummer;
-		mitarbeiternummer = txt_mitarbeiternummer->Text;
-		char text[20];
-		sprintf(text, "%s", mitarbeiternummer);
-		laden_zähler = atoi(text);
-
-		datensatz_laden_mitarbeiter(laden_na, laden_vna, laden_em, laden_ej, laden_str, laden_hnr, laden_post, laden_ort, laden_mnr, laden_fnr, laden_mail, laden_ab, laden_vg, laden_nr, laden_zähler);
-
-		String ^na = gcnew String(laden_na);
-		String ^nr = gcnew String(laden_nr);
-		String ^mail = gcnew String(laden_mail);
-		String ^vna = gcnew String(laden_vna);
-		String ^em = gcnew String(laden_em);
-		String ^ej = gcnew String(laden_ej);
-		String ^str = gcnew String(laden_str);
-		String ^hnr = gcnew String(laden_hnr);
-		String ^post = gcnew String(laden_post);
-		String ^ort = gcnew String(laden_ort);
-		String ^mnr = gcnew String(laden_mnr);
-		String ^fnr = gcnew String(laden_fnr);
-		String ^ab = gcnew String(laden_ab);
-		String ^vg = gcnew String(laden_vg);
-		
-		MessageBox::Show("Mitarbeiternummer: "+nr+"\nAbteilungsname: "+ab+"\nVorname: "+vna+"\nName: "+na+"\nStraße: "+str+"\nHausnummer: "+hnr+"\nPostleitzahl: "+post+"\nWohnort: "+ort+"\nFestnetznummer: "+fnr+"\nMobilnummer: " +mnr+ "\nEintrittsmonat: "+em+"\nEintrittsjahr: "+ej+"\nVorgesetzer: "+vg+"\n");
-	}
-	//Ausgabe des engegeben Mitarbeiter nur zum TESTEN
 	private: System::Void txt_mitarbeiternummer_TextChanged(System::Object^  sender, System::EventArgs^  e) {
 
 		char laden_na[20];
@@ -988,9 +1075,9 @@ namespace Semesterarbeit_IFO3 {
 		String ^abteilungsid = txt_abteilungsid->Text;
 		char text[20];
 		sprintf(text, "%s", abteilungsid);
-		int zähler = atoi(text);
+		int laden_zähler = atoi(text);
 
-		datensatz_laden_abteilung(laden_na, laden_str, laden_hnr, laden_post, laden_ort, laden_abl, laden_nr, laden_st, zähler);
+		datensatz_laden_abteilung(laden_na, laden_str, laden_hnr, laden_post, laden_ort, laden_abl, laden_nr, laden_st, laden_zähler);
 
 		if (*laden_na != '\0')
 		{
@@ -1087,9 +1174,9 @@ namespace Semesterarbeit_IFO3 {
 			
 			if (done==0)//Abfrage wenn eine Abteilung existiert ob eine Abteilungsleiter vorhanden ist
 			{
-					laden_zähler = 9;
+					laden_zähler = zähler;
 					datensatz_laden_abteilungsleiter(laden_na, laden_vna, laden_str, laden_hnr, laden_post, laden_ort, laden_mnr, laden_fnr, laden_mail, laden_ab, laden_zähler, laden_atid, laden_atfa, laden_atabl);
-					if (strcmp(laden_atabl,"Nicht besetzt")==0)
+					if (strcmp(laden_atabl,"nicht besetzt")==0)
 					{
 						lbl_error_abteilungsleiter->Visible = false;
 						btn_speichern->Visible = true;

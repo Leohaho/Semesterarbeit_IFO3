@@ -131,6 +131,6 @@ void datensatz_speichern_abteilungsleiter(char *speichern_na, char *speichern_vn
 	strcpy(AL[zähler].FNR, speichern_fnr);
 	strcpy(AL[zähler].mail, speichern_mail);
 	strcpy(AL[zähler].AB, speichern_ab);
-	strcpy(AL[zähler].AB, speichern_abl);
+	strcpy(AT[zähler].ABL, speichern_abl);
 	
 }
