@@ -653,252 +653,292 @@ namespace Semesterarbeit_IFO3 {
 		int done = 1;
 		int zähler = 0;
 		int laden_zähler = 0;
+		int felderlöschen = 0;
+
+		String ^leer = "";
+		String ^entleeren = "";
 
 		if (rdo_mitarbeiter->Checked==true)//Mitarbeiter speichern
 		{
-			String ^nr = txt_mitarbeiternummer->Text;
-			char text[20];
-			sprintf(text, "%s", nr);
-			speichern_zähler = atoi(text);
+			if (txt_mitarbeiternummer->Text == leer || txt_abteilungsname->Text == leer || txt_vorname->Text == leer || txt_name->Text == leer || txt_strasse->Text == leer || txt_hausnummer->Text == leer || txt_postleitzahl->Text == leer || txt_wohnort->Text == leer || txt_festnetznummer->Text == leer || txt_mobilnummer->Text == leer || cbx_monat->Text == leer || cbx_jahr->Text == leer)
+			{
+				MessageBox::Show("Bitte füllen sie den Datensatz komplett aus!");
+				felderlöschen = 1;
+			}
+			else
+			{
+				String ^nr = txt_mitarbeiternummer->Text;
+				char text[20];
+				sprintf(text, "%s", nr);
+				speichern_zähler = atoi(text);
 
-			String ^na;
-			na = txt_name->Text;
-			sprintf(speichern_na, "%s", na);
+				String ^na;
+				na = txt_name->Text;
+				sprintf(speichern_na, "%s", na);
 
-			String ^vna;
-			vna = txt_vorname->Text;
-			sprintf(speichern_vna, "%s", vna);
+				String ^vna;
+				vna = txt_vorname->Text;
+				sprintf(speichern_vna, "%s", vna);
 
-			sprintf(speichern_mail, "%s.%s@daddeldu.com", vna, na);
+				sprintf(speichern_mail, "%s.%s@daddeldu.com", vna, na);
 
-			String ^str;
-			str = txt_strasse->Text;
-			sprintf(speichern_str, "%s", str);
+				String ^str;
+				str = txt_strasse->Text;
+				sprintf(speichern_str, "%s", str);
 
-			String ^hnr;
-			hnr = txt_hausnummer->Text;
-			sprintf(speichern_hnr, "%s", hnr);
+				String ^hnr;
+				hnr = txt_hausnummer->Text;
+				sprintf(speichern_hnr, "%s", hnr);
 
-			String ^post;
-			post = txt_postleitzahl->Text;
-			sprintf(speichern_post, "%s", post);
+				String ^post;
+				post = txt_postleitzahl->Text;
+				sprintf(speichern_post, "%s", post);
 
-			String ^ort;
-			ort = txt_wohnort->Text;
-			sprintf(speichern_ort, "%s", ort);
+				String ^ort;
+				ort = txt_wohnort->Text;
+				sprintf(speichern_ort, "%s", ort);
 
-			String ^mnr;
-			mnr = txt_mobilnummer->Text;
-			sprintf(speichern_mnr, "%s", mnr);
+				String ^mnr;
+				mnr = txt_mobilnummer->Text;
+				sprintf(speichern_mnr, "%s", mnr);
 
-			String ^fnr;
-			fnr = txt_festnetznummer->Text;
-			sprintf(speichern_fnr, "%s", fnr);
+				String ^fnr;
+				fnr = txt_festnetznummer->Text;
+				sprintf(speichern_fnr, "%s", fnr);
 
-			String ^em;
-			em = cbx_monat->Text;
-			sprintf(speichern_em, "%s", em);
+				String ^em;
+				em = cbx_monat->Text;
+				sprintf(speichern_em, "%s", em);
 
-			String ^ej;
-			ej = cbx_jahr->Text;
-			sprintf(speichern_ej, "%s", ej);
+				String ^ej;
+				ej = cbx_jahr->Text;
+				sprintf(speichern_ej, "%s", ej);
 
-			String ^ab;
-			ab = txt_abteilungsname->Text;
-			sprintf(speichern_ab, "%s", ab);
+				String ^ab;
+				ab = txt_abteilungsname->Text;
+				sprintf(speichern_ab, "%s", ab);
 
-			sprintf(speichern_vg, "test");
+				
+				sprintf(speichern_vg, "test");
 
-			datensatz_speichern_mitarbeiter(speichern_na, speichern_vna, speichern_em, speichern_ej, speichern_str, speichern_hnr, speichern_post, speichern_ort, speichern_mnr, speichern_fnr, speichern_mail, speichern_ab, speichern_vg, speichern_nr, speichern_zähler);
+				do//Mitarbeiter wird Vorgesetzter zugeordnet
+				{
+					zähler++;
+					laden_zähler = zähler;
+					datensatz_laden_abteilung(laden_na, laden_str, laden_hnr, laden_post, laden_ort, laden_abl, laden_nr, laden_st, laden_zähler);
+					if (strcmp(speichern_ab, laden_na) == 0)
+					{
+						sprintf(speichern_vg, "%s", laden_abl);
+						done = 0;
+					}
+					if (zähler == 100)
+					{
+						done = 0;
+					}
+				} while (done == 1);
 
-			speichern_eingabe();
+				datensatz_speichern_mitarbeiter(speichern_na, speichern_vna, speichern_em, speichern_ej, speichern_str, speichern_hnr, speichern_post, speichern_ort, speichern_mnr, speichern_fnr, speichern_mail, speichern_ab, speichern_vg, speichern_nr, speichern_zähler);
 
-			//Ausgabe des eingegebenen Mitarbeiters
+				speichern_eingabe();
 
-			laden_zähler = speichern_zähler;
+				//Ausgabe des eingegebenen Mitarbeiters
 
-			datensatz_laden_mitarbeiter(laden_na, laden_vna, laden_em, laden_ej, laden_str, laden_hnr, laden_post, laden_ort, laden_mnr, laden_fnr, laden_mail, laden_ab, laden_vg, laden_nr, laden_zähler);
+				laden_zähler = speichern_zähler;
 
-			String ^sna = gcnew String(laden_na);
-			String ^snr = gcnew String(laden_nr);
-			String ^smail = gcnew String(laden_mail);
-			String ^svna = gcnew String(laden_vna);
-			String ^sem = gcnew String(laden_em);
-			String ^sej = gcnew String(laden_ej);
-			String ^sstr = gcnew String(laden_str);
-			String ^shnr = gcnew String(laden_hnr);
-			String ^spost = gcnew String(laden_post);
-			String ^sort = gcnew String(laden_ort);
-			String ^smnr = gcnew String(laden_mnr);
-			String ^sfnr = gcnew String(laden_fnr);
-			String ^sab = gcnew String(laden_ab);
-			String ^svg = gcnew String(laden_vg);
+				datensatz_laden_mitarbeiter(laden_na, laden_vna, laden_em, laden_ej, laden_str, laden_hnr, laden_post, laden_ort, laden_mnr, laden_fnr, laden_mail, laden_ab, laden_vg, laden_nr, laden_zähler);
 
-			MessageBox::Show("Mitarbeiter erfolgreich gespeichert!\n\nMitarbeiternummer: " + snr + "\nAbteilungsname: " + sab + "\nVorname: " + svna + "\nName: " + sna + "\nStraße: " + sstr + "\nHausnummer: " + shnr + "\nPostleitzahl: " + spost + "\nWohnort: " + sort + "\nFestnetznummer: " + sfnr + "\nMobilnummer: " + smnr + "\nEintrittsmonat: " + sem + "\nEintrittsjahr: " + sej + "\nVorgesetzer: " + svg + "\n");
+				String ^sna = gcnew String(laden_na);
+				String ^snr = gcnew String(laden_nr);
+				String ^smail = gcnew String(laden_mail);
+				String ^svna = gcnew String(laden_vna);
+				String ^sem = gcnew String(laden_em);
+				String ^sej = gcnew String(laden_ej);
+				String ^sstr = gcnew String(laden_str);
+				String ^shnr = gcnew String(laden_hnr);
+				String ^spost = gcnew String(laden_post);
+				String ^sort = gcnew String(laden_ort);
+				String ^smnr = gcnew String(laden_mnr);
+				String ^sfnr = gcnew String(laden_fnr);
+				String ^sab = gcnew String(laden_ab);
+				String ^svg = gcnew String(laden_vg);
 
+				MessageBox::Show("Mitarbeiter erfolgreich gespeichert!\n\nMitarbeiternummer: " + snr + "\nAbteilungsname: " + sab + "\nVorname: " + svna + "\nName: " + sna + "\nStraße: " + sstr + "\nHausnummer: " + shnr + "\nPostleitzahl: " + spost + "\nWohnort: " + sort + "\nFestnetznummer: " + sfnr + "\nMobilnummer: " + smnr + "\nEintrittsmonat: " + sem + "\nEintrittsjahr: " + sej + "\nVorgesetzer: " + svg + "\n");
+
+			}
+			
 		}
 		
 		if (rdo_abteilungsleiter->Checked == true)//Abteilungsleiter speichern
 		{
-			String ^na;
-			na = txt_name->Text;
-			sprintf(speichern_na, "%s", na);
-
-			String ^vna;
-			vna = txt_vorname->Text;
-			sprintf(speichern_vna, "%s", vna);
-
-			sprintf(speichern_mail, "%s.%s@daddeldu.com", vna, na);
-
-			String ^str;
-			str = txt_strasse->Text;
-			sprintf(speichern_str, "%s", str);
-
-			String ^hnr;
-			hnr = txt_hausnummer->Text;
-			sprintf(speichern_hnr, "%s", hnr);
-
-			String ^post;
-			post = txt_postleitzahl->Text;
-			sprintf(speichern_post, "%s", post);
-
-			String ^ort;
-			ort = txt_wohnort->Text;
-			sprintf(speichern_ort, "%s", ort);
-
-			String ^mnr;
-			mnr = txt_mobilnummer->Text;
-			sprintf(speichern_mnr, "%s", mnr);
-
-			String ^fnr;
-			fnr = txt_festnetznummer->Text;
-			sprintf(speichern_fnr, "%s", fnr);
-
-			String ^ab;
-			ab = txt_abteilungsname->Text;
-			sprintf(speichern_ab, "%s", ab);
-
-			do//Abteilungsleitername wird Abteilung zugeordnet
+			if (txt_abteilungsname->Text == leer || txt_vorname->Text == leer || txt_name->Text == leer || txt_strasse->Text == leer || txt_hausnummer->Text == leer || txt_postleitzahl->Text == leer || txt_wohnort->Text == leer || txt_festnetznummer->Text == leer || txt_mobilnummer->Text == leer)
 			{
-				zähler++;
-				laden_zähler = zähler;
+				MessageBox::Show("Bitte füllen sie den Datensatz komplett aus!");
+				felderlöschen = 1;
+			}
+			else
+			{
+				String ^na;
+				na = txt_name->Text;
+				sprintf(speichern_na, "%s", na);
+
+				String ^vna;
+				vna = txt_vorname->Text;
+				sprintf(speichern_vna, "%s", vna);
+
+				sprintf(speichern_mail, "%s.%s@daddeldu.com", vna, na);
+
+				String ^str;
+				str = txt_strasse->Text;
+				sprintf(speichern_str, "%s", str);
+
+				String ^hnr;
+				hnr = txt_hausnummer->Text;
+				sprintf(speichern_hnr, "%s", hnr);
+
+				String ^post;
+				post = txt_postleitzahl->Text;
+				sprintf(speichern_post, "%s", post);
+
+				String ^ort;
+				ort = txt_wohnort->Text;
+				sprintf(speichern_ort, "%s", ort);
+
+				String ^mnr;
+				mnr = txt_mobilnummer->Text;
+				sprintf(speichern_mnr, "%s", mnr);
+
+				String ^fnr;
+				fnr = txt_festnetznummer->Text;
+				sprintf(speichern_fnr, "%s", fnr);
+
+				String ^ab;
+				ab = txt_abteilungsname->Text;
+				sprintf(speichern_ab, "%s", ab);
+
+				do//Abteilungsleitername wird Abteilung zugeordnet
+				{
+					zähler++;
+					laden_zähler = zähler;
+					datensatz_laden_abteilungsleiter(laden_na, laden_vna, laden_str, laden_hnr, laden_post, laden_ort, laden_mnr, laden_fnr, laden_mail, laden_ab, laden_zähler, laden_atid, laden_atfa, laden_atabl);
+					if (strcmp(speichern_ab, laden_atfa) == 0)
+					{
+						sprintf(speichern_abl, "%s %s", speichern_vna, speichern_na);
+						done = 0;
+					}
+					if (zähler == 100)
+					{
+						done = 0;
+					}
+				} while (done == 1);
+
+				speichern_zähler = zähler;
+
+				datensatz_speichern_abteilungsleiter(speichern_na, speichern_vna, speichern_str, speichern_hnr, speichern_post, speichern_ort, speichern_mnr, speichern_fnr, speichern_mail, speichern_ab, speichern_abl, speichern_zähler);
+
+				speichern_eingabe();
+
+				//Ausgabe des eingegebenen Abteilungsleiters
+
+				laden_zähler = speichern_zähler;
+
 				datensatz_laden_abteilungsleiter(laden_na, laden_vna, laden_str, laden_hnr, laden_post, laden_ort, laden_mnr, laden_fnr, laden_mail, laden_ab, laden_zähler, laden_atid, laden_atfa, laden_atabl);
-				if (strcmp(speichern_ab, laden_atfa) == 0)
-				{
-					sprintf(speichern_abl, "%s %s", speichern_vna, speichern_na);
-					//strcpy(speichern_abl, speichern_na);
-					done = 0;
-				}
-				if (zähler == 100)
-				{
-					done = 0;
-				}
-			} while (done == 1);
 
-			speichern_zähler = zähler;
-
-			datensatz_speichern_abteilungsleiter(speichern_na, speichern_vna, speichern_str, speichern_hnr, speichern_post, speichern_ort, speichern_mnr, speichern_fnr, speichern_mail, speichern_ab, speichern_abl, speichern_zähler);
-
-			speichern_eingabe();
-
-			//Ausgabe des eingegebenen Abteilungsleiters
-
-			laden_zähler = speichern_zähler;
-
-			datensatz_laden_abteilungsleiter(laden_na, laden_vna, laden_str, laden_hnr, laden_post, laden_ort, laden_mnr, laden_fnr, laden_mail, laden_ab, laden_zähler, laden_atid, laden_atfa, laden_atabl);
-
-			String ^sna = gcnew String(laden_na);
-			String ^snr = gcnew String(laden_nr);
-			String ^smail = gcnew String(laden_mail);
-			String ^svna = gcnew String(laden_vna);
-			String ^sstr = gcnew String(laden_str);
-			String ^shnr = gcnew String(laden_hnr);
-			String ^spost = gcnew String(laden_post);
-			String ^sort = gcnew String(laden_ort);
-			String ^smnr = gcnew String(laden_mnr);
-			String ^sfnr = gcnew String(laden_fnr);
-			String ^sab = gcnew String(laden_ab);
-			
-
-			MessageBox::Show("Abteilungsleiter erfolgreich gespeichert!\n\nAbteilungsname: " + sab + "\nVorname: " + svna + "\nName: " + sna + "\nStraße: " + sstr + "\nHausnummer: " + shnr + "\nPostleitzahl: " + spost + "\nWohnort: " + sort + "\nFestnetznummer: " + sfnr + "\nMobilnummer: " + smnr + "\n");
+				String ^sna = gcnew String(laden_na);
+				String ^snr = gcnew String(laden_nr);
+				String ^smail = gcnew String(laden_mail);
+				String ^svna = gcnew String(laden_vna);
+				String ^sstr = gcnew String(laden_str);
+				String ^shnr = gcnew String(laden_hnr);
+				String ^spost = gcnew String(laden_post);
+				String ^sort = gcnew String(laden_ort);
+				String ^smnr = gcnew String(laden_mnr);
+				String ^sfnr = gcnew String(laden_fnr);
+				String ^sab = gcnew String(laden_ab);
 
 
+				MessageBox::Show("Abteilungsleiter erfolgreich gespeichert!\n\nAbteilungsname: " + sab + "\nVorname: " + svna + "\nName: " + sna + "\nStraße: " + sstr + "\nHausnummer: " + shnr + "\nPostleitzahl: " + spost + "\nWohnort: " + sort + "\nFestnetznummer: " + sfnr + "\nMobilnummer: " + smnr + "\n");
+			}
 		}
 
 		if (rdo_abteilung->Checked == true)//Abteilung speichern
 		{
+			if (txt_abteilungsid->Text == leer || txt_abteilungsname->Text == leer || txt_strasse->Text == leer || txt_hausnummer->Text == leer || txt_postleitzahl->Text == leer || txt_wohnort->Text == leer || txt_standort->Text == leer)
+			{
+				MessageBox::Show("Bitte füllen sie den Datensatz komplett aus!");
+				felderlöschen = 1;
+			}
+			else
+			{
+				String ^str;
+				str = txt_strasse->Text;
+				sprintf(speichern_str, "%s", str);
 
-			String ^str;
-			str = txt_strasse->Text;
-			sprintf(speichern_str, "%s", str);
+				String ^hnr;
+				hnr = txt_hausnummer->Text;
+				sprintf(speichern_hnr, "%s", hnr);
 
-			String ^hnr;
-			hnr = txt_hausnummer->Text;
-			sprintf(speichern_hnr, "%s", hnr);
+				String ^post;
+				post = txt_postleitzahl->Text;
+				sprintf(speichern_post, "%s", post);
 
-			String ^post;
-			post = txt_postleitzahl->Text;
-			sprintf(speichern_post, "%s", post);
+				String ^ort;
+				ort = txt_wohnort->Text;
+				sprintf(speichern_ort, "%s", ort);
 
-			String ^ort;
-			ort = txt_wohnort->Text;
-			sprintf(speichern_ort, "%s", ort);
+				String ^ab;
+				ab = txt_abteilungsname->Text;
+				sprintf(speichern_ab, "%s", ab);
 
-			String ^ab;
-			ab = txt_abteilungsname->Text;
-			sprintf(speichern_ab, "%s", ab);
+				String ^id = txt_abteilungsid->Text;
+				char text[20];
+				sprintf(text, "%s", id);
+				speichern_zähler = atoi(text);
 
-			String ^id = txt_abteilungsid->Text;
-			char text[20];
-			sprintf(text, "%s", id);
-			speichern_zähler = atoi(text);
+				String ^st;
+				st = txt_standort->Text;
+				sprintf(speichern_st, "%s", st);
 
-			String ^st;
-			st = txt_standort->Text;
-			sprintf(speichern_st, "%s", st);
+				sprintf(speichern_abl, "nicht besetzt");
 
-			sprintf(speichern_abl, "nicht besetzt");
+				datensatz_speichern_abteilung(speichern_str, speichern_hnr, speichern_post, speichern_ort, speichern_ab, speichern_id, speichern_abl, speichern_st, speichern_zähler);
 
-			datensatz_speichern_abteilung(speichern_str, speichern_hnr, speichern_post, speichern_ort, speichern_ab, speichern_id, speichern_abl, speichern_st, speichern_zähler);
+				speichern_eingabe();
 
-			speichern_eingabe();
+				//Ausgabe des eingegebene Abteilung
 
-			//Ausgabe des eingegebene Abteilung
+				laden_zähler = speichern_zähler;
 
-			laden_zähler = speichern_zähler;
+				datensatz_laden_abteilung(laden_na, laden_str, laden_hnr, laden_post, laden_ort, laden_abl, laden_nr, laden_st, laden_zähler);
 
-			datensatz_laden_abteilung(laden_na, laden_str, laden_hnr, laden_post, laden_ort, laden_abl, laden_nr, laden_st, laden_zähler);
+				String ^sstr = gcnew String(laden_str);
+				String ^shnr = gcnew String(laden_hnr);
+				String ^spost = gcnew String(laden_post);
+				String ^sort = gcnew String(laden_ort);
+				String ^sab = gcnew String(laden_na);
+				String ^sst = gcnew String(laden_st);
+				String ^sid = gcnew String(laden_nr);
 
-			String ^sstr = txt_strasse->Text;
-			String ^shnr = txt_hausnummer->Text;
-			String ^spost = txt_postleitzahl->Text;
-			String ^sort = txt_wohnort->Text;
-			String ^smnr = txt_mobilnummer->Text;
-			String ^sfnr = txt_festnetznummer->Text;
-			String ^sab = txt_abteilungsname->Text;
-			String ^sst = txt_standort->Text;
-			String ^sid = txt_abteilungsid->Text;
-	
-			MessageBox::Show("Abteilung erfolgreich gespeichert!\n\nAbteilungs ID: " + sid + "\nAbteilungsname: " + sab + "\nStraße: " + sstr + "\nHausnummer: " + shnr + "\nPostleitzahl: " + spost + "\nWohnort: " + sort + "\nStandort: " + sst + "\nFestnetznummer: " + sfnr + "\nMobilnummer: " + smnr + "\n");
-
+				MessageBox::Show("Abteilung erfolgreich gespeichert!\n\nAbteilungs ID: " + sid + "\nAbteilungsname: " + sab + "\nStraße: " + sstr + "\nHausnummer: " + shnr + "\nPostleitzahl: " + spost + "\nWohnort: " + sort + "\nStandort: " + sst + "\n");
+			}
 		}
-		//Eingabefelder bereinigen
-		String ^entleeren = "";
-
-		txt_abteilungsid->Text = entleeren;
-		txt_mitarbeiternummer->Text = entleeren;
-		txt_abteilungsname->Text = entleeren;
-		txt_standort->Text = entleeren;
-		txt_vorname->Text = entleeren;
-		txt_name->Text = entleeren;
-		txt_strasse->Text = entleeren;
-		txt_hausnummer->Text = entleeren;
-		txt_postleitzahl->Text = entleeren;
-		txt_wohnort->Text = entleeren;
-		txt_festnetznummer->Text = entleeren;
-		txt_mobilnummer->Text = entleeren;
-		cbx_jahr->SelectedIndex = -1;
-		cbx_monat->SelectedIndex = -1;
+		
+		if (felderlöschen==0)//Eingabefelder bereinigen
+		{
+			txt_abteilungsid->Text = entleeren;
+			txt_mitarbeiternummer->Text = entleeren;
+			txt_abteilungsname->Text = entleeren;
+			txt_standort->Text = entleeren;
+			txt_vorname->Text = entleeren;
+			txt_name->Text = entleeren;
+			txt_strasse->Text = entleeren;
+			txt_hausnummer->Text = entleeren;
+			txt_postleitzahl->Text = entleeren;
+			txt_wohnort->Text = entleeren;
+			txt_festnetznummer->Text = entleeren;
+			txt_mobilnummer->Text = entleeren;
+			cbx_jahr->SelectedIndex = -1;
+			cbx_monat->SelectedIndex = -1;
+		}
 	}
 	//Bei drücken von Speichern werden die Variablen in der textdatei gespeichert
 	private: System::Void button2_Click(System::Object^  sender, System::EventArgs^  e) {
@@ -925,6 +965,10 @@ namespace Semesterarbeit_IFO3 {
 		txt_vorname->Visible = true;
 		lbl_name->Visible = true;
 		txt_name->Visible = true;
+		lbl_festnetznummer->Visible = true;
+		txt_festnetznummer->Visible = true;
+		lbl_mobilnummer->Visible = true;
+		txt_mobilnummer->Visible = true;
 
 		//Eingabefelder bereinigen
 		String ^entleeren = "";
@@ -964,6 +1008,10 @@ namespace Semesterarbeit_IFO3 {
 		txt_vorname->Visible = true;
 		lbl_name->Visible = true;
 		txt_name->Visible = true;
+		lbl_festnetznummer->Visible = true;
+		txt_festnetznummer->Visible = true;
+		lbl_mobilnummer->Visible = true;
+		txt_mobilnummer->Visible = true;
 		
 		//Eingabefelder bereinigen
 		String ^entleeren = "";
@@ -998,6 +1046,10 @@ namespace Semesterarbeit_IFO3 {
 		lbl_jahr->Visible = false;
 		cbx_monat->Visible = false;
 		cbx_jahr->Visible = false;
+		lbl_festnetznummer->Visible = false;
+		txt_festnetznummer->Visible = false;
+		lbl_mobilnummer->Visible = false;
+		txt_mobilnummer->Visible = false;
 
 		lbl_abteilungsid->Visible = true;
 		txt_abteilungsid->Visible = true;

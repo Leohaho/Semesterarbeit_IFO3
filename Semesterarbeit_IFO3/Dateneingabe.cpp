@@ -72,6 +72,7 @@ void datensatz_laden_abteilung(char *laden_na, char *laden_str, char *laden_hnr,
 	strcpy(laden_post, AT[zähler].POST);
 	strcpy(laden_ort, AT[zähler].ORT);
 	strcpy(laden_abl, AT[zähler].ABL);
+	strcpy(laden_st, AT[zähler].ST);
 	
 	const char base_string[] = "";
 	char out_string[20];
