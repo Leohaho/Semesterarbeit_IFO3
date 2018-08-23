@@ -64,6 +64,8 @@ namespace Semesterarbeit_IFO3 {
 	private: System::Windows::Forms::Label^  label3;
 	private: System::Windows::Forms::Label^  label4;
 	private: System::Windows::Forms::Label^  label5;
+	private: System::Windows::Forms::TextBox^  textBox5;
+	private: System::Windows::Forms::Label^  label6;
 
 	protected:
 
@@ -95,6 +97,8 @@ namespace Semesterarbeit_IFO3 {
 			this->label3 = (gcnew System::Windows::Forms::Label());
 			this->label4 = (gcnew System::Windows::Forms::Label());
 			this->label5 = (gcnew System::Windows::Forms::Label());
+			this->textBox5 = (gcnew System::Windows::Forms::TextBox());
+			this->label6 = (gcnew System::Windows::Forms::Label());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
 			this->SuspendLayout();
 			// 
@@ -221,11 +225,29 @@ namespace Semesterarbeit_IFO3 {
 			this->label5->TabIndex = 12;
 			this->label5->Text = L"Testfelder";
 			// 
+			// textBox5
+			// 
+			this->textBox5->Location = System::Drawing::Point(121, 190);
+			this->textBox5->Name = L"textBox5";
+			this->textBox5->Size = System::Drawing::Size(100, 20);
+			this->textBox5->TabIndex = 13;
+			// 
+			// label6
+			// 
+			this->label6->AutoSize = true;
+			this->label6->Location = System::Drawing::Point(5, 190);
+			this->label6->Name = L"label6";
+			this->label6->Size = System::Drawing::Size(74, 13);
+			this->label6->TabIndex = 14;
+			this->label6->Text = L"button2 inttest";
+			// 
 			// Datenändern
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(611, 355);
+			this->Controls->Add(this->label6);
+			this->Controls->Add(this->textBox5);
 			this->Controls->Add(this->label5);
 			this->Controls->Add(this->label4);
 			this->Controls->Add(this->label3);
@@ -275,7 +297,7 @@ namespace Semesterarbeit_IFO3 {
 		readma(MA);
 		for ( i = 0; i < 100; i++) {
 			if (MA[i].NR == nrint) {
-				MessageBox::Show("erfolg");
+				MessageBox::Show("erfolg"); // für Testzwecke
 				String^ vname = gcnew String(MA[i].VNA);
 				String^ name = gcnew String(MA[i].NA);
 				String^ mobil = gcnew String(MA[i].MNR);
@@ -302,7 +324,7 @@ namespace Semesterarbeit_IFO3 {
 				dataGridView1->Rows->Add("Abteilung", abteilung);//10
 				dataGridView1->Rows->Add("Abteilungsleiter", abteilungsleiter);//11
 
-
+				speichernma(MA);
 
 				//textBox2->Text = vname;
 				//textBox3->Text = name;
@@ -352,13 +374,102 @@ private: System::Void button3_Click(System::Object^  sender, System::EventArgs^ 
 	textBox4->Text = newname;
 	
 	Mitarb MA[100];
- 	
-	/*for (int Z = 0; Z < 100; Z++) {
-		if (Z == x) {
-			newname = MA[Z].NA;
-		}
-	}*/
+	readma(MA);
+	char newvnamechar[20];
+	char newnamechar[20];
+	char newmobilchar[20];
+	char newfestnetzchar[20];
+	char newmailchar[20];
+	char newstrchar[20];
+	char newhausnrchar[20];
+	char newplzchar[20];
+	char newortchar[20];
+	char newabteilungchar[20];
+	char newabteilungsleiterchar[20];
 	
+
+
+
+	String^ nrstring = textBox1->Text;
+	int nrint = int::Parse(nrstring);
+	
+	textBox5->Text = nrstring;
+
+
+	// sprintf(char,"%s", systemstring);
+
+
+	sprintf(newvnamechar, "%s", newvname);
+	sprintf(newnamechar, "%s", newname);
+	sprintf(newmobilchar, "%s", newmobil);
+	sprintf(newfestnetzchar, "%s", newfestnetz);
+	sprintf(newmailchar, "%s", newmail);
+	sprintf(newstrchar, "%s", newstr);
+	sprintf(newplzchar, "%s", newplz);
+	sprintf(newortchar, "%s", newort);
+	sprintf(newabteilungchar, "%s", newabteilung);
+	sprintf(newabteilungsleiterchar, "%s", newabteilungsleiter);
+	
+
+	FILE *fpma;
+	fpma = fopen("Mitarbeiter.txt", "w");
+	//fprintf(fpma, "%s\n", MA[nrint].VNA);
+	//
+	int Z;
+
+	//strcpy( newvnamechar, MA[nrint].VNA);
+	
+
+	//strcpy(MA[Z].VNA, newvnamechar);
+	//fprintf(fpma, "%s\n", MA[nrint].VNA);
+	strcpy(MA[Z].NA, newnamechar);
+	strcpy(MA[Z].MNR, newmobilchar);
+	strcpy(MA[Z].FNR, newfestnetzchar);
+	strcpy(MA[Z].mail, newmailchar);
+	strcpy(MA[Z].STR, newstrchar);
+	strcpy(MA[Z].POST, newplzchar);
+	strcpy(MA[Z].ORT, newortchar);
+	strcpy(MA[Z].AB, newabteilungchar);
+	strcpy(MA[Z].VG, newabteilungsleiterchar);
+
+	//speichernma(MA);
+	
+	for (Z = 0; Z < 100; Z++) {
+		int a = Z;
+		if (MA[a].NR = nrint) {
+	//	//	fprintf(fpma, "%i\n", nrint);
+	//		
+			strcpy(MA[a].VNA, newvnamechar);
+			fprintf(fpma, "%s\n", MA[a].VNA);
+	
+	//		fprintf(fpma, "%s\n", MA[Z].VNA);
+	//		/*fprintf(fpma, "%s\n", newnamechar);
+	//		fprintf(fpma, "%s\n", newmobilchar);
+	//		fprintf(fpma, "%s\n", newfestnetzchar);
+	//		fprintf(fpma, "%s\n", newmailchar);
+	//		fprintf(fpma, "%s\n", newstrchar);
+	//		fprintf(fpma, "%s\n", newplzchar);
+	//		fprintf(fpma, "%s\n", newortchar);
+	//		fprintf(fpma, "%s\n", newabteilungchar);
+	//		fprintf(fpma, "%s\n", newabteilungsleiterchar);*/
+	//		
+
+
+
+		}
+	}
+
+
+	fclose(fpma);
+
+	//for (int Z = 0; Z < 100; Z++) {
+	//	if (Z == x) {
+
+	//		
+
+	//		 MA[Z].VNA = newvnamechar;
+	//	}
+	//}
 
 	//speichernma(MA);
 	
@@ -377,7 +488,7 @@ private: System::Void button3_Click(System::Object^  sender, System::EventArgs^ 
 		//		if (MA[Z].NR == Z) { //Vorteil fprintf geschriebene Datei auch ohne Programm lesbar
 		//			fprintf(fpma, "%i\n", Z);
 		//			fprintf(fpma, "%s\n", MA[Z].NA);
-		//			fprintf(fpma, "%s\n", MA[Z].VNA);
+		//			fprintf(fpma, "%s\n", newvnamechar);
 		//			fprintf(fpma, "%s\n", MA[Z].EM);
 		//			fprintf(fpma, "%s\n", MA[Z].EJ);
 		//			fprintf(fpma, "%s\n", MA[Z].STR);
