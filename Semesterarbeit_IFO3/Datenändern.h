@@ -296,7 +296,7 @@ namespace Semesterarbeit_IFO3 {
 		Mitarb MA[100];
 		readma(MA);
 		for ( i = 0; i < 100; i++) {
-			if (MA[i].NR == nrint) {
+			if (MA[i].NR == nrint && MA[i].NR == i) { // erweiterte Abfrage um ausgabe durch daten im Speicher zu verhindern
 				MessageBox::Show("erfolg"); // für Testzwecke
 				String^ vname = gcnew String(MA[i].VNA);
 				String^ name = gcnew String(MA[i].NA);
@@ -311,7 +311,7 @@ namespace Semesterarbeit_IFO3 {
 				String^ abteilungsleiter = gcnew String(MA[i].VG);
 				
 
-				dataGridView1->Rows->Add("Nummer", nrint);		//0
+				dataGridView1->Rows->Add("Nummer", i);		//0
 				dataGridView1->Rows->Add("Vorname", vname);		//1
 				dataGridView1->Rows->Add("Name", name);			//2
 				dataGridView1->Rows->Add("Mobil", mobil);		//3
@@ -326,12 +326,15 @@ namespace Semesterarbeit_IFO3 {
 
 				speichernma(MA);
 
+				
+
 				//textBox2->Text = vname;
 				//textBox3->Text = name;
 				//textBox4->Text = mail;
 				 
+				
+			};
 			
-			}
 		}
 
 
@@ -347,176 +350,177 @@ namespace Semesterarbeit_IFO3 {
 		//readma(MA2);
 	
 	//}
-private: System::Void button3_Click(System::Object^  sender, System::EventArgs^  e) {
-	
-
-	//neue Daten einlesen 
-	String^ newnr = dataGridView1->Rows[0]->Cells[1]->Value->ToString();
-	int x = int::Parse(newnr);
-
-	String^ newvname = dataGridView1->Rows[1]->Cells[1]->Value->ToString();
-	String^ newname = dataGridView1->Rows[2]->Cells[1]->Value->ToString();
-	String^ newmobil = dataGridView1->Rows[3]->Cells[1]->Value->ToString();
-	String^ newfestnetz = dataGridView1->Rows[4]->Cells[1]->Value->ToString();
-	String^ newmail = dataGridView1->Rows[5]->Cells[1]->Value->ToString();
-	String^ newstr = dataGridView1->Rows[6]->Cells[1]->Value->ToString();
-	String^ newhausnr = dataGridView1->Rows[7]->Cells[1]->Value->ToString();
-	String^ newplz = dataGridView1->Rows[8]->Cells[1]->Value->ToString();
-	String^ newort = dataGridView1->Rows[9]->Cells[1]->Value->ToString();
-	String^ newabteilung = dataGridView1->Rows[10]->Cells[1]->Value->ToString();
-	String^ newabteilungsleiter = dataGridView1->Rows[11]->Cells[1]->Value->ToString();
+	private: System::Void button3_Click(System::Object^  sender, System::EventArgs^  e) {
 
 
-	//testfelder
+		//neue Daten einlesen 
+		String^ newnr = dataGridView1->Rows[0]->Cells[1]->Value->ToString();
+		int x = int::Parse(newnr);
 
-	textBox2->Text = newnr;
-	textBox3->Text = newvname;
-	textBox4->Text = newname;
-	
-	Mitarb MA[100];
-	readma(MA);
-	char newvnamechar[20];
-	char newnamechar[20];
-	char newmobilchar[20];
-	char newfestnetzchar[20];
-	char newmailchar[20];
-	char newstrchar[20];
-	char newhausnrchar[20];
-	char newplzchar[20];
-	char newortchar[20];
-	char newabteilungchar[20];
-	char newabteilungsleiterchar[20];
-	
+		String^ newvname = dataGridView1->Rows[1]->Cells[1]->Value->ToString();
+		String^ newname = dataGridView1->Rows[2]->Cells[1]->Value->ToString();
+		String^ newmobil = dataGridView1->Rows[3]->Cells[1]->Value->ToString();
+		String^ newfestnetz = dataGridView1->Rows[4]->Cells[1]->Value->ToString();
+		String^ newmail = dataGridView1->Rows[5]->Cells[1]->Value->ToString();
+		String^ newstr = dataGridView1->Rows[6]->Cells[1]->Value->ToString();
+		String^ newhausnr = dataGridView1->Rows[7]->Cells[1]->Value->ToString();
+		String^ newplz = dataGridView1->Rows[8]->Cells[1]->Value->ToString();
+		String^ newort = dataGridView1->Rows[9]->Cells[1]->Value->ToString();
+		String^ newabteilung = dataGridView1->Rows[10]->Cells[1]->Value->ToString();
+		String^ newabteilungsleiter = dataGridView1->Rows[11]->Cells[1]->Value->ToString();
 
 
+		//testfelder
 
-	String^ nrstring = textBox1->Text;
-	int nrint = int::Parse(nrstring);
-	
-	textBox5->Text = nrstring;
+		textBox2->Text = newnr;
+		textBox3->Text = newvname;
+		textBox4->Text = newname;
 
-
-	// sprintf(char,"%s", systemstring);
-
-
-	sprintf(newvnamechar, "%s", newvname);
-	sprintf(newnamechar, "%s", newname);
-	sprintf(newmobilchar, "%s", newmobil);
-	sprintf(newfestnetzchar, "%s", newfestnetz);
-	sprintf(newmailchar, "%s", newmail);
-	sprintf(newstrchar, "%s", newstr);
-	sprintf(newplzchar, "%s", newplz);
-	sprintf(newortchar, "%s", newort);
-	sprintf(newabteilungchar, "%s", newabteilung);
-	sprintf(newabteilungsleiterchar, "%s", newabteilungsleiter);
-	
-
-	FILE *fpma;
-	fpma = fopen("Mitarbeiter.txt", "w");
-	//fprintf(fpma, "%s\n", MA[nrint].VNA);
-	//
-	int Z;
-
-	//strcpy( newvnamechar, MA[nrint].VNA);
-	
-
-	//strcpy(MA[Z].VNA, newvnamechar);
-	//fprintf(fpma, "%s\n", MA[nrint].VNA);
-	strcpy(MA[Z].NA, newnamechar);
-	strcpy(MA[Z].MNR, newmobilchar);
-	strcpy(MA[Z].FNR, newfestnetzchar);
-	strcpy(MA[Z].mail, newmailchar);
-	strcpy(MA[Z].STR, newstrchar);
-	strcpy(MA[Z].POST, newplzchar);
-	strcpy(MA[Z].ORT, newortchar);
-	strcpy(MA[Z].AB, newabteilungchar);
-	strcpy(MA[Z].VG, newabteilungsleiterchar);
-
-	//speichernma(MA);
-	
-	for (Z = 0; Z < 100; Z++) {
-		int a = Z;
-		if (MA[a].NR = nrint) {
-	//	//	fprintf(fpma, "%i\n", nrint);
-	//		
-			strcpy(MA[a].VNA, newvnamechar);
-			fprintf(fpma, "%s\n", MA[a].VNA);
-	
-	//		fprintf(fpma, "%s\n", MA[Z].VNA);
-	//		/*fprintf(fpma, "%s\n", newnamechar);
-	//		fprintf(fpma, "%s\n", newmobilchar);
-	//		fprintf(fpma, "%s\n", newfestnetzchar);
-	//		fprintf(fpma, "%s\n", newmailchar);
-	//		fprintf(fpma, "%s\n", newstrchar);
-	//		fprintf(fpma, "%s\n", newplzchar);
-	//		fprintf(fpma, "%s\n", newortchar);
-	//		fprintf(fpma, "%s\n", newabteilungchar);
-	//		fprintf(fpma, "%s\n", newabteilungsleiterchar);*/
-	//		
+		Mitarb MA[100];
+		readma(MA);
+		char newvnamechar[20];
+		char newnamechar[20];
+		char newmobilchar[20];
+		char newfestnetzchar[20];
+		char newmailchar[20];
+		char newstrchar[20];
+		char newhausnrchar[20];
+		char newplzchar[20];
+		char newortchar[20];
+		char newabteilungchar[20];
+		char newabteilungsleiterchar[20];
 
 
 
+
+		String^ nrstring = textBox1->Text;
+		int nrint = int::Parse(nrstring);
+
+		textBox5->Text = nrstring; // unnötig da x das gleiche ist ?!
+
+
+		// sprintf(char,"%s", systemstring);
+
+
+		sprintf(newvnamechar, "%s", newvname);
+		sprintf(newnamechar, "%s", newname);
+		sprintf(newmobilchar, "%s", newmobil);
+		sprintf(newfestnetzchar, "%s", newfestnetz);
+		sprintf(newmailchar, "%s", newmail);
+		sprintf(newstrchar, "%s", newstr);
+		sprintf(newplzchar, "%s", newplz);
+		sprintf(newortchar, "%s", newort);
+		sprintf(newabteilungchar, "%s", newabteilung);
+		sprintf(newabteilungsleiterchar, "%s", newabteilungsleiter);
+
+
+		FILE *fpma;
+		fpma = fopen("Mitarbeiter.txt", "w");
+		// abfrage korrektes datei öffnen.
+		if (fpma == NULL) {
+			MessageBox::Show("Fehler, Datei konnte nicht geöffnet werden");
+		}
+		else {
+		// statt Z als MA.Nr x genommen. Z wurde nur initalisiert x wurde als bearbeiteter MA festgelegt (Zeile 355)
+
+		strcpy(MA[x].VNA, newvnamechar);
+		strcpy(MA[x].NA, newnamechar);
+		strcpy(MA[x].MNR, newmobilchar);
+		strcpy(MA[x].FNR, newfestnetzchar);
+		strcpy(MA[x].mail, newmailchar);			//nötig? abfrage ob Name bzw. Vorname geändert, wenn ja mail adresse anpassen.
+		strcpy(MA[x].STR, newstrchar);
+		strcpy(MA[x].POST, newplzchar);
+		strcpy(MA[x].ORT, newortchar);
+		strcpy(MA[x].AB, newabteilungchar);
+		strcpy(MA[x].VG, newabteilungsleiterchar);
+		// Eintritsmonat-Jahr fehlen?
+
+		
+			for (int Z = 0; Z < 100; Z++) {
+				if (MA[Z].NR == Z) {
+					// strcpy rausgenommen, da er sonst für jede MA Nummer den geänderten Namen festsetzt
+					// new.... gegen MA[Z].... getauscht da sich new... nicht ändert durch die for schleife
+					// Überflüssige auskommentierte funktionen gelöscht
+					fprintf(fpma, "%i\n", Z);
+					fprintf(fpma, "%s\n", MA[Z].NA);
+					fprintf(fpma, "%s\n", MA[Z].VNA);
+					fprintf(fpma, "%s\n", MA[Z].EM);
+					fprintf(fpma, "%s\n", MA[Z].EJ);
+					fprintf(fpma, "%s\n", MA[Z].STR);
+					fprintf(fpma, "%s\n", MA[Z].HNR);
+					fprintf(fpma, "%s\n", MA[Z].POST);
+					fprintf(fpma, "%s\n", MA[Z].ORT);
+					fprintf(fpma, "%s\n", MA[Z].MNR);
+					fprintf(fpma, "%s\n", MA[Z].FNR);
+					fprintf(fpma, "%s\n", MA[Z].mail);
+					fprintf(fpma, "%s\n", MA[Z].AB);
+					fprintf(fpma, "%s\n", MA[Z].VG);
+
+				}; //Semicolon gesetzt, keine Ahnung ob nötig ^^
+			}
+
+			// Zeilen kommentiert bzw. geändert von Leo: 299;399;418-462
+
+
+			fclose(fpma);
+			/*
+			for (int Z = 0; Z < 100; Z++) {
+				if (Z == x) {
+
+					
+
+					 MA[Z].VNA = newvnamechar;
+				}
+			}
+			
+			speichernma(MA);
+
+				FILE *fpma;
+				int Z;
+
+
+				fpma = fopen("Mitarbeiter.txt", "w");
+				if (fpma == NULL) {
+					printf("Datei konnte nicht ge%cffnet werden", 148);
+				}
+				else {
+
+					for (Z = 1; Z < 102; Z++) {
+
+						if (MA[Z].NR == Z) { //Vorteil fprintf geschriebene Datei auch ohne Programm lesbar
+							fprintf(fpma, "%i\n", Z);
+							fprintf(fpma, "%s\n", MA[Z].NA);
+							fprintf(fpma, "%s\n", newvnamechar);
+							fprintf(fpma, "%s\n", MA[Z].EM);
+							fprintf(fpma, "%s\n", MA[Z].EJ);
+							fprintf(fpma, "%s\n", MA[Z].STR);
+							fprintf(fpma, "%s\n", MA[Z].HNR);
+							fprintf(fpma, "%s\n", MA[Z].POST);
+							fprintf(fpma, "%s\n", MA[Z].ORT);
+							fprintf(fpma, "%s\n", MA[Z].MNR);
+							fprintf(fpma, "%s\n", MA[Z].FNR);
+							fprintf(fpma, "%s\n", MA[Z].mail);
+							fprintf(fpma, "%s\n", MA[Z].AB);
+							fprintf(fpma, "%s\n", MA[Z].VG);
+						}
+
+					}
+				}
+				fclose(fpma);
+
+
+
+
+
+			ändern-knopf
+			gcnew String(MA[i].VNA)
+			Mitarb MA[100];
+			String^ newname = textBox2->Text;
+			speichernma(MA);
+			MA[i].VNA = newname;
+			*/
 		}
 	}
-
-
-	fclose(fpma);
-
-	//for (int Z = 0; Z < 100; Z++) {
-	//	if (Z == x) {
-
-	//		
-
-	//		 MA[Z].VNA = newvnamechar;
-	//	}
-	//}
-
-	//speichernma(MA);
-	
-		//FILE *fpma;
-		//int Z;
-
-
-		//fpma = fopen("Mitarbeiter.txt", "w");
-		//if (fpma == NULL) {
-		//	printf("Datei konnte nicht ge%cffnet werden", 148);
-		//}
-		//else {
-
-		//	for (Z = 1; Z < 102; Z++) {
-
-		//		if (MA[Z].NR == Z) { //Vorteil fprintf geschriebene Datei auch ohne Programm lesbar
-		//			fprintf(fpma, "%i\n", Z);
-		//			fprintf(fpma, "%s\n", MA[Z].NA);
-		//			fprintf(fpma, "%s\n", newvnamechar);
-		//			fprintf(fpma, "%s\n", MA[Z].EM);
-		//			fprintf(fpma, "%s\n", MA[Z].EJ);
-		//			fprintf(fpma, "%s\n", MA[Z].STR);
-		//			fprintf(fpma, "%s\n", MA[Z].HNR);
-		//			fprintf(fpma, "%s\n", MA[Z].POST);
-		//			fprintf(fpma, "%s\n", MA[Z].ORT);
-		//			fprintf(fpma, "%s\n", MA[Z].MNR);
-		//			fprintf(fpma, "%s\n", MA[Z].FNR);
-		//			fprintf(fpma, "%s\n", MA[Z].mail);
-		//			fprintf(fpma, "%s\n", MA[Z].AB);
-		//			fprintf(fpma, "%s\n", MA[Z].VG);
-		//		}
-
-		//	}
-		//}
-		//fclose(fpma);
-	
-
-
-
-
-	//ändern-knopf
-	//gcnew String(MA[i].VNA)
-	//Mitarb MA[100];
-	//String^ newname = textBox2->Text;
-	//speichernma(MA);
-	//MA[i].VNA = newname;
-}
 
 };
 }
