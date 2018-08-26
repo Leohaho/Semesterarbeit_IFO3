@@ -55,7 +55,7 @@ namespace Semesterarbeit_IFO3 {
 	protected:
 
 	private: System::Windows::Forms::Label^  lbl_mitarbeiternummer;
-	private: System::Windows::Forms::TextBox^  txt_mitarbeiternummer;
+
 	private: System::Windows::Forms::Label^  lbl_vorname;
 	private: System::Windows::Forms::TextBox^  txt_vorname;
 	private: System::Windows::Forms::Label^  lbl_name;
@@ -89,7 +89,7 @@ namespace Semesterarbeit_IFO3 {
 	private: System::Windows::Forms::Label^  lbl_abteilungsid;
 	private: System::Windows::Forms::Label^  lbl_abteilungsname;
 	private: System::Windows::Forms::TextBox^  txt_abteilungsname;
-	private: System::Windows::Forms::TextBox^  txt_abteilungsid;
+
 
 
 	private: System::Windows::Forms::Label^  lbl_error_mitarbeiternr;
@@ -100,6 +100,12 @@ namespace Semesterarbeit_IFO3 {
 	private: System::Windows::Forms::Label^  lbl_error_abteilungsname;
 	private: System::Windows::Forms::Label^  lbl_standort;
 	private: System::Windows::Forms::TextBox^  txt_standort;
+	private: System::Windows::Forms::MaskedTextBox^  mtxt_abteilingsid;
+	private: System::Windows::Forms::Label^  lbl_error_mabteilungsid;
+
+
+	private: System::Windows::Forms::MaskedTextBox^  mtxt_mitarbeiternummer;
+	private: System::Windows::Forms::Label^  lbl_error_mmitarbeiternummer;
 
 
 
@@ -127,7 +133,6 @@ namespace Semesterarbeit_IFO3 {
 			this->btn_speichern = (gcnew System::Windows::Forms::Button());
 			this->btn_abbrechen = (gcnew System::Windows::Forms::Button());
 			this->lbl_mitarbeiternummer = (gcnew System::Windows::Forms::Label());
-			this->txt_mitarbeiternummer = (gcnew System::Windows::Forms::TextBox());
 			this->lbl_vorname = (gcnew System::Windows::Forms::Label());
 			this->txt_vorname = (gcnew System::Windows::Forms::TextBox());
 			this->lbl_name = (gcnew System::Windows::Forms::Label());
@@ -157,7 +162,6 @@ namespace Semesterarbeit_IFO3 {
 			this->lbl_abteilungsid = (gcnew System::Windows::Forms::Label());
 			this->lbl_abteilungsname = (gcnew System::Windows::Forms::Label());
 			this->txt_abteilungsname = (gcnew System::Windows::Forms::TextBox());
-			this->txt_abteilungsid = (gcnew System::Windows::Forms::TextBox());
 			this->lbl_error_mitarbeiternr = (gcnew System::Windows::Forms::Label());
 			this->lbl_error_abteilungsid = (gcnew System::Windows::Forms::Label());
 			this->helpProvider1 = (gcnew System::Windows::Forms::HelpProvider());
@@ -166,6 +170,10 @@ namespace Semesterarbeit_IFO3 {
 			this->lbl_error_abteilungsname = (gcnew System::Windows::Forms::Label());
 			this->lbl_standort = (gcnew System::Windows::Forms::Label());
 			this->txt_standort = (gcnew System::Windows::Forms::TextBox());
+			this->mtxt_abteilingsid = (gcnew System::Windows::Forms::MaskedTextBox());
+			this->lbl_error_mabteilungsid = (gcnew System::Windows::Forms::Label());
+			this->mtxt_mitarbeiternummer = (gcnew System::Windows::Forms::MaskedTextBox());
+			this->lbl_error_mmitarbeiternummer = (gcnew System::Windows::Forms::Label());
 			this->SuspendLayout();
 			// 
 			// btn_speichern
@@ -196,14 +204,6 @@ namespace Semesterarbeit_IFO3 {
 			this->lbl_mitarbeiternummer->Size = System::Drawing::Size(93, 13);
 			this->lbl_mitarbeiternummer->TabIndex = 2;
 			this->lbl_mitarbeiternummer->Text = L"Mitarbeiternummer";
-			// 
-			// txt_mitarbeiternummer
-			// 
-			this->txt_mitarbeiternummer->Location = System::Drawing::Point(112, 93);
-			this->txt_mitarbeiternummer->Name = L"txt_mitarbeiternummer";
-			this->txt_mitarbeiternummer->Size = System::Drawing::Size(100, 20);
-			this->txt_mitarbeiternummer->TabIndex = 3;
-			this->txt_mitarbeiternummer->TextChanged += gcnew System::EventHandler(this, &Dateneingabe::txt_mitarbeiternummer_TextChanged);
 			// 
 			// lbl_vorname
 			// 
@@ -463,15 +463,6 @@ namespace Semesterarbeit_IFO3 {
 			this->txt_abteilungsname->TabIndex = 31;
 			this->txt_abteilungsname->TextChanged += gcnew System::EventHandler(this, &Dateneingabe::txt_abteilungsname_TextChanged);
 			// 
-			// txt_abteilungsid
-			// 
-			this->txt_abteilungsid->Location = System::Drawing::Point(112, 67);
-			this->txt_abteilungsid->Name = L"txt_abteilungsid";
-			this->txt_abteilungsid->Size = System::Drawing::Size(100, 20);
-			this->txt_abteilungsid->TabIndex = 32;
-			this->txt_abteilungsid->Visible = false;
-			this->txt_abteilungsid->TextChanged += gcnew System::EventHandler(this, &Dateneingabe::txt_abteilungsid_TextChanged);
-			// 
 			// lbl_error_mitarbeiternr
 			// 
 			this->lbl_error_mitarbeiternr->AutoSize = true;
@@ -549,11 +540,56 @@ namespace Semesterarbeit_IFO3 {
 			this->txt_standort->TabIndex = 41;
 			this->txt_standort->Visible = false;
 			// 
+			// mtxt_abteilingsid
+			// 
+			this->mtxt_abteilingsid->Location = System::Drawing::Point(112, 68);
+			this->mtxt_abteilingsid->Mask = L"999";
+			this->mtxt_abteilingsid->Name = L"mtxt_abteilingsid";
+			this->mtxt_abteilingsid->Size = System::Drawing::Size(100, 20);
+			this->mtxt_abteilingsid->TabIndex = 42;
+			this->mtxt_abteilingsid->Visible = false;
+			this->mtxt_abteilingsid->TextChanged += gcnew System::EventHandler(this, &Dateneingabe::mtxt_abteilingsid_TextChanged);
+			// 
+			// lbl_error_mabteilungsid
+			// 
+			this->lbl_error_mabteilungsid->AutoSize = true;
+			this->lbl_error_mabteilungsid->ForeColor = System::Drawing::Color::Red;
+			this->lbl_error_mabteilungsid->Location = System::Drawing::Point(416, 71);
+			this->lbl_error_mabteilungsid->Name = L"lbl_error_mabteilungsid";
+			this->lbl_error_mabteilungsid->Size = System::Drawing::Size(140, 13);
+			this->lbl_error_mabteilungsid->TabIndex = 43;
+			this->lbl_error_mabteilungsid->Text = L"Nur Zahlen zwischen 1-100!";
+			this->lbl_error_mabteilungsid->Visible = false;
+			// 
+			// mtxt_mitarbeiternummer
+			// 
+			this->mtxt_mitarbeiternummer->Location = System::Drawing::Point(112, 94);
+			this->mtxt_mitarbeiternummer->Mask = L"999";
+			this->mtxt_mitarbeiternummer->Name = L"mtxt_mitarbeiternummer";
+			this->mtxt_mitarbeiternummer->Size = System::Drawing::Size(100, 20);
+			this->mtxt_mitarbeiternummer->TabIndex = 44;
+			this->mtxt_mitarbeiternummer->TextChanged += gcnew System::EventHandler(this, &Dateneingabe::mtxt_mitarbeiternummer_TextChanged);
+			// 
+			// lbl_error_mmitarbeiternummer
+			// 
+			this->lbl_error_mmitarbeiternummer->AutoSize = true;
+			this->lbl_error_mmitarbeiternummer->ForeColor = System::Drawing::Color::Red;
+			this->lbl_error_mmitarbeiternummer->Location = System::Drawing::Point(416, 99);
+			this->lbl_error_mmitarbeiternummer->Name = L"lbl_error_mmitarbeiternummer";
+			this->lbl_error_mmitarbeiternummer->Size = System::Drawing::Size(140, 13);
+			this->lbl_error_mmitarbeiternummer->TabIndex = 45;
+			this->lbl_error_mmitarbeiternummer->Text = L"Nur Zahlen zwischen 1-100!";
+			this->lbl_error_mmitarbeiternummer->Visible = false;
+			// 
 			// Dateneingabe
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(595, 471);
+			this->Controls->Add(this->lbl_error_mmitarbeiternummer);
+			this->Controls->Add(this->mtxt_mitarbeiternummer);
+			this->Controls->Add(this->lbl_error_mabteilungsid);
+			this->Controls->Add(this->mtxt_abteilingsid);
 			this->Controls->Add(this->txt_standort);
 			this->Controls->Add(this->lbl_standort);
 			this->Controls->Add(this->lbl_error_abteilungsname);
@@ -561,7 +597,6 @@ namespace Semesterarbeit_IFO3 {
 			this->Controls->Add(this->lbl_error_abteilung);
 			this->Controls->Add(this->lbl_error_abteilungsid);
 			this->Controls->Add(this->lbl_error_mitarbeiternr);
-			this->Controls->Add(this->txt_abteilungsid);
 			this->Controls->Add(this->txt_abteilungsname);
 			this->Controls->Add(this->lbl_abteilungsname);
 			this->Controls->Add(this->lbl_abteilungsid);
@@ -590,7 +625,6 @@ namespace Semesterarbeit_IFO3 {
 			this->Controls->Add(this->lbl_name);
 			this->Controls->Add(this->txt_vorname);
 			this->Controls->Add(this->lbl_vorname);
-			this->Controls->Add(this->txt_mitarbeiternummer);
 			this->Controls->Add(this->lbl_mitarbeiternummer);
 			this->Controls->Add(this->btn_abbrechen);
 			this->Controls->Add(this->btn_speichern);
@@ -606,6 +640,8 @@ namespace Semesterarbeit_IFO3 {
 	private: System::Void Dateneingabe_Load(System::Object^  sender, System::EventArgs^  e) {
 
 		read_eingabe();
+		mtxt_abteilingsid->HidePromptOnLeave = true;
+		mtxt_mitarbeiternummer->HidePromptOnLeave = true;
 	}
 	//Beim laden des Fenster werden die Mitarbeiterdaten aus der Textdatei in die Variablen geladen
 	private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
@@ -660,14 +696,14 @@ namespace Semesterarbeit_IFO3 {
 
 		if (rdo_mitarbeiter->Checked==true)//Mitarbeiter speichern
 		{
-			if (txt_mitarbeiternummer->Text == leer || txt_abteilungsname->Text == leer || txt_vorname->Text == leer || txt_name->Text == leer || txt_strasse->Text == leer || txt_hausnummer->Text == leer || txt_postleitzahl->Text == leer || txt_wohnort->Text == leer || txt_festnetznummer->Text == leer || txt_mobilnummer->Text == leer || cbx_monat->Text == leer || cbx_jahr->Text == leer)
+			if (mtxt_mitarbeiternummer->Text == leer || txt_abteilungsname->Text == leer || txt_vorname->Text == leer || txt_name->Text == leer || txt_strasse->Text == leer || txt_hausnummer->Text == leer || txt_postleitzahl->Text == leer || txt_wohnort->Text == leer || txt_festnetznummer->Text == leer || txt_mobilnummer->Text == leer || cbx_monat->Text == leer || cbx_jahr->Text == leer)
 			{
 				MessageBox::Show("Bitte füllen sie den Datensatz komplett aus!");
 				felderlöschen = 1;
 			}
 			else
 			{
-				String ^nr = txt_mitarbeiternummer->Text;
+				String ^nr = mtxt_mitarbeiternummer->Text;
 				char text[20];
 				sprintf(text, "%s", nr);
 				speichern_zähler = atoi(text);
@@ -862,7 +898,7 @@ namespace Semesterarbeit_IFO3 {
 
 		if (rdo_abteilung->Checked == true)//Abteilung speichern
 		{
-			if (txt_abteilungsid->Text == leer || txt_abteilungsname->Text == leer || txt_strasse->Text == leer || txt_hausnummer->Text == leer || txt_postleitzahl->Text == leer || txt_wohnort->Text == leer || txt_standort->Text == leer)
+			if (mtxt_abteilingsid->Text == leer || txt_abteilungsname->Text == leer || txt_strasse->Text == leer || txt_hausnummer->Text == leer || txt_postleitzahl->Text == leer || txt_wohnort->Text == leer || txt_standort->Text == leer)
 			{
 				MessageBox::Show("Bitte füllen sie den Datensatz komplett aus!");
 				felderlöschen = 1;
@@ -889,7 +925,7 @@ namespace Semesterarbeit_IFO3 {
 				ab = txt_abteilungsname->Text;
 				sprintf(speichern_ab, "%s", ab);
 
-				String ^id = txt_abteilungsid->Text;
+				String ^id = mtxt_abteilingsid->Text;
 				char text[20];
 				sprintf(text, "%s", id);
 				speichern_zähler = atoi(text);
@@ -924,8 +960,8 @@ namespace Semesterarbeit_IFO3 {
 		
 		if (felderlöschen==0)//Eingabefelder bereinigen
 		{
-			txt_abteilungsid->Text = entleeren;
-			txt_mitarbeiternummer->Text = entleeren;
+			mtxt_abteilingsid->Text = entleeren;
+			mtxt_mitarbeiternummer->Text = entleeren;
 			txt_abteilungsname->Text = entleeren;
 			txt_standort->Text = entleeren;
 			txt_vorname->Text = entleeren;
@@ -950,12 +986,12 @@ namespace Semesterarbeit_IFO3 {
 	private: System::Void rdo_mitarbeiter_CheckedChanged(System::Object^  sender, System::EventArgs^  e) {
 
 		lbl_abteilungsid->Visible = false;
-		txt_abteilungsid->Visible = false;
+		mtxt_abteilingsid->Visible = false;
 		lbl_standort->Visible = false;
 		txt_standort->Visible = false;
 
 		lbl_mitarbeiternummer->Visible = true;
-		txt_mitarbeiternummer->Visible = true;
+		mtxt_mitarbeiternummer->Visible = true;
 		lbl_eintrittsdatum->Visible = true;
 		lbl_monat->Visible = true;
 		lbl_jahr->Visible = true;
@@ -973,8 +1009,8 @@ namespace Semesterarbeit_IFO3 {
 		//Eingabefelder bereinigen
 		String ^entleeren = "";
 
-		txt_abteilungsid->Text = entleeren;
-		txt_mitarbeiternummer->Text = entleeren;
+		mtxt_abteilingsid->Text = entleeren;
+		mtxt_mitarbeiternummer->Text = entleeren;
 		txt_abteilungsname->Text = entleeren;
 		txt_standort->Text = entleeren;
 		txt_vorname->Text = entleeren;
@@ -993,9 +1029,9 @@ namespace Semesterarbeit_IFO3 {
 	private: System::Void rdo_abteilungsleiter_CheckedChanged(System::Object^  sender, System::EventArgs^  e) {
 
 		lbl_abteilungsid->Visible = false;
-		txt_abteilungsid->Visible = false;
+		mtxt_abteilingsid->Visible = false;
 		lbl_mitarbeiternummer->Visible = false;
-		txt_mitarbeiternummer->Visible = false;
+		mtxt_mitarbeiternummer->Visible = false;
 		lbl_eintrittsdatum->Visible = false;
 		lbl_monat->Visible = false;
 		lbl_jahr->Visible = false;
@@ -1016,8 +1052,8 @@ namespace Semesterarbeit_IFO3 {
 		//Eingabefelder bereinigen
 		String ^entleeren = "";
 
-		txt_abteilungsid->Text = entleeren;
-		txt_mitarbeiternummer->Text = entleeren;
+		mtxt_abteilingsid->Text = entleeren;
+		mtxt_mitarbeiternummer->Text = entleeren;
 		txt_abteilungsname->Text = entleeren;
 		txt_standort->Text = entleeren;
 		txt_vorname->Text = entleeren;
@@ -1040,7 +1076,7 @@ namespace Semesterarbeit_IFO3 {
 		lbl_name->Visible = false;
 		txt_name->Visible = false;
 		lbl_mitarbeiternummer->Visible = false;
-		txt_mitarbeiternummer->Visible = false;
+		mtxt_mitarbeiternummer->Visible = false;
 		lbl_eintrittsdatum->Visible = false;
 		lbl_monat->Visible = false;
 		lbl_jahr->Visible = false;
@@ -1052,15 +1088,15 @@ namespace Semesterarbeit_IFO3 {
 		txt_mobilnummer->Visible = false;
 
 		lbl_abteilungsid->Visible = true;
-		txt_abteilungsid->Visible = true;
+		mtxt_abteilingsid->Visible = true;
 		lbl_standort->Visible = true;
 		txt_standort->Visible = true;
 
 		//Eingabefelder bereinigen
 		String ^entleeren = "";
 
-		txt_abteilungsid->Text = entleeren;
-		txt_mitarbeiternummer->Text = entleeren;
+		mtxt_abteilingsid->Text = entleeren;
+		mtxt_mitarbeiternummer->Text = entleeren;
 		txt_abteilungsname->Text = entleeren;
 		txt_standort->Text = entleeren;
 		txt_vorname->Text = entleeren;
@@ -1076,75 +1112,6 @@ namespace Semesterarbeit_IFO3 {
 		
 	}
 	//Sichtbarkeit der Felder bei Abteilungen
-	private: System::Void txt_mitarbeiternummer_TextChanged(System::Object^  sender, System::EventArgs^  e) {
-
-		char laden_na[20];
-		char laden_vna[20];
-		char laden_em[20];
-		char laden_ej[20];
-		char laden_str[20];
-		char laden_hnr[20];
-		char laden_post[20];
-		char laden_ort[20];
-		char laden_mnr[20];
-		char laden_fnr[20];
-		char laden_mail[20];
-		char laden_ab[20];
-		char laden_vg[20];
-		char laden_nr[20];
-
-		String ^mitarbeiternummer = txt_mitarbeiternummer->Text;
-		char text[20];
-		sprintf(text, "%s", mitarbeiternummer);
-		int zähler = atoi(text);
-
-		datensatz_laden_mitarbeiter(laden_na, laden_vna, laden_em, laden_ej, laden_str, laden_hnr, laden_post, laden_ort, laden_mnr, laden_fnr, laden_mail, laden_ab, laden_vg, laden_nr, zähler);
-
-		if (*laden_na != '\0')
-		{
-			lbl_error_mitarbeiternr->Visible = true;
-			btn_speichern->Visible = false;
-		}
-		if (*laden_na == '\0')
-		{
-			lbl_error_mitarbeiternr->Visible = false;
-			btn_speichern->Visible = true;
-		}
-	}
-	//Prüfung ob Mitarbeiternummer schon vorhanden ist
-	private: System::Void txt_abteilungsid_TextChanged(System::Object^  sender, System::EventArgs^  e) {
-
-		char laden_na[20];
-		char laden_str[20];
-		char laden_hnr[20];
-		char laden_post[20];
-		char laden_ort[20];
-		char laden_mail[20];
-		char laden_abl[20];
-		char laden_nr[20];
-		char laden_st[20];
-
-		String ^abteilungsid = txt_abteilungsid->Text;
-		char text[20];
-		sprintf(text, "%s", abteilungsid);
-		int laden_zähler = atoi(text);
-
-		datensatz_laden_abteilung(laden_na, laden_str, laden_hnr, laden_post, laden_ort, laden_abl, laden_nr, laden_st, laden_zähler);
-
-		if (*laden_na != '\0')
-		{
-			lbl_error_abteilungsid->Visible = true;
-			btn_speichern->Visible = false;
-
-		}
-		if (*laden_na == '\0')
-		{
-			lbl_error_abteilungsid->Visible = false;
-			btn_speichern->Visible = true;
-		}
-
-	}
-	//Prüfung ob Abteilungs ID schon vorhanden ist
 	private: System::Void txt_abteilungsname_TextChanged(System::Object^  sender, System::EventArgs^  e) {
 
 		char laden_na[20];
@@ -1269,6 +1236,96 @@ namespace Semesterarbeit_IFO3 {
 		}
 	}
 	//Prüfung ob Abteilung vorhanden ist bzw Abteilungsleiter besetzt ist
+	private: System::Void mtxt_abteilingsid_TextChanged(System::Object^  sender, System::EventArgs^  e) {
+
+		char laden_na[20];
+		char laden_str[20];
+		char laden_hnr[20];
+		char laden_post[20];
+		char laden_ort[20];
+		char laden_mail[20];
+		char laden_abl[20];
+		char laden_nr[20];
+		char laden_st[20];
+
+		String ^abteilungsid = mtxt_abteilingsid->Text;
+		char text[20];
+		sprintf(text, "%s", abteilungsid);
+		int laden_zähler = atoi(text);
+
+		if (laden_zähler>100)//Abfrage ob richtiger Zahlenbereich eingegeben wurde 1-100
+		{
+			lbl_error_mabteilungsid->Visible = true;
+			btn_speichern->Visible = false;
+		}
+		if (laden_zähler<=100)
+		{
+			lbl_error_mabteilungsid->Visible = false;
+			btn_speichern->Visible = true;
+		}
+
+		datensatz_laden_abteilung(laden_na, laden_str, laden_hnr, laden_post, laden_ort, laden_abl, laden_nr, laden_st, laden_zähler);
+
+		if (*laden_na != '\0')//Abfrage ob Abteilungs ID belegt ist
+		{
+			lbl_error_abteilungsid->Visible = true;
+			btn_speichern->Visible = false;
+
+		}
+		if (*laden_na == '\0')
+		{
+			lbl_error_abteilungsid->Visible = false;
+			btn_speichern->Visible = true;
+		}
+	}
+	//Prüfung ob die Abteilungs ID schon belegt ist und obn sie sich im richtigen Zahlenbereich befindet
+	private: System::Void mtxt_mitarbeiternummer_TextChanged(System::Object^  sender, System::EventArgs^  e) {
+		
+		char laden_na[20];
+		char laden_vna[20];
+		char laden_em[20];
+		char laden_ej[20];
+		char laden_str[20];
+		char laden_hnr[20];
+		char laden_post[20];
+		char laden_ort[20];
+		char laden_mnr[20];
+		char laden_fnr[20];
+		char laden_mail[20];
+		char laden_ab[20];
+		char laden_vg[20];
+		char laden_nr[20];
+
+		String ^mitarbeiternummer = mtxt_mitarbeiternummer->Text;
+		char text[20];
+		sprintf(text, "%s", mitarbeiternummer);
+		int zähler = atoi(text);
+
+		if (zähler>100)//Abfrage ob richtiger Zahlenbereich eingegeben wurde 1-100
+		{
+			lbl_error_mmitarbeiternummer->Visible = true;
+			btn_speichern->Visible = false;
+		}
+		if (zähler <= 100)
+		{
+			lbl_error_mmitarbeiternummer->Visible = false;
+			btn_speichern->Visible = true;
+		}
+
+		datensatz_laden_mitarbeiter(laden_na, laden_vna, laden_em, laden_ej, laden_str, laden_hnr, laden_post, laden_ort, laden_mnr, laden_fnr, laden_mail, laden_ab, laden_vg, laden_nr, zähler);
+
+		if (*laden_na != '\0')//Abfrage ob Mitarbeiternummer belegt ist
+		{
+			lbl_error_mitarbeiternr->Visible = true;
+			btn_speichern->Visible = false;
+		}
+		if (*laden_na == '\0')
+		{
+			lbl_error_mitarbeiternr->Visible = false;
+			btn_speichern->Visible = true;
+		}
+
+	}
 };
 }
 
