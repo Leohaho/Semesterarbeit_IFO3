@@ -113,7 +113,7 @@ namespace Semesterarbeit_IFO3 {
 			// 
 			// button1
 			// 
-			this->button1->Location = System::Drawing::Point(841, 86);
+			this->button1->Location = System::Drawing::Point(985, 81);
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(87, 23);
 			this->button1->TabIndex = 0;
@@ -123,7 +123,8 @@ namespace Semesterarbeit_IFO3 {
 			// 
 			// button2
 			// 
-			this->button2->Location = System::Drawing::Point(841, 38);
+			this->button2->Enabled = false;
+			this->button2->Location = System::Drawing::Point(985, 33);
 			this->button2->Name = L"button2";
 			this->button2->Size = System::Drawing::Size(87, 23);
 			this->button2->TabIndex = 1;
@@ -153,11 +154,10 @@ namespace Semesterarbeit_IFO3 {
 			this->textBox2->Size = System::Drawing::Size(100, 22);
 			this->textBox2->TabIndex = 5;
 			this->textBox2->Visible = false;
-			this->textBox2->Enter += gcnew System::EventHandler(this, &Datensuchen::textBox2_Enter);
 			// 
 			// button3
 			// 
-			this->button3->Location = System::Drawing::Point(841, 136);
+			this->button3->Location = System::Drawing::Point(985, 131);
 			this->button3->Name = L"button3";
 			this->button3->Size = System::Drawing::Size(87, 23);
 			this->button3->TabIndex = 6;
@@ -176,7 +176,7 @@ namespace Semesterarbeit_IFO3 {
 			this->dataGridView1->Location = System::Drawing::Point(40, 182);
 			this->dataGridView1->Name = L"dataGridView1";
 			this->dataGridView1->RowTemplate->Height = 24;
-			this->dataGridView1->Size = System::Drawing::Size(888, 244);
+			this->dataGridView1->Size = System::Drawing::Size(1032, 244);
 			this->dataGridView1->TabIndex = 8;
 			// 
 			// ma_id
@@ -255,14 +255,13 @@ namespace Semesterarbeit_IFO3 {
 			this->label1->AutoSize = true;
 			this->label1->Location = System::Drawing::Point(307, 38);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(46, 17);
+			this->label1->Size = System::Drawing::Size(0, 17);
 			this->label1->TabIndex = 11;
-			this->label1->Text = L"label1";
 			// 
 			// comboBox_Abteilung
 			// 
 			this->comboBox_Abteilung->FormattingEnabled = true;
-			this->comboBox_Abteilung->Location = System::Drawing::Point(372, 98);
+			this->comboBox_Abteilung->Location = System::Drawing::Point(292, 102);
 			this->comboBox_Abteilung->Name = L"comboBox_Abteilung";
 			this->comboBox_Abteilung->Size = System::Drawing::Size(121, 24);
 			this->comboBox_Abteilung->TabIndex = 12;
@@ -272,7 +271,7 @@ namespace Semesterarbeit_IFO3 {
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(990, 460);
+			this->ClientSize = System::Drawing::Size(1109, 460);
 			this->Controls->Add(this->comboBox_Abteilung);
 			this->Controls->Add(this->label1);
 			this->Controls->Add(this->dataGridView1);
@@ -292,32 +291,28 @@ namespace Semesterarbeit_IFO3 {
 
 		
 #pragma endregion
+
+	//############# BUTTON Schließen #############
 	private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
 		this->Close();
-		
-		//Close();
-	}
-	private: System::Void Datensuchen_Load(System::Object^  sender, System::EventArgs^  e) {
-		
 	}
 
-	//Suchenbutton
+	//############# BUTTON Suchen #############
 	private: System::Void button2_Click(System::Object^  sender, System::EventArgs^  e) {
 		
 		Mitarb MA2[100];
 		int suchID = comboBox1->SelectedIndex;
+		int erfolg = 1;
+		char selected[20];
 		int laenge;
 		String^ sTextBoxText;
 		char cSearchValue[20];
 		char cKontrolle[20];
 		int i, z;
 
-		label1->Text = textBox2->Text;
 		sTextBoxText = textBox2->Text;
 		laenge = sTextBoxText->Length;
 
-
-		//test = textBox2->Text->ToString();
 		for (int z = 0; z < 100; z++)
 			strcpy(MA2[z].VNA, "XYZ");
 
@@ -328,8 +323,8 @@ namespace Semesterarbeit_IFO3 {
 
 		switch (suchID)
 		{
-		case 0: //Vorname
-			label1->Text = "0";
+		case 0: //############# Vorname BEGIN #################
+			//label1->Text = "0";
 			textBox2->Visible = true;
 
 			sprintf(cSearchValue, "%s", textBox2->Text);
@@ -356,9 +351,9 @@ namespace Semesterarbeit_IFO3 {
 			}
 
 			break;
-		case 1: //Nachname
-			label1->Text = "1";
-			
+			//################### Vorname ENDE #################
+
+		case 1: //################### Nachname BEGIN #################
 			sprintf(cSearchValue, "%s", textBox2->Text);
 
 			for (z = 0; z < strlen(cSearchValue); z++) //Jedes Zeichen der Eingabe von Kleinbuchstabe nach Großbuchstabe
@@ -383,26 +378,40 @@ namespace Semesterarbeit_IFO3 {
 			}
 
 			break;
-		case 2: //Mitarbeiternummer
-			label1->Text = "2";
+			//################### Nachname ENDE #################
+
+		case 2: //################### Mitarbeiternummer BEGIN #################
+			label1->Text = "";
 			//##################################### Fehler abfangen, wenn keine Zeichen in Textbox und wenn Buchstaben in Textbox
-			FillData(MA2, int::Parse(sTextBoxText));
-			break;
-		case 3: //Abteilung
-			label1->Text = "3";
-						
-
 			sprintf(cSearchValue, "%s", textBox2->Text);
+			laenge = strlen(cSearchValue);
+			i = 0;
+			do //Jede Stelle von String durchgehen, bis ein Buchstabe gefunden wurde.
+			{
+				if (isdigit(cSearchValue[i]) == 0) //Ein Buchstabe gefunden
+					erfolg = 0;
+				i++;
+			} while (i < strlen(cSearchValue) && erfolg == 1);
 
-			for (z = 0; z < strlen(cSearchValue); z++) //Jedes Zeichen der Eingabe von Kleinbuchstabe nach Großbuchstabe
-				if (cSearchValue[z] >= 'a' && cSearchValue[z] <= 'z')
-					cSearchValue[z] = toupper(cSearchValue[z]);
+			if (erfolg)
+				FillData(MA2, int::Parse(sTextBoxText));
+			else
+				label1->Text = "Bitte geben Sie eine Zahl ein.";
+			break;
+			//################### Mitarbeiternummer ENDE #################
 
+		case 3: //################### Abteilung BEGIN #################
+			//Combobox auslesen und auf Großbuchstaben umwandeln
+			sprintf(selected, "%s", comboBox_Abteilung->SelectedItem->ToString());
+			//label1->Text = comboBox_Abteilung->SelectedItem->ToString();
+			for (z = 0; z < strlen(selected); z++) //Jedes Zeichen der Eingabe von Kleinbuchstabe nach Großbuchstabe
+				if (selected[z] >= 'a' && selected[z] <= 'z')
+					selected[z] = toupper(selected[z]);
+
+			//Jeden MA auf Großbuchstaben umwandeln und auf die entsprechenden Wert abgleichen
 			for (i = 0; i < 100; i++)
 			{
-				
 				strcpy(cKontrolle, MA2[i].AB);
-
 				for (int z = 0; z < strlen(cKontrolle); z++) //Jedes Zeichen der Eingabe von Kleinbuchstabe nach Großbuchstabe
 					if (cKontrolle[z] >= 'a' && cKontrolle[z] <= 'z')
 						cKontrolle[z] = toupper(cKontrolle[z]);
@@ -411,25 +420,21 @@ namespace Semesterarbeit_IFO3 {
 					if (cSearchValue[z] >= 'a' && cSearchValue[z] <= 'z')
 						cSearchValue[z] = toupper(cSearchValue[z]);
 
-				if (strstr(cKontrolle, cSearchValue) != NULL)
+				if (strstr(cKontrolle, selected) != NULL)
 					FillData(MA2, i);
 			}
-
 			break;
-		case 4: //Abteilungsleiter
-			label1->Text = "4";
-
-			sprintf(cSearchValue, "%s", textBox2->Text);
-
-			for (z = 0; z < strlen(cSearchValue); z++) //Jedes Zeichen der Eingabe von Kleinbuchstabe nach Großbuchstabe
-				if (cSearchValue[z] >= 'a' && cSearchValue[z] <= 'z')
-					cSearchValue[z] = toupper(cSearchValue[z]);
+			//################### Abteilung ENDE #################
+			
+		case 4: //################### Abteilungsleiter BEGIN ###################
+			sprintf(selected, "%s", comboBox_Abteilung->SelectedItem->ToString());
+			for (z = 0; z < strlen(selected); z++) //Jedes Zeichen der Eingabe von Kleinbuchstabe nach Großbuchstabe
+				if (selected[z] >= 'a' && selected[z] <= 'z')
+					selected[z] = toupper(selected[z]);
 
 			for (i = 0; i < 100; i++)
 			{
-
 				strcpy(cKontrolle, MA2[i].VG);
-
 				for (int z = 0; z < strlen(cKontrolle); z++) //Jedes Zeichen der Eingabe von Kleinbuchstabe nach Großbuchstabe
 					if (cKontrolle[z] >= 'a' && cKontrolle[z] <= 'z')
 						cKontrolle[z] = toupper(cKontrolle[z]);
@@ -438,12 +443,11 @@ namespace Semesterarbeit_IFO3 {
 					if (cSearchValue[z] >= 'a' && cSearchValue[z] <= 'z')
 						cSearchValue[z] = toupper(cSearchValue[z]);
 
-				if (strstr(cKontrolle, cSearchValue) != NULL)
+				if (strstr(cKontrolle, selected) != NULL)
 					FillData(MA2, i);
 			}
-
-
 			break;
+			//################### Abteilungsleiter ENDE ###################
 		default:
 			break;
 		}
@@ -490,55 +494,57 @@ namespace Semesterarbeit_IFO3 {
 		ABT AT[100]; //Abteilung
 
 		int i;
+		for (i = 0; i < 100; i++)
+		{
+			strcpy(AL[i].VNA, "XYZ");
+			strcpy(AL[i].NA, "XYZ");
+			strcpy(AT[i].FA, "XYZ");
+			strcpy(MA[i].VNA, "XYZ");
+			strcpy(AL[i].NA, "XYZ");
+		}
+
 		readma(MA);
 		readal(AT, AL);
-		emptyATAL();
+		//emptyATAL();
 		for (i = 0; i < 100; i++)
 			setATAL(AT[i], i, AL[i], i);
 	};
 
 
-	private: System::Void textBox2_Enter(System::Object^  sender, System::EventArgs^  e) {
-		button2->Enabled = true;
+	//############ Button Bearbeiten ############
+	private: System::Void button3_Click(System::Object^  sender, System::EventArgs^  e) {
+		int id;
+		label1->Text = dataGridView1->CurrentRow->Cells[0]->Value->ToString();
+		id = int::Parse(dataGridView1->CurrentRow->Cells[0]->Value->ToString());
 	}
 
-		 //Button Bearbeiten
-	private: System::Void button3_Click(System::Object^  sender, System::EventArgs^  e) {
-		label1->Text = comboBox1->Text;
-		label1->Text = comboBox1->SelectedIndex.ToString();
-	}
+	//############ Sichtbarkeit der Suchfelder ############
 	private: System::Void comboBox1_TextChanged(System::Object^  sender, System::EventArgs^  e) {
 		int suchID = comboBox1->SelectedIndex;
-
+		button2->Enabled = true;
 		switch (suchID)
 		{
 		case 0: //Vorname
-			label1->Text = "0";
 			textBox2->Visible = true;
 			comboBox_Abteilung->Visible = false;
 			break;
 		case 1: //Nachname
-			label1->Text = "1";
 			textBox2->Visible = true;
 			comboBox_Abteilung->Visible = false;
 			break;
 		case 2: //Mitarbeiternummer
-			label1->Text = "2";
 			textBox2->Visible = true;
 			comboBox_Abteilung->Visible = false;
 			break;
 		case 3: //Abteilung
-			label1->Text = "3";
 			dropItemsComboBox();
 			textBox2->Visible = false;
 			comboBox_Abteilung->Visible = true;
-//			comboBox_Abteilung->Items->Add()
 			break;
 		case 4: //Abteilungsleiter
-			label1->Text = "4";
-
+			dropItemsComboBox();
 			textBox2->Visible = false;
-			comboBox_Abteilung->Visible = false;
+			comboBox_Abteilung->Visible = true;
 			break;
 		default:
 			break;
@@ -550,45 +556,45 @@ namespace Semesterarbeit_IFO3 {
 		comboBox_Abteilung->Items->Clear();
 	}
 	private: System::Void comboBox1_SelectedIndexChanged(System::Object^  sender, System::EventArgs^  e) {
+		int i = 0;
 		ABL abteilungsleiter[100];
 		ABT abteilung[100];
 
 		for (int i = 0; i < 100; i++)
 		{
+			
 			strcpy(abteilung[i].FA, "XYZ");
 			strcpy(abteilungsleiter[i].NA, "XYZ");
+			abteilung[i] = getAT(i);
+			abteilungsleiter[i] = getAL(i);
 		}
-		readal(abteilung, abteilungsleiter);
-
 
 		if (comboBox1->SelectedIndex == 3) // Abteilung
 		{
-			//emptyDropDown();
-			//emptyATAL();
-			for (int i = 0; i < 100; i++)
+			for (i = 0; i < 100; i++)
 			{
-				//abteilung[i] = getAT(i);
-				
-				if (strstr(abteilung[i].FA, "XYZ") != NULL)
-				{
 					String^ name = gcnew String(abteilung[i].FA);
-					comboBox_Abteilung->Items->Add(name);
-				}
-				else
-					label1->Text = "TestJuhu";
+
+					if (strcmp(abteilung[i].FA, "XYZ") != 0)
+						comboBox_Abteilung->Items->Add(name);
 			}
 		}
 		else if (comboBox1->SelectedIndex == 4) // Abteilungsleiter
 		{
-			comboBox_Abteilung->Items->Add("");
+			for (i = 0; i < 100; i++)
+			{
+				String^ name = gcnew String(abteilungsleiter[i].NA);
+
+				if (strcmp(abteilungsleiter[i].NA, "XYZ") != 0)
+					comboBox_Abteilung->Items->Add(name);
+			}
+
 		}
 	}
 	
 	private: System::Void Datensuchen_Load_1(System::Object^  sender, System::EventArgs^  e) {
 		emptyATAL();
 		initData();
-	
-		label1->Text = "erfolgreich geladen";
 	}
 
 	private: void emptyDropDown()
