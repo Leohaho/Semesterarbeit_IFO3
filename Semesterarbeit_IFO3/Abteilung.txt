@@ -1,4 +1,4 @@
-1
+﻿1
 kbe
 standort
 straße
@@ -88,8 +88,7 @@ nicht besetzt
 0
 0
 0
-22886
-Humbug
+7
 finanzen
 EG
 rqweqwe

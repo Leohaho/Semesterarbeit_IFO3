@@ -39,6 +39,9 @@
     <ClCompile Include="Hauptmenü_alt.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
+    <ClCompile Include="suchen.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MyForm.h">
@@ -66,6 +69,9 @@
       <Filter>Headerdateien</Filter>
     </ClInclude>
     <ClInclude Include="Abfragelöschen.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="suchen.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
   </ItemGroup>
