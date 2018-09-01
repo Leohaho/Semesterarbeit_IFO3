@@ -1,20 +1,19 @@
 #pragma once
 #ifndef MyForm_h
 #define MyForm_h
-#include "Daten.h"
+
 #include "Dateneingabe.h"
-#include "Datenändern.h"
+#include "DatenÃ¤ndern.h"
 #include "Datensuchen.h"
 #include "Datenausgabe.h"
-#include "Datenlöschen.h"
-//#include "Header.h"
+#include "DatenlÃ¶schen.h"
+
+#include "GlobalClass.h"
 
 
-ABL AL[100];
-ABT AT[100];
-Mitarb MA[100];
-int save;
-int test = 1;
+
+
+
 
 namespace Semesterarbeit_IFO3 {
 
@@ -24,9 +23,10 @@ namespace Semesterarbeit_IFO3 {
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
 	using namespace System::Drawing;
+	using namespace Globals;
 
 	/// <summary>
-	/// Zusammenfassung für MyForm
+	/// Zusammenfassung fÃ¼r MyForm
 	/// </summary>
 	public ref class MyForm : public System::Windows::Forms::Form
 	{
@@ -36,7 +36,7 @@ namespace Semesterarbeit_IFO3 {
 			int getTest();
 			InitializeComponent();
 			//
-			//TODO: Konstruktorcode hier hinzufügen.
+			//TODO: Konstruktorcode hier hinzufÃ¼gen.
 			//
 		}
 
@@ -58,6 +58,9 @@ namespace Semesterarbeit_IFO3 {
 	private: System::Windows::Forms::Button^  button5;
 	private: System::Windows::Forms::Button^  button6;
 	private: System::Windows::Forms::Button^  button7;
+
+
+
 	protected:
 
 	private:
@@ -68,8 +71,8 @@ namespace Semesterarbeit_IFO3 {
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
-		/// Erforderliche Methode für die Designerunterstützung.
-		/// Der Inhalt der Methode darf nicht mit dem Code-Editor geändert werden.
+		/// Erforderliche Methode fÃ¼r die DesignerunterstÃ¼tzung.
+		/// Der Inhalt der Methode darf nicht mit dem Code-Editor geÃ¤ndert werden.
 		/// </summary>
 		void InitializeComponent(void)
 		{
@@ -98,7 +101,7 @@ namespace Semesterarbeit_IFO3 {
 			this->button2->Name = L"button2";
 			this->button2->Size = System::Drawing::Size(145, 30);
 			this->button2->TabIndex = 1;
-			this->button2->Text = L"Datensatz ändern";
+			this->button2->Text = L"Datensatz Ã¤ndern";
 			this->button2->UseVisualStyleBackColor = true;
 			this->button2->Click += gcnew System::EventHandler(this, &MyForm::button2_Click);
 			// 
@@ -118,7 +121,7 @@ namespace Semesterarbeit_IFO3 {
 			this->button4->Name = L"button4";
 			this->button4->Size = System::Drawing::Size(145, 30);
 			this->button4->TabIndex = 3;
-			this->button4->Text = L"Alle Datensätze ausgeben";
+			this->button4->Text = L"Alle DatensÃ¤tze ausgeben";
 			this->button4->UseVisualStyleBackColor = true;
 			this->button4->Click += gcnew System::EventHandler(this, &MyForm::button4_Click);
 			// 
@@ -128,7 +131,7 @@ namespace Semesterarbeit_IFO3 {
 			this->button5->Name = L"button5";
 			this->button5->Size = System::Drawing::Size(145, 30);
 			this->button5->TabIndex = 4;
-			this->button5->Text = L"Alle Datensätze speichern";
+			this->button5->Text = L"Alle DatensÃ¤tze speichern";
 			this->button5->UseVisualStyleBackColor = true;
 			this->button5->Click += gcnew System::EventHandler(this, &MyForm::button5_Click);
 			// 
@@ -138,7 +141,7 @@ namespace Semesterarbeit_IFO3 {
 			this->button6->Name = L"button6";
 			this->button6->Size = System::Drawing::Size(145, 30);
 			this->button6->TabIndex = 5;
-			this->button6->Text = L"Datensatz löschen";
+			this->button6->Text = L"Datensatz lÃ¶schen";
 			this->button6->UseVisualStyleBackColor = true;
 			this->button6->Click += gcnew System::EventHandler(this, &MyForm::button6_Click);
 			// 
@@ -173,19 +176,19 @@ namespace Semesterarbeit_IFO3 {
 #pragma endregion
 
 	private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
-		save = 0;
+		GlobalClass::save = 0;
 		Dateneingabe ^ form = gcnew Dateneingabe;
 
 		form->ShowDialog();
 	};
 	private: System::Void button2_Click(System::Object^  sender, System::EventArgs^  e) {
-		save = 0;
-		Datenändern ^ form = gcnew Datenändern;
+		GlobalClass::save = 0;
+		DatenÃ¤ndern ^ form = gcnew DatenÃ¤ndern;
 
 		form->ShowDialog();
 	}
 	private: System::Void button3_Click(System::Object^  sender, System::EventArgs^  e) {
-		save = 0;
+		GlobalClass::save = 0;
 		Datensuchen ^ form = gcnew Datensuchen;
 
 		form->ShowDialog();
@@ -193,18 +196,19 @@ namespace Semesterarbeit_IFO3 {
 	private: System::Void button4_Click(System::Object^  sender, System::EventArgs^  e) {
 
 		Datenausgabe ^ form = gcnew Datenausgabe;
-
 		form->ShowDialog();
 	}
 	private: System::Void button6_Click(System::Object^  sender, System::EventArgs^  e) {
-		save = 0;
-		Datenlöschen ^ form = gcnew Datenlöschen;
+		GlobalClass::save = 0;
+		DatenlÃ¶schen ^ form = gcnew DatenlÃ¶schen;
 
 		form->ShowDialog();
 	}
 	private: System::Void button7_Click(System::Object^  sender, System::EventArgs^  e) {
-		Close();
-		if (save != 1) {
+
+
+		if (GlobalClass::save != 1) {
+
 			//abfrage Speichern
 		}
 		else {
@@ -213,11 +217,11 @@ namespace Semesterarbeit_IFO3 {
 	}
 	private: System::Void button5_Click(System::Object^  sender, System::EventArgs^  e) {
 		//Datenspeichern
-		save = 1;
-		speichernma(MA);
-		speichernal(AT, AL);
+		GlobalClass::save = 1;
+		
 	}
-	};
+	
+};
 }
 
 int getTest()

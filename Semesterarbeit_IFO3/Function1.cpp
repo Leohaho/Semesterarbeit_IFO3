@@ -62,7 +62,7 @@ void datensuche(Mitarb *MA,ABL *AL,ABT *AT) {
 	strtok(S, "\n");
 
 	for (M = 0; M < 102; M++) {
-		if (MA[M].NR == atoi(S)) {
+		{
 			ausgabema(M, MA);
 		}
 	}
@@ -953,7 +953,7 @@ void speichernma(Mitarb *MA) {
 		printf("Datei konnte nicht ge%cffnet werden", 148);
 	}else {
 		
-		for (Z = 0; Z < 102; Z++) {
+		for (Z = 1; Z < 102; Z++) {
 			
 			if (MA[Z].NR == Z) { //Vorteil fprintf geschriebene Datei auch ohne Programm lesbar
 				fprintf(fpma, "%i\n", Z);
@@ -988,7 +988,7 @@ void speichernal(ABT *AT, ABL *AL) {
 	}
 	else {
 
-		for (W = 0; W < 102; W++) {
+		for (W = 1; W < 102; W++) {
 			
 			if (AT[W].ID == W) {
 				fprintf(fpat, "%i\n", AT[W].ID);
@@ -1046,6 +1046,10 @@ void readma(Mitarb *MA) {
 	char U[20];
 	fpma = fopen("Mitarbeiter.txt", "r");
 
+	for (int i = 0; i < 100; i++) {
+		MA[i].NR = 108;
+	}
+
 	if (fpma == NULL) {
 		printf("Fehler; Datei Mitarbeiter konnte nicht ge%cffnet werden!", 148);
 		ENTER();
@@ -1093,6 +1097,11 @@ void readal(ABT *AT, ABL *AL) {
 	int I;
 	char U[15];
 	fpal = fopen("Abteilung.txt", "r");
+
+	for (int i = 0; i < 100; i++) {
+		AT[i].ID = 0;
+		strcpy(AT[i].ABL, "nicht besetzt");
+	}
 
 	if (fpal == NULL) {
 		printf("Fehler; Datei Abteilung konnte nicht ge%cffnet werden!", 148);

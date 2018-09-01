@@ -1,3 +1,4 @@
+
 #pragma once
 #include <stdio.h>
 //#include "Daten.h"
@@ -20,3 +21,4 @@ ABL getAL(int ID)
 {
 	return AL_neu[ID];
 }//*/
+

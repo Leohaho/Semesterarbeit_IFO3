@@ -1,14 +1,19 @@
 #include "MyForm.h"
-#include "Daten.h"
+
+
 
 using namespace System;
 using namespace System::Windows::Forms;
+using namespace Globals;
+
 [STAThread]
 
+
 void main(array<String^>^ args) {
-	readma(MA);
-	readal(AT, AL);
-	save = 1;
+	
+	
+	GlobalClass::save = 1;
+
 
 	Application::EnableVisualStyles();
 	Application::SetCompatibleTextRenderingDefault(false);
