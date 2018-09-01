@@ -14,8 +14,8 @@ typedef struct ABL{ //Abteilungsleiter
 	char FNR[20];			/*Festnetz*/
 	char mail[100];		/*Mailadresse*/
 	char STR[20];		/*Straﬂe*/
-	char HNR[20];			/*Hausnummer*/
-	char POST[20];			/*Postleitzahl*/
+	char HNR[20];		/*Hausnummer*/
+	char POST[20];		/*Postleitzahl*/
 	char ORT[20];		/*Ort/Stadt*/
 
 };
@@ -74,5 +74,6 @@ void replace_character(char* string);
 void Buffer(char* string);
 void ENTER();
 void Save_abfrage(int save, ABT *AT, ABL *AL, Mitarb *MA);
+
 
 #endif

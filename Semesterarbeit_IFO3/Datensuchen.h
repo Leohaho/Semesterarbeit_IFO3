@@ -1,4 +1,9 @@
+#ifndef Datensuche_H
+#define Datensuche_H
+
+
 #pragma once
+
 //#include "Header.h"
 //#include "MyForm.h"
 #include "Daten.h"
@@ -8,6 +13,11 @@
 #include <sstream>  // String-Ein-/Ausgaben
 #include <cstring>
 
+#include "Daten.h"
+#include "GlobalClass.h"
+
+void speichern_suche();
+void read_suche();
 
 namespace Semesterarbeit_IFO3 {
 
@@ -20,7 +30,7 @@ namespace Semesterarbeit_IFO3 {
 	using namespace std;
 
 	/// <summary>
-	/// Zusammenfassung für Datensuchen
+	/// Zusammenfassung fÃ¼r Datensuchen
 	/// </summary>
 	public ref class Datensuchen : public System::Windows::Forms::Form
 	{
@@ -83,12 +93,13 @@ namespace Semesterarbeit_IFO3 {
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
-		/// Erforderliche Methode für die Designerunterstützung.
-		/// Der Inhalt der Methode darf nicht mit dem Code-Editor geändert werden.
+		/// Erforderliche Methode fÃ¼r die DesignerunterstÃ¼tzung.
+		/// Der Inhalt der Methode darf nicht mit dem Code-Editor geÃ¤ndert werden.
 		/// </summary>
 		void InitializeComponent(void)
 		{
 			this->button1 = (gcnew System::Windows::Forms::Button());
+
 			this->button2 = (gcnew System::Windows::Forms::Button());
 			this->comboBox1 = (gcnew System::Windows::Forms::ComboBox());
 			this->textBox2 = (gcnew System::Windows::Forms::TextBox());
@@ -109,6 +120,7 @@ namespace Semesterarbeit_IFO3 {
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->comboBox_Abteilung = (gcnew System::Windows::Forms::ComboBox());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
+
 			this->SuspendLayout();
 			// 
 			// button1
@@ -117,7 +129,7 @@ namespace Semesterarbeit_IFO3 {
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(108, 23);
 			this->button1->TabIndex = 0;
-			this->button1->Text = L"Schließen";
+			this->button1->Text = L"SchlieÃŸen";
 			this->button1->UseVisualStyleBackColor = true;
 			this->button1->Click += gcnew System::EventHandler(this, &Datensuchen::button1_Click);
 			// 
@@ -218,7 +230,7 @@ namespace Semesterarbeit_IFO3 {
 			// 
 			// strasse
 			// 
-			this->strasse->HeaderText = L"Straße";
+			this->strasse->HeaderText = L"StraÃŸe";
 			this->strasse->Name = L"strasse";
 			this->strasse->ReadOnly = true;
 			// 
@@ -289,13 +301,31 @@ namespace Semesterarbeit_IFO3 {
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
+			this->button1->Location = System::Drawing::Point(78, 96);
+			this->button1->Name = L"button1";
+			this->button1->Size = System::Drawing::Size(125, 31);
+			this->button1->TabIndex = 0;
+			this->button1->Text = L"Speichern";
+			this->button1->UseVisualStyleBackColor = true;
+			this->button1->Click += gcnew System::EventHandler(this, &Datensuchen::button1_Click);
+			// 
+			// Datensuchen
+			// 
+			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
+			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
+			this->ClientSize = System::Drawing::Size(284, 261);
+			this->Controls->Add(this->button1);
+			this->Name = L"Datensuchen";
+			this->Text = L"Datensuchen";
+			this->Load += gcnew System::EventHandler(this, &Datensuchen::Datensuchen_Load);
+			this->ResumeLayout(false);
 
 		}
 
 		
 #pragma endregion
 
-	//############# BUTTON Schließen #############
+	//############# BUTTON SchlieÃŸen #############
 	private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
 		this->Close();
 	}
@@ -333,7 +363,7 @@ namespace Semesterarbeit_IFO3 {
 
 			sprintf(cSearchValue, "%s", textBox2->Text);
 
-			for (z = 0; z < strlen(cSearchValue); z++) //Jedes Zeichen der Eingabe von Kleinbuchstabe nach Großbuchstabe
+			for (z = 0; z < strlen(cSearchValue); z++) //Jedes Zeichen der Eingabe von Kleinbuchstabe nach GroÃŸbuchstabe
 				if (cSearchValue[z] >= 'a' && cSearchValue[z] <= 'z')
 					cSearchValue[z] = toupper(cSearchValue[z]);
 			
@@ -342,11 +372,11 @@ namespace Semesterarbeit_IFO3 {
 				char cKontrolle[20];
 				strcpy(cKontrolle, MA2[i].VNA);
 
-				for (int z = 0; z < strlen(cKontrolle); z++) //Jedes Zeichen der Eingabe von Kleinbuchstabe nach Großbuchstabe
+				for (int z = 0; z < strlen(cKontrolle); z++) //Jedes Zeichen der Eingabe von Kleinbuchstabe nach GroÃŸbuchstabe
 					if (cKontrolle[z] >= 'a' && cKontrolle[z] <= 'z')
 						cKontrolle[z] = toupper(cKontrolle[z]);
 
-				for (int z = 0; z < strlen(cSearchValue); z++) //Jedes Zeichen der Eingabe von Kleinbuchstabe nach Großbuchstabe
+				for (int z = 0; z < strlen(cSearchValue); z++) //Jedes Zeichen der Eingabe von Kleinbuchstabe nach GroÃŸbuchstabe
 					if (cSearchValue[z] >= 'a' && cSearchValue[z] <= 'z')
 						cSearchValue[z] = toupper(cSearchValue[z]);
 
@@ -360,7 +390,7 @@ namespace Semesterarbeit_IFO3 {
 		case 1: //################### Nachname BEGIN #################
 			sprintf(cSearchValue, "%s", textBox2->Text);
 
-			for (z = 0; z < strlen(cSearchValue); z++) //Jedes Zeichen der Eingabe von Kleinbuchstabe nach Großbuchstabe
+			for (z = 0; z < strlen(cSearchValue); z++) //Jedes Zeichen der Eingabe von Kleinbuchstabe nach GroÃŸbuchstabe
 				if (cSearchValue[z] >= 'a' && cSearchValue[z] <= 'z')
 					cSearchValue[z] = toupper(cSearchValue[z]);
 
@@ -369,11 +399,11 @@ namespace Semesterarbeit_IFO3 {
 				char cKontrolle[20];
 				strcpy(cKontrolle, MA2[i].NA);
 
-				for (int z = 0; z < strlen(cKontrolle); z++) //Jedes Zeichen der Eingabe von Kleinbuchstabe nach Großbuchstabe
+				for (int z = 0; z < strlen(cKontrolle); z++) //Jedes Zeichen der Eingabe von Kleinbuchstabe nach GroÃŸbuchstabe
 					if (cKontrolle[z] >= 'a' && cKontrolle[z] <= 'z')
 						cKontrolle[z] = toupper(cKontrolle[z]);
 
-				for (int z = 0; z < strlen(cSearchValue); z++) //Jedes Zeichen der Eingabe von Kleinbuchstabe nach Großbuchstabe
+				for (int z = 0; z < strlen(cSearchValue); z++) //Jedes Zeichen der Eingabe von Kleinbuchstabe nach GroÃŸbuchstabe
 					if (cSearchValue[z] >= 'a' && cSearchValue[z] <= 'z')
 						cSearchValue[z] = toupper(cSearchValue[z]);
 
@@ -405,22 +435,22 @@ namespace Semesterarbeit_IFO3 {
 			//################### Mitarbeiternummer ENDE #################
 
 		case 3: //################### Abteilung BEGIN #################
-			//Combobox auslesen und auf Großbuchstaben umwandeln
+			//Combobox auslesen und auf GroÃŸbuchstaben umwandeln
 			sprintf(selected, "%s", comboBox_Abteilung->SelectedItem->ToString());
 			//label1->Text = comboBox_Abteilung->SelectedItem->ToString();
-			for (z = 0; z < strlen(selected); z++) //Jedes Zeichen der Eingabe von Kleinbuchstabe nach Großbuchstabe
+			for (z = 0; z < strlen(selected); z++) //Jedes Zeichen der Eingabe von Kleinbuchstabe nach GroÃŸbuchstabe
 				if (selected[z] >= 'a' && selected[z] <= 'z')
 					selected[z] = toupper(selected[z]);
 
-			//Jeden MA auf Großbuchstaben umwandeln und auf die entsprechenden Wert abgleichen
+			//Jeden MA auf GroÃŸbuchstaben umwandeln und auf die entsprechenden Wert abgleichen
 			for (i = 0; i < 100; i++)
 			{
 				strcpy(cKontrolle, MA2[i].AB);
-				for (int z = 0; z < strlen(cKontrolle); z++) //Jedes Zeichen der Eingabe von Kleinbuchstabe nach Großbuchstabe
+				for (int z = 0; z < strlen(cKontrolle); z++) //Jedes Zeichen der Eingabe von Kleinbuchstabe nach GroÃŸbuchstabe
 					if (cKontrolle[z] >= 'a' && cKontrolle[z] <= 'z')
 						cKontrolle[z] = toupper(cKontrolle[z]);
 
-				for (int z = 0; z < strlen(cSearchValue); z++) //Jedes Zeichen der Eingabe von Kleinbuchstabe nach Großbuchstabe
+				for (int z = 0; z < strlen(cSearchValue); z++) //Jedes Zeichen der Eingabe von Kleinbuchstabe nach GroÃŸbuchstabe
 					if (cSearchValue[z] >= 'a' && cSearchValue[z] <= 'z')
 						cSearchValue[z] = toupper(cSearchValue[z]);
 
@@ -432,18 +462,18 @@ namespace Semesterarbeit_IFO3 {
 			
 		case 4: //################### Abteilungsleiter BEGIN ###################
 			sprintf(selected, "%s", comboBox_Abteilung->SelectedItem->ToString());
-			for (z = 0; z < strlen(selected); z++) //Jedes Zeichen der Eingabe von Kleinbuchstabe nach Großbuchstabe
+			for (z = 0; z < strlen(selected); z++) //Jedes Zeichen der Eingabe von Kleinbuchstabe nach GroÃŸbuchstabe
 				if (selected[z] >= 'a' && selected[z] <= 'z')
 					selected[z] = toupper(selected[z]);
 
 			for (i = 0; i < 100; i++)
 			{
 				strcpy(cKontrolle, MA2[i].VG);
-				for (int z = 0; z < strlen(cKontrolle); z++) //Jedes Zeichen der Eingabe von Kleinbuchstabe nach Großbuchstabe
+				for (int z = 0; z < strlen(cKontrolle); z++) //Jedes Zeichen der Eingabe von Kleinbuchstabe nach GroÃŸbuchstabe
 					if (cKontrolle[z] >= 'a' && cKontrolle[z] <= 'z')
 						cKontrolle[z] = toupper(cKontrolle[z]);
 
-				for (int z = 0; z < strlen(cSearchValue); z++) //Jedes Zeichen der Eingabe von Kleinbuchstabe nach Großbuchstabe
+				for (int z = 0; z < strlen(cSearchValue); z++) //Jedes Zeichen der Eingabe von Kleinbuchstabe nach GroÃŸbuchstabe
 					if (cSearchValue[z] >= 'a' && cSearchValue[z] <= 'z')
 						cSearchValue[z] = toupper(cSearchValue[z]);
 
@@ -512,6 +542,12 @@ namespace Semesterarbeit_IFO3 {
 		//emptyATAL();
 		for (i = 0; i < 100; i++)
 			setATAL(AT[i], i, AL[i], i);
+	private: System::Void Datensuchen_Load(System::Object^  sender, System::EventArgs^  e) {
+		read_suche();
+	}
+	private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
+		speichern_suche();
+	}
 	};
 
 
@@ -526,7 +562,7 @@ namespace Semesterarbeit_IFO3 {
 			id = int::Parse(dataGridView1->CurrentRow->Cells[0]->Value->ToString());
 		}
 		else
-			label1->Text = "Wählen Sie eine Zeile aus";
+			label1->Text = "WÃ¤hlen Sie eine Zeile aus";
 	}
 
 	//############ Sichtbarkeit der Suchfelder ############
@@ -641,3 +677,6 @@ namespace Semesterarbeit_IFO3 {
 }
 };
 }
+
+
+#endif
