@@ -148,6 +148,7 @@
     <ClCompile Include="Function1.cpp" />
     <ClCompile Include="Hauptmenü_alt.cpp" />
     <ClCompile Include="MyForm.cpp" />
+    <ClCompile Include="suchen.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Abfragelöschen.h" />
@@ -167,10 +168,17 @@
     <ClInclude Include="Datenändern.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="Header.h" />
     <ClInclude Include="GlobalClass.h" />
     <ClInclude Include="MyForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="suchen.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Datensuchen.resx">
+      <DependentUpon>Datensuchen.h</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Datenausgabe.resx">
