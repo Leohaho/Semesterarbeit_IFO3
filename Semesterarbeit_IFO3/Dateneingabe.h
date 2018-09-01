@@ -649,10 +649,38 @@ namespace Semesterarbeit_IFO3 {
 #pragma endregion
 
 	private: System::Void Dateneingabe_Load(System::Object^  sender, System::EventArgs^  e) {
+		char laden_na[20];
+		char laden_vna[20];
+		char laden_str[20];
+		char laden_hnr[20];
+		char laden_post[20];
+		char laden_ort[20];
+		char laden_nr[20];
+		char laden_st[20];
+		char laden_abl[20];
+
+		int zähler = 0;
+		int laden_zähler;
+		int done = 1;
 
 		read_eingabe();
 		mtxt_abteilingsid->HidePromptOnLeave = true;
 		mtxt_mitarbeiternummer->HidePromptOnLeave = true;
+		do {
+			zähler++;
+			laden_zähler = zähler;
+			datensatz_laden_abteilung(laden_na, laden_str, laden_hnr, laden_post, laden_ort, laden_abl, laden_nr, laden_st, laden_zähler);
+			
+			if (strlen(laden_na) != 0) {
+				String ^na = gcnew String(laden_na);
+				cbx_Abteilung->Items->Add(na);
+			}
+
+			if (zähler == 100) {
+				done = 0;
+			}
+		} while (done == 1);
+
 	}
 	//Beim laden des Fenster werden die Mitarbeiterdaten aus der Textdatei in die Variablen geladen
 	private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
@@ -707,7 +735,7 @@ namespace Semesterarbeit_IFO3 {
 
 		if (rdo_mitarbeiter->Checked==true)//Mitarbeiter speichern
 		{
-			if (mtxt_mitarbeiternummer->Text == leer || txt_abteilungsname->Text == leer || txt_vorname->Text == leer || txt_name->Text == leer || txt_strasse->Text == leer || txt_hausnummer->Text == leer || txt_postleitzahl->Text == leer || txt_wohnort->Text == leer || txt_festnetznummer->Text == leer || txt_mobilnummer->Text == leer || cbx_monat->Text == leer || cbx_jahr->Text == leer)
+			if (mtxt_mitarbeiternummer->Text == leer || cbx_Abteilung->Text == leer || txt_vorname->Text == leer || txt_name->Text == leer || txt_strasse->Text == leer || txt_hausnummer->Text == leer || txt_postleitzahl->Text == leer || txt_wohnort->Text == leer || txt_festnetznummer->Text == leer || txt_mobilnummer->Text == leer || cbx_monat->Text == leer || cbx_jahr->Text == leer)
 			{
 				MessageBox::Show("Bitte füllen sie den Datensatz komplett aus!");
 				felderlöschen = 1;
@@ -762,7 +790,7 @@ namespace Semesterarbeit_IFO3 {
 				sprintf(speichern_ej, "%s", ej);
 
 				String ^ab;
-				ab = txt_abteilungsname->Text;
+				ab = cbx_Abteilung->Text;
 				sprintf(speichern_ab, "%s", ab);
 
 				
@@ -817,7 +845,7 @@ namespace Semesterarbeit_IFO3 {
 		
 		if (rdo_abteilungsleiter->Checked == true)//Abteilungsleiter speichern
 		{
-			if (txt_abteilungsname->Text == leer || txt_vorname->Text == leer || txt_name->Text == leer || txt_strasse->Text == leer || txt_hausnummer->Text == leer || txt_postleitzahl->Text == leer || txt_wohnort->Text == leer || txt_festnetznummer->Text == leer || txt_mobilnummer->Text == leer)
+			if (cbx_Abteilung->Text == leer || txt_vorname->Text == leer || txt_name->Text == leer || txt_strasse->Text == leer || txt_hausnummer->Text == leer || txt_postleitzahl->Text == leer || txt_wohnort->Text == leer || txt_festnetznummer->Text == leer || txt_mobilnummer->Text == leer)
 			{
 				MessageBox::Show("Bitte füllen sie den Datensatz komplett aus!");
 				felderlöschen = 1;
@@ -859,7 +887,7 @@ namespace Semesterarbeit_IFO3 {
 				sprintf(speichern_fnr, "%s", fnr);
 
 				String ^ab;
-				ab = txt_abteilungsname->Text;
+				ab = cbx_Abteilung->Text;
 				sprintf(speichern_ab, "%s", ab);
 
 				do//Abteilungsleitername wird Abteilung zugeordnet
@@ -985,6 +1013,7 @@ namespace Semesterarbeit_IFO3 {
 			txt_mobilnummer->Text = entleeren;
 			cbx_jahr->SelectedIndex = -1;
 			cbx_monat->SelectedIndex = -1;
+			cbx_Abteilung->SelectedIndex = -1;
 		}
 	}
 	//Bei drücken von Speichern werden die Variablen in der textdatei gespeichert
@@ -1000,6 +1029,9 @@ namespace Semesterarbeit_IFO3 {
 		mtxt_abteilingsid->Visible = false;
 		lbl_standort->Visible = false;
 		txt_standort->Visible = false;
+
+		cbx_Abteilung->Visible = true;
+		txt_abteilungsname->Visible = false;
 
 		lbl_mitarbeiternummer->Visible = true;
 		mtxt_mitarbeiternummer->Visible = true;
@@ -1034,6 +1066,7 @@ namespace Semesterarbeit_IFO3 {
 		txt_mobilnummer->Text = entleeren;
 		cbx_jahr->SelectedIndex = -1;
 		cbx_monat->SelectedIndex = -1;
+		cbx_Abteilung->SelectedIndex = -1;
 		
 	}
 	//Sichtbarkeit der Felder bei Mitarbeiter
@@ -1043,6 +1076,10 @@ namespace Semesterarbeit_IFO3 {
 		mtxt_abteilingsid->Visible = false;
 		lbl_mitarbeiternummer->Visible = false;
 		mtxt_mitarbeiternummer->Visible = false;
+
+		cbx_Abteilung->Visible = true;
+		txt_abteilungsname->Visible = false;
+
 		lbl_eintrittsdatum->Visible = false;
 		lbl_monat->Visible = false;
 		lbl_jahr->Visible = false;
@@ -1077,7 +1114,7 @@ namespace Semesterarbeit_IFO3 {
 		txt_mobilnummer->Text = entleeren;
 		cbx_jahr->SelectedIndex = -1;
 		cbx_monat->SelectedIndex = -1;
-
+		cbx_Abteilung->SelectedIndex = -1;
 	}
 	//Sichtbarkeit der Felder bei Abteilungleiter
 	private: System::Void rdo_abteilung_CheckedChanged(System::Object^  sender, System::EventArgs^  e) {
@@ -1088,6 +1125,9 @@ namespace Semesterarbeit_IFO3 {
 		txt_name->Visible = false;
 		lbl_mitarbeiternummer->Visible = false;
 		mtxt_mitarbeiternummer->Visible = false;
+		cbx_Abteilung->Visible = false;
+		txt_abteilungsname->Visible = true;
+
 		lbl_eintrittsdatum->Visible = false;
 		lbl_monat->Visible = false;
 		lbl_jahr->Visible = false;
@@ -1120,6 +1160,7 @@ namespace Semesterarbeit_IFO3 {
 		txt_mobilnummer->Text = entleeren;
 		cbx_jahr->SelectedIndex = -1;
 		cbx_monat->SelectedIndex = -1;
+		cbx_Abteilung->SelectedIndex = -1;
 		
 	}
 	//Sichtbarkeit der Felder bei Abteilungen
