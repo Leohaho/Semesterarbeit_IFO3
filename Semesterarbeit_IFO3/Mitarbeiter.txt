@@ -14,16 +14,16 @@ BT
 Ingo Wilkens
 2
 Machate
-Jürgen
+JÃ¼rgen
 5
 1988
-Königsallee
+KÃ¶nigsallee
 5
 27283
 Verden
 4234234234
 3234234234
-Jürgen.Machate@daddeldu.Königsallee
+JÃ¼rgen.Machate@daddeldu.KÃ¶nigsallee
 kbr
 test
 3
@@ -45,13 +45,13 @@ Bierstedt
 Uwe
 6
 2014
-Mühlenstaße
+MÃ¼hlenstaÃŸe
 55
 21717
 Fredenbeck
 345413535
 253212522
-Uwe.Bierstedt@daddeldu.cMühlenstaße
+Uwe.Bierstedt@daddeldu.cMÃ¼hlenstaÃŸe
 kbe
 mirko wick
 19
@@ -129,7 +129,7 @@ Gramberg
 Vico
 4
 1986
-Wlkensweg
+WÂlkensweg
 8
 21258
 Heidenau

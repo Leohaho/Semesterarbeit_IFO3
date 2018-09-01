@@ -65,6 +65,9 @@
     <ClInclude Include="GlobalClass.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
+    <ClInclude Include="Abfragelöschen.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="MyForm.resx">

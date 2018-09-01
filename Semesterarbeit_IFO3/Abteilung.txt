@@ -1,7 +1,7 @@
 1
 kbe
 standort
-straﬂe
+stra√üe
 hausnummer
 postleitzahl
 wohnort
@@ -88,7 +88,8 @@ nicht besetzt
 0
 0
 0
-7
+22886
+Humbug
 finanzen
 EG
 rqweqwe
