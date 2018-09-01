@@ -6,7 +6,7 @@
 #include <cstdlib>
 #include <string.h>
 
-typedef struct ABL{ //Abteilungsleiter
+typedef struct ABL{
 	char NA[20];		/*Name*/
 	char VNA[20];		/*Vorname*/
 	char AB[20];		/*Abteilung*/
