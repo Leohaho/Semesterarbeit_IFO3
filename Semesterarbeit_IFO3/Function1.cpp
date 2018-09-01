@@ -1055,35 +1055,35 @@ void readma(Mitarb *MA) {
 		ENTER();
 	}else{
 		while (feof(fpma) == 0) {
-			fgets(U, 20, fpma);
+			fgets(U, 20, fpma); //U = ID
 			strtok(U, "\n");
 			I = atoi(U);
 			MA[I].NR = I;
-			fgets(MA[I].NA, 20, fpma);
+			fgets(MA[I].NA, 20, fpma); // NA = Name
 			strtok(MA[I].NA, "\n");
-			fgets(MA[I].VNA, 20, fpma);
+			fgets(MA[I].VNA, 20, fpma); // VNA = Vorname
 			strtok(MA[I].VNA, "\n");
-			fgets(MA[I].EM, 20, fpma);
+			fgets(MA[I].EM, 20, fpma); // EM = Eintrittsmonat
 			strtok(MA[I].EM, "\n");
-			fgets(MA[I].EJ, 20, fpma);
+			fgets(MA[I].EJ, 20, fpma); // EJ = Eintrittsjahr
 			strtok(MA[I].EJ, "\n");
-			fgets(MA[I].STR, 20, fpma);
+			fgets(MA[I].STR, 20, fpma); // STR = Straﬂe
 			strtok(MA[I].STR, "\n");
-			fgets(MA[I].HNR, 20, fpma);
+			fgets(MA[I].HNR, 20, fpma); // HNR = Hausnummer
 			strtok(MA[I].HNR, "\n");
-			fgets(MA[I].POST, 20, fpma);
+			fgets(MA[I].POST, 20, fpma); // POST = PLZ
 			strtok(MA[I].POST, "\n");
-			fgets(MA[I].ORT, 20, fpma);
+			fgets(MA[I].ORT, 20, fpma); //ORT = Ort
 			strtok(MA[I].ORT, "\n");
-			fgets(MA[I].MNR, 20, fpma);
+			fgets(MA[I].MNR, 20, fpma); //MNR = Mobiltelefonnummer
 			strtok(MA[I].MNR, "\n");
-			fgets(MA[I].FNR, 20, fpma);
+			fgets(MA[I].FNR, 20, fpma); // FNR = Festnetznummer
 			strtok(MA[I].FNR, "\n");
-			fgets(MA[I].mail, 100, fpma);
+			fgets(MA[I].mail, 100, fpma); // mail = Mail
 			strtok(MA[I].mail, "\n");
-			fgets(MA[I].AB, 20, fpma);
+			fgets(MA[I].AB, 20, fpma); // AB = Abteilung
 			strtok(MA[I].AB, "\n");
-			fgets(MA[I].VG, 20, fpma);
+			fgets(MA[I].VG, 20, fpma); // VG = Vorgesetzter
 			strtok(MA[I].VG, "\n");
 
 		};
