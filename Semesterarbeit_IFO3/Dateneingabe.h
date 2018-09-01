@@ -106,6 +106,7 @@ namespace Semesterarbeit_IFO3 {
 
 	private: System::Windows::Forms::MaskedTextBox^  mtxt_mitarbeiternummer;
 	private: System::Windows::Forms::Label^  lbl_error_mmitarbeiternummer;
+	private: System::Windows::Forms::ComboBox^  cbx_Abteilung;
 
 
 
@@ -174,6 +175,7 @@ namespace Semesterarbeit_IFO3 {
 			this->lbl_error_mabteilungsid = (gcnew System::Windows::Forms::Label());
 			this->mtxt_mitarbeiternummer = (gcnew System::Windows::Forms::MaskedTextBox());
 			this->lbl_error_mmitarbeiternummer = (gcnew System::Windows::Forms::Label());
+			this->cbx_Abteilung = (gcnew System::Windows::Forms::ComboBox());
 			this->SuspendLayout();
 			// 
 			// btn_speichern
@@ -581,11 +583,20 @@ namespace Semesterarbeit_IFO3 {
 			this->lbl_error_mmitarbeiternummer->Text = L"Nur Zahlen zwischen 1-100!";
 			this->lbl_error_mmitarbeiternummer->Visible = false;
 			// 
+			// cbx_Abteilung
+			// 
+			this->cbx_Abteilung->FormattingEnabled = true;
+			this->cbx_Abteilung->Location = System::Drawing::Point(112, 119);
+			this->cbx_Abteilung->Name = L"cbx_Abteilung";
+			this->cbx_Abteilung->Size = System::Drawing::Size(100, 21);
+			this->cbx_Abteilung->TabIndex = 46;
+			// 
 			// Dateneingabe
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(595, 471);
+			this->Controls->Add(this->cbx_Abteilung);
 			this->Controls->Add(this->lbl_error_mmitarbeiternummer);
 			this->Controls->Add(this->mtxt_mitarbeiternummer);
 			this->Controls->Add(this->lbl_error_mabteilungsid);

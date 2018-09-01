@@ -96,7 +96,6 @@ namespace Semesterarbeit_IFO3 {
 		void InitializeComponent(void)
 		{
 			this->button1 = (gcnew System::Windows::Forms::Button());
-
 			this->button2 = (gcnew System::Windows::Forms::Button());
 			this->comboBox1 = (gcnew System::Windows::Forms::ComboBox());
 			this->textBox2 = (gcnew System::Windows::Forms::TextBox());
@@ -117,15 +116,14 @@ namespace Semesterarbeit_IFO3 {
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->comboBox_Abteilung = (gcnew System::Windows::Forms::ComboBox());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
-
 			this->SuspendLayout();
 			// 
 			// button1
 			// 
-
-			this->button1->Location = System::Drawing::Point(964, 81);
+			this->button1->Location = System::Drawing::Point(723, 66);
+			this->button1->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(108, 23);
+			this->button1->Size = System::Drawing::Size(81, 19);
 			this->button1->TabIndex = 0;
 			this->button1->Text = L"Schließen";
 			this->button1->UseVisualStyleBackColor = true;
@@ -134,9 +132,10 @@ namespace Semesterarbeit_IFO3 {
 			// button2
 			// 
 			this->button2->Enabled = false;
-			this->button2->Location = System::Drawing::Point(964, 33);
+			this->button2->Location = System::Drawing::Point(723, 27);
+			this->button2->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->button2->Name = L"button2";
-			this->button2->Size = System::Drawing::Size(108, 23);
+			this->button2->Size = System::Drawing::Size(81, 19);
 			this->button2->TabIndex = 1;
 			this->button2->Text = L"Suchen";
 			this->button2->UseVisualStyleBackColor = true;
@@ -150,27 +149,30 @@ namespace Semesterarbeit_IFO3 {
 				L"Vorname", L"Nachname", L"Mitarbeiternummer",
 					L"Abteilung", L"Abteilungsleiter"
 			});
-			this->comboBox1->Location = System::Drawing::Point(40, 100);
+			this->comboBox1->Location = System::Drawing::Point(30, 81);
+			this->comboBox1->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->comboBox1->Name = L"comboBox1";
-			this->comboBox1->Size = System::Drawing::Size(121, 24);
+			this->comboBox1->Size = System::Drawing::Size(92, 21);
 			this->comboBox1->TabIndex = 4;
 			this->comboBox1->SelectedIndexChanged += gcnew System::EventHandler(this, &Datensuchen::comboBox1_SelectedIndexChanged);
 			this->comboBox1->TextChanged += gcnew System::EventHandler(this, &Datensuchen::comboBox1_TextChanged);
 			// 
 			// textBox2
 			// 
-			this->textBox2->Location = System::Drawing::Point(186, 102);
+			this->textBox2->Location = System::Drawing::Point(140, 81);
+			this->textBox2->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->textBox2->Name = L"textBox2";
-			this->textBox2->Size = System::Drawing::Size(100, 22);
+			this->textBox2->Size = System::Drawing::Size(76, 20);
 			this->textBox2->TabIndex = 5;
 			this->textBox2->Visible = false;
 			// 
 			// button3
 			// 
 			this->button3->Enabled = false;
-			this->button3->Location = System::Drawing::Point(964, 131);
+			this->button3->Location = System::Drawing::Point(723, 106);
+			this->button3->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->button3->Name = L"button3";
-			this->button3->Size = System::Drawing::Size(108, 23);
+			this->button3->Size = System::Drawing::Size(81, 19);
 			this->button3->TabIndex = 6;
 			this->button3->Text = L"Bearbeiten";
 			this->button3->UseVisualStyleBackColor = true;
@@ -184,10 +186,11 @@ namespace Semesterarbeit_IFO3 {
 					this->vname, this->name, this->mobil, this->festnetz, this->mail, this->strasse, this->hausnr, this->plz, this->ort, this->abteilung,
 					this->abteilungLeiter
 			});
-			this->dataGridView1->Location = System::Drawing::Point(40, 182);
+			this->dataGridView1->Location = System::Drawing::Point(30, 148);
+			this->dataGridView1->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->dataGridView1->Name = L"dataGridView1";
 			this->dataGridView1->RowTemplate->Height = 24;
-			this->dataGridView1->Size = System::Drawing::Size(1032, 244);
+			this->dataGridView1->Size = System::Drawing::Size(774, 198);
 			this->dataGridView1->TabIndex = 8;
 			this->dataGridView1->SelectionChanged += gcnew System::EventHandler(this, &Datensuchen::dataGridView1_SelectionChanged);
 			// 
@@ -265,26 +268,28 @@ namespace Semesterarbeit_IFO3 {
 			// label1
 			// 
 			this->label1->AutoSize = true;
-			this->label1->Location = System::Drawing::Point(307, 38);
+			this->label1->Location = System::Drawing::Point(230, 31);
+			this->label1->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(0, 17);
+			this->label1->Size = System::Drawing::Size(0, 13);
 			this->label1->TabIndex = 11;
 			// 
 			// comboBox_Abteilung
 			// 
 			this->comboBox_Abteilung->FormattingEnabled = true;
-			this->comboBox_Abteilung->Location = System::Drawing::Point(186, 100);
+			this->comboBox_Abteilung->Location = System::Drawing::Point(140, 81);
+			this->comboBox_Abteilung->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->comboBox_Abteilung->Name = L"comboBox_Abteilung";
-			this->comboBox_Abteilung->Size = System::Drawing::Size(121, 24);
+			this->comboBox_Abteilung->Size = System::Drawing::Size(92, 21);
 			this->comboBox_Abteilung->TabIndex = 12;
 			this->comboBox_Abteilung->Visible = false;
 			this->comboBox_Abteilung->SelectedIndexChanged += gcnew System::EventHandler(this, &Datensuchen::comboBox_Abteilung_SelectedIndexChanged);
 			// 
 			// Datensuchen
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
+			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(1109, 460);
+			this->ClientSize = System::Drawing::Size(832, 374);
 			this->Controls->Add(this->comboBox_Abteilung);
 			this->Controls->Add(this->label1);
 			this->Controls->Add(this->dataGridView1);
@@ -293,6 +298,9 @@ namespace Semesterarbeit_IFO3 {
 			this->Controls->Add(this->comboBox1);
 			this->Controls->Add(this->button2);
 			this->Controls->Add(this->button1);
+			this->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->MaximumSize = System::Drawing::Size(848, 413);
+			this->MinimumSize = System::Drawing::Size(848, 413);
 			this->Name = L"Datensuchen";
 			this->Text = L"Datensuchen";
 			this->Load += gcnew System::EventHandler(this, &Datensuchen::Datensuchen_Load_1);
