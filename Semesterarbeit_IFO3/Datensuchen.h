@@ -113,9 +113,9 @@ namespace Semesterarbeit_IFO3 {
 			// 
 			// button1
 			// 
-			this->button1->Location = System::Drawing::Point(985, 81);
+			this->button1->Location = System::Drawing::Point(964, 81);
 			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(87, 23);
+			this->button1->Size = System::Drawing::Size(108, 23);
 			this->button1->TabIndex = 0;
 			this->button1->Text = L"Schließen";
 			this->button1->UseVisualStyleBackColor = true;
@@ -124,9 +124,9 @@ namespace Semesterarbeit_IFO3 {
 			// button2
 			// 
 			this->button2->Enabled = false;
-			this->button2->Location = System::Drawing::Point(985, 33);
+			this->button2->Location = System::Drawing::Point(964, 33);
 			this->button2->Name = L"button2";
-			this->button2->Size = System::Drawing::Size(87, 23);
+			this->button2->Size = System::Drawing::Size(108, 23);
 			this->button2->TabIndex = 1;
 			this->button2->Text = L"Suchen";
 			this->button2->UseVisualStyleBackColor = true;
@@ -157,9 +157,10 @@ namespace Semesterarbeit_IFO3 {
 			// 
 			// button3
 			// 
-			this->button3->Location = System::Drawing::Point(985, 131);
+			this->button3->Enabled = false;
+			this->button3->Location = System::Drawing::Point(964, 131);
 			this->button3->Name = L"button3";
-			this->button3->Size = System::Drawing::Size(87, 23);
+			this->button3->Size = System::Drawing::Size(108, 23);
 			this->button3->TabIndex = 6;
 			this->button3->Text = L"Bearbeiten";
 			this->button3->UseVisualStyleBackColor = true;
@@ -178,6 +179,7 @@ namespace Semesterarbeit_IFO3 {
 			this->dataGridView1->RowTemplate->Height = 24;
 			this->dataGridView1->Size = System::Drawing::Size(1032, 244);
 			this->dataGridView1->TabIndex = 8;
+			this->dataGridView1->SelectionChanged += gcnew System::EventHandler(this, &Datensuchen::dataGridView1_SelectionChanged);
 			// 
 			// ma_id
 			// 
@@ -261,11 +263,12 @@ namespace Semesterarbeit_IFO3 {
 			// comboBox_Abteilung
 			// 
 			this->comboBox_Abteilung->FormattingEnabled = true;
-			this->comboBox_Abteilung->Location = System::Drawing::Point(292, 102);
+			this->comboBox_Abteilung->Location = System::Drawing::Point(186, 100);
 			this->comboBox_Abteilung->Name = L"comboBox_Abteilung";
 			this->comboBox_Abteilung->Size = System::Drawing::Size(121, 24);
 			this->comboBox_Abteilung->TabIndex = 12;
 			this->comboBox_Abteilung->Visible = false;
+			this->comboBox_Abteilung->SelectedIndexChanged += gcnew System::EventHandler(this, &Datensuchen::comboBox_Abteilung_SelectedIndexChanged);
 			// 
 			// Datensuchen
 			// 
@@ -312,6 +315,7 @@ namespace Semesterarbeit_IFO3 {
 
 		sTextBoxText = textBox2->Text;
 		laenge = sTextBoxText->Length;
+		//button3->Enabled = true;
 
 		for (int z = 0; z < 100; z++)
 			strcpy(MA2[z].VNA, "XYZ");
@@ -514,27 +518,37 @@ namespace Semesterarbeit_IFO3 {
 	//############ Button Bearbeiten ############
 	private: System::Void button3_Click(System::Object^  sender, System::EventArgs^  e) {
 		int id;
-		label1->Text = dataGridView1->CurrentRow->Cells[0]->Value->ToString();
-		id = int::Parse(dataGridView1->CurrentRow->Cells[0]->Value->ToString());
+		int menge = int::Parse(dataGridView1->RowCount.ToString());
+		//char cSearchValue[20];
+
+		if (dataGridView1->SelectedCells[0]->RowIndex != menge-1)
+		{
+			id = int::Parse(dataGridView1->CurrentRow->Cells[0]->Value->ToString());
+		}
+		else
+			label1->Text = "Wählen Sie eine Zeile aus";
 	}
 
 	//############ Sichtbarkeit der Suchfelder ############
 	private: System::Void comboBox1_TextChanged(System::Object^  sender, System::EventArgs^  e) {
 		int suchID = comboBox1->SelectedIndex;
-		button2->Enabled = true;
+		//button2->Enabled = true;
 		switch (suchID)
 		{
 		case 0: //Vorname
 			textBox2->Visible = true;
 			comboBox_Abteilung->Visible = false;
+			button2->Enabled = true;
 			break;
 		case 1: //Nachname
 			textBox2->Visible = true;
 			comboBox_Abteilung->Visible = false;
+			button2->Enabled = true;
 			break;
 		case 2: //Mitarbeiternummer
 			textBox2->Visible = true;
 			comboBox_Abteilung->Visible = false;
+			button2->Enabled = true;
 			break;
 		case 3: //Abteilung
 			dropItemsComboBox();
@@ -555,6 +569,7 @@ namespace Semesterarbeit_IFO3 {
 	{
 		comboBox_Abteilung->Items->Clear();
 	}
+
 	private: System::Void comboBox1_SelectedIndexChanged(System::Object^  sender, System::EventArgs^  e) {
 		int i = 0;
 		ABL abteilungsleiter[100];
@@ -601,5 +616,28 @@ namespace Semesterarbeit_IFO3 {
 	{
 		comboBox_Abteilung->Items->Clear();
 	}
+	private: System::Void dataGridView1_SelectionChanged(System::Object^  sender, System::EventArgs^  e) {
+	int id;
+	int menge = int::Parse(dataGridView1->RowCount.ToString());
+	//char cSearchValue[20];
+
+	if (dataGridView1->SelectedCells[0]->RowIndex != menge - 1)
+	{
+		id = int::Parse(dataGridView1->CurrentRow->Cells[0]->Value->ToString());
+		button3->Enabled = true;
+	}
+	else
+		button3->Enabled = false;
+}
+
+
+	private: System::Void comboBox_Abteilung_SelectedIndexChanged(System::Object^  sender, System::EventArgs^  e) {
+	if (comboBox_Abteilung->Text != "")
+	{
+		button2->Enabled = true;
+	}
+	else
+		button2->Enabled = false;
+}
 };
 }
