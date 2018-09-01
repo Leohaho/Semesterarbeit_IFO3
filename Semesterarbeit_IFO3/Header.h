@@ -1,26 +1,3 @@
-
-#pragma once
-#include <stdio.h>
-//#include "Daten.h"
-
-
-int AL_neu4442;
-//ABT AT_neu4442[100];
-//Mitarb MA_neu4442[100];
-//int lastAL_Header;
-/*
-void setAL(ABL Abteilungsleiter)
-{
-	AL_neu[lastAL + 1] = Abteilungsleiter;
-	lastAL_Header++;
-}
-
-//
-
-ABL getAL(int ID)
-{
-	return AL_neu[ID];
-}//*/
 #ifndef Header_h
 #define Header_h
 #include <stdio.h>
@@ -35,7 +12,7 @@ typedef struct ABL {
 	char MNR[20];			/*Mobilnummer*/
 	char FNR[20];			/*Festnetz*/
 	char mail[100];		/*Mailadresse*/
-	char STR[20];		/*Stra√üe*/
+	char STR[20];		/*Straﬂe*/
 	char HNR[20];			/*Hausnummer*/
 	char POST[20];			/*Postleitzahl*/
 	char ORT[20];		/*Ort/Stadt*/
@@ -44,7 +21,7 @@ typedef struct ABL {
 
 typedef struct ABT {
 	char FA[30];	/*Firma/Name*/
-	char STR[20];	/*Stra√üe*/
+	char STR[20];	/*Straﬂe*/
 	char HNR[20];	/*Hausnummer*/
 	char POST[20];	/*Postleitzahl*/
 	char ORT[20];	/*Ort/stadt*/
@@ -59,7 +36,7 @@ typedef struct Mitarb {
 	char VNA[20];	/*Vorname*/
 	char EM[20];	/*Eintritsmonat*/
 	char EJ[20];	/*Eintritsjahr*/
-	char STR[20];	/*Stra√üe*/
+	char STR[20];	/*Straﬂe*/
 	char HNR[20];	/*Hausnummer*/
 	char POST[20];	/*Postleitzahl*/
 	char ORT[20];	/*Ort/stadt*/

@@ -39,9 +39,6 @@
     <ClCompile Include="Hauptmenü_alt.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
-    <ClCompile Include="suchen.cpp">
-      <Filter>Quelldateien</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MyForm.h">
@@ -65,10 +62,6 @@
     <ClInclude Include="Daten.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
-    <ClInclude Include="Header.h">
-      <Filter>Headerdateien</Filter>
-    </ClInclude>
-    <ClInclude Include="suchen.h">
     <ClInclude Include="GlobalClass.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
@@ -77,9 +70,6 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Datensuchen.resx">
-      <Filter>Ressourcendateien</Filter>
-    </EmbeddedResource>
     <EmbeddedResource Include="MyForm.resx">
       <Filter>Ressourcendateien</Filter>
     </EmbeddedResource>
