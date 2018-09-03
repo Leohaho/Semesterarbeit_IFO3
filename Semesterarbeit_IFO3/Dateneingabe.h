@@ -1417,12 +1417,12 @@ namespace Semesterarbeit_IFO3 {
 				if (strcmp(laden_atabl, "nicht besetzt") == 0)
 				{
 					lbl_error_abteilungsleiter->Visible = false;
-					btn_speichern->Visible = false;
+					btn_speichern->Visible = true;
 				}
 				else
 				{
 					lbl_error_abteilungsleiter->Visible = true;
-					btn_speichern->Visible = true;
+					btn_speichern->Visible = false;
 				}
 
 			}
