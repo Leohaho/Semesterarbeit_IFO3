@@ -582,6 +582,7 @@ namespace Semesterarbeit_IFO3 {
 			this->cbx_Abteilung->Name = L"cbx_Abteilung";
 			this->cbx_Abteilung->Size = System::Drawing::Size(100, 21);
 			this->cbx_Abteilung->TabIndex = 46;
+			this->cbx_Abteilung->TextChanged += gcnew System::EventHandler(this, &Dateneingabe::cbx_Abteilung_TextChanged);
 			// 
 			// mtxt_postleitzahl
 			// 
@@ -1243,86 +1244,14 @@ namespace Semesterarbeit_IFO3 {
 		int laden_zähler = 0;
 
 		lbl_error_abteilungsname->Visible = false;
-		lbl_error_abteilung->Visible = false;
-		lbl_error_abteilungsleiter->Visible = false;
 
 		char text[20];
 		String ^abteilungsname = txt_abteilungsname->Text;
 		sprintf(text, "%s", abteilungsname);
 
-		if (rdo_mitarbeiter->Checked==true)//Mitarbeiter
-		{
-			lbl_error_abteilungsleiter->Visible = false;
-			lbl_error_abteilungsname->Visible = false;
-			do//Abfrage ob Abteilungs existiert
-			{
-				zähler++;
-				laden_zähler = zähler;
-				datensatz_laden_abteilungsleiter(laden_na, laden_vna, laden_str, laden_hnr, laden_post, laden_ort, laden_mnr, laden_fnr, laden_mail, laden_ab, laden_zähler, laden_atid, laden_atfa, laden_atabl);
-				if (strcmp(text, laden_atfa) == 0)
-				{
-					lbl_error_abteilung->Visible = false;
-					btn_speichern->Visible = true;
-					done = 0;
-				}
-				else
-				{
-					lbl_error_abteilung->Visible = true;
-					btn_speichern->Visible = false;
-				}
-				if (zähler == 100)
-				{
-					done = 0;
-				}
-			} while (done == 1);
-		}
-
-		if (rdo_abteilungsleiter->Checked==true)//Abteilungsleiter
-		{
-			lbl_error_abteilungsname->Visible = false;
-			do//Abfrage ob Abteilungs existiert
-			{
-				zähler++;
-				laden_zähler = zähler;
-				datensatz_laden_abteilungsleiter(laden_na, laden_vna, laden_str, laden_hnr, laden_post, laden_ort, laden_mnr, laden_fnr, laden_mail, laden_ab, laden_zähler, laden_atid, laden_atfa, laden_atabl);
-				if (strcmp(text, laden_atfa) == 0)
-				{
-					lbl_error_abteilung->Visible = false;
-					btn_speichern->Visible = true;
-					done = 0;
-				}
-				else
-				{
-					lbl_error_abteilung->Visible = true;
-					btn_speichern->Visible = false;
-				}
-				if (zähler == 100)
-				{
-					done = 0;
-				}
-			} while (done==1);
-			
-			if (done==0)//Abfrage wenn eine Abteilung existiert ob eine Abteilungsleiter vorhanden ist
-			{
-					laden_zähler = zähler;
-					datensatz_laden_abteilungsleiter(laden_na, laden_vna, laden_str, laden_hnr, laden_post, laden_ort, laden_mnr, laden_fnr, laden_mail, laden_ab, laden_zähler, laden_atid, laden_atfa, laden_atabl);
-					if (strcmp(laden_atabl,"nicht besetzt")==0)
-					{
-						lbl_error_abteilungsleiter->Visible = false;
-						btn_speichern->Visible = true;
-					}
-					else
-					{
-						lbl_error_abteilungsleiter->Visible = true;
-						btn_speichern->Visible = false;
-					}
-
-			}
-		}
 		if (rdo_abteilung->Checked==true)//Abteilung
 		{
 			lbl_error_abteilungsleiter->Visible = false;
-			lbl_error_abteilung->Visible = false;
 			do//Abfrage ob ein Abteilungsname schon vorhanden ist
 			{
 				zähler++;
@@ -1346,7 +1275,7 @@ namespace Semesterarbeit_IFO3 {
 			} while (done == 1);
 		}
 	}
-	//Prüfung ob Abteilung vorhanden ist bzw Abteilungsleiter besetzt ist
+	//Prüfung ob der Abteilungsname schon vergeben wurde
 	private: System::Void mtxt_abteilingsid_TextChanged(System::Object^  sender, System::EventArgs^  e) {
 
 		char laden_na[20];
@@ -1389,7 +1318,7 @@ namespace Semesterarbeit_IFO3 {
 			btn_speichern->Visible = true;
 		}
 	}
-	//Prüfung ob die Abteilungs ID schon belegt ist und obn sie sich im richtigen Zahlenbereich befindet
+	//Prüfung ob die Abteilungs ID schon belegt ist und ob sie sich im richtigen Zahlenbereich befindet
 	private: System::Void mtxt_mitarbeiternummer_TextChanged(System::Object^  sender, System::EventArgs^  e) {
 		
 		char laden_na[20];
@@ -1437,6 +1366,69 @@ namespace Semesterarbeit_IFO3 {
 		}
 
 	}
+	//Prüfung ob die Mitarbeiternummer schon belegt und ob sie sich im richtigen Zahlenbereich befindet
+	private: System::Void cbx_Abteilung_TextChanged(System::Object^  sender, System::EventArgs^  e) {
+
+
+		char laden_na[20];
+		char laden_vna[20];
+		char laden_str[20];
+		char laden_hnr[20];
+		char laden_post[20];
+		char laden_ort[20];
+		char laden_mnr[20];
+		char laden_fnr[20];
+		char laden_mail[20];
+		char laden_ab[20];
+		char laden_atfa[20];
+		char laden_atid[20];
+		char laden_atabl[20];
+		int done = 1;
+		int zähler = 0;
+		int laden_zähler = 0;
+
+		lbl_error_abteilungsleiter->Visible = false;
+
+		char text[20];
+		String ^abteilungsname = cbx_Abteilung->Text;
+		sprintf(text, "%s", abteilungsname);
+
+		if (rdo_abteilungsleiter->Checked == true)//Abteilungsleiter
+		{
+			do//Abfrage ob Abteilungs existiert
+			{
+				zähler++;
+				laden_zähler = zähler;
+				datensatz_laden_abteilungsleiter(laden_na, laden_vna, laden_str, laden_hnr, laden_post, laden_ort, laden_mnr, laden_fnr, laden_mail, laden_ab, laden_zähler, laden_atid, laden_atfa, laden_atabl);
+				if (strcmp(text, laden_atfa) == 0)
+				{
+					done = 0;
+				}
+				if (zähler == 100)
+				{
+					done = 0;
+				}
+			} while (done == 1);
+
+			if (done == 0)//Abfrage wenn eine Abteilung existiert ob eine Abteilungsleiter vorhanden ist
+			{
+				laden_zähler = zähler;
+				datensatz_laden_abteilungsleiter(laden_na, laden_vna, laden_str, laden_hnr, laden_post, laden_ort, laden_mnr, laden_fnr, laden_mail, laden_ab, laden_zähler, laden_atid, laden_atfa, laden_atabl);
+				if (strcmp(laden_atabl, "nicht besetzt") == 0)
+				{
+					lbl_error_abteilungsleiter->Visible = false;
+					btn_speichern->Visible = false;
+				}
+				else
+				{
+					lbl_error_abteilungsleiter->Visible = true;
+					btn_speichern->Visible = true;
+				}
+
+			}
+		}
+	}
+	//Prüfung ob der Abteilungsleiter schon belegt ist
 };
 }
 
