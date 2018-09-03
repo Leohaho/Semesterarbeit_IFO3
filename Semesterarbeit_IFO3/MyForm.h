@@ -53,9 +53,11 @@ namespace Semesterarbeit_IFO3 {
 	private: System::Windows::Forms::Button^  button2;
 	private: System::Windows::Forms::Button^  button3;
 	private: System::Windows::Forms::Button^  button4;
-	private: System::Windows::Forms::Button^  button5;
+
 	private: System::Windows::Forms::Button^  button6;
 	private: System::Windows::Forms::Button^  button7;
+	private: System::Windows::Forms::Label^  lbl_info;
+	private: System::Windows::Forms::Label^  lbl_info1;
 
 
 
@@ -78,14 +80,15 @@ namespace Semesterarbeit_IFO3 {
 			this->button2 = (gcnew System::Windows::Forms::Button());
 			this->button3 = (gcnew System::Windows::Forms::Button());
 			this->button4 = (gcnew System::Windows::Forms::Button());
-			this->button5 = (gcnew System::Windows::Forms::Button());
 			this->button6 = (gcnew System::Windows::Forms::Button());
 			this->button7 = (gcnew System::Windows::Forms::Button());
+			this->lbl_info = (gcnew System::Windows::Forms::Label());
+			this->lbl_info1 = (gcnew System::Windows::Forms::Label());
 			this->SuspendLayout();
 			// 
 			// button1
 			// 
-			this->button1->Location = System::Drawing::Point(26, 56);
+			this->button1->Location = System::Drawing::Point(114, 102);
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(145, 30);
 			this->button1->TabIndex = 0;
@@ -95,7 +98,7 @@ namespace Semesterarbeit_IFO3 {
 			// 
 			// button2
 			// 
-			this->button2->Location = System::Drawing::Point(26, 92);
+			this->button2->Location = System::Drawing::Point(114, 138);
 			this->button2->Name = L"button2";
 			this->button2->Size = System::Drawing::Size(145, 30);
 			this->button2->TabIndex = 1;
@@ -105,7 +108,7 @@ namespace Semesterarbeit_IFO3 {
 			// 
 			// button3
 			// 
-			this->button3->Location = System::Drawing::Point(26, 128);
+			this->button3->Location = System::Drawing::Point(114, 174);
 			this->button3->Name = L"button3";
 			this->button3->Size = System::Drawing::Size(145, 30);
 			this->button3->TabIndex = 2;
@@ -115,27 +118,17 @@ namespace Semesterarbeit_IFO3 {
 			// 
 			// button4
 			// 
-			this->button4->Location = System::Drawing::Point(26, 200);
+			this->button4->Location = System::Drawing::Point(114, 246);
 			this->button4->Name = L"button4";
 			this->button4->Size = System::Drawing::Size(145, 30);
 			this->button4->TabIndex = 3;
-			this->button4->Text = L"Alle Datensätze ausgeben";
+			this->button4->Text = L"Datensätze ausgeben";
 			this->button4->UseVisualStyleBackColor = true;
 			this->button4->Click += gcnew System::EventHandler(this, &MyForm::button4_Click);
 			// 
-			// button5
-			// 
-			this->button5->Location = System::Drawing::Point(26, 236);
-			this->button5->Name = L"button5";
-			this->button5->Size = System::Drawing::Size(145, 30);
-			this->button5->TabIndex = 4;
-			this->button5->Text = L"Alle Datensätze speichern";
-			this->button5->UseVisualStyleBackColor = true;
-			this->button5->Click += gcnew System::EventHandler(this, &MyForm::button5_Click);
-			// 
 			// button6
 			// 
-			this->button6->Location = System::Drawing::Point(26, 164);
+			this->button6->Location = System::Drawing::Point(114, 210);
 			this->button6->Name = L"button6";
 			this->button6->Size = System::Drawing::Size(145, 30);
 			this->button6->TabIndex = 5;
@@ -145,22 +138,41 @@ namespace Semesterarbeit_IFO3 {
 			// 
 			// button7
 			// 
-			this->button7->Location = System::Drawing::Point(297, 320);
+			this->button7->Location = System::Drawing::Point(114, 282);
 			this->button7->Name = L"button7";
-			this->button7->Size = System::Drawing::Size(75, 30);
+			this->button7->Size = System::Drawing::Size(145, 30);
 			this->button7->TabIndex = 6;
 			this->button7->Text = L"Beenden";
 			this->button7->UseVisualStyleBackColor = true;
 			this->button7->Click += gcnew System::EventHandler(this, &MyForm::button7_Click);
+			// 
+			// lbl_info
+			// 
+			this->lbl_info->AutoSize = true;
+			this->lbl_info->Location = System::Drawing::Point(42, 27);
+			this->lbl_info->Name = L"lbl_info";
+			this->lbl_info->Size = System::Drawing::Size(292, 13);
+			this->lbl_info->TabIndex = 7;
+			this->lbl_info->Text = L"Wilkommen in der Mitarbeiterdatenbank der Firma Daddeldu.";
+			// 
+			// lbl_info1
+			// 
+			this->lbl_info1->AutoSize = true;
+			this->lbl_info1->Location = System::Drawing::Point(90, 63);
+			this->lbl_info1->Name = L"lbl_info1";
+			this->lbl_info1->Size = System::Drawing::Size(195, 13);
+			this->lbl_info1->TabIndex = 8;
+			this->lbl_info1->Text = L"Wählen Sie einen der Menüpunkte aus.";
 			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(384, 362);
+			this->Controls->Add(this->lbl_info1);
+			this->Controls->Add(this->lbl_info);
 			this->Controls->Add(this->button7);
 			this->Controls->Add(this->button6);
-			this->Controls->Add(this->button5);
 			this->Controls->Add(this->button4);
 			this->Controls->Add(this->button3);
 			this->Controls->Add(this->button2);
@@ -169,6 +181,7 @@ namespace Semesterarbeit_IFO3 {
 			this->Name = L"MyForm";
 			this->Text = L"Mitarbeiterverwaltung";
 			this->ResumeLayout(false);
+			this->PerformLayout();
 
 		}
 #pragma endregion
@@ -204,12 +217,7 @@ namespace Semesterarbeit_IFO3 {
 	}
 	private: System::Void button7_Click(System::Object^  sender, System::EventArgs^  e) {
 
-		if (GlobalClass::save != 1) {
-			//abfrage Speichern
-		}
-		else {
 			this->Close();
-		}
 	}
 	private: System::Void button5_Click(System::Object^  sender, System::EventArgs^  e) {
 		//Datenspeichern
