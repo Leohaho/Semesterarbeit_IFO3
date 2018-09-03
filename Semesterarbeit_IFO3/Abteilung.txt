@@ -196,3 +196,75 @@ nicht besetzt
 0
 0
 0
+33
+Entwicklung
+OG 3
+Hauptstraﬂe
+3
+21717
+Deinste
+nicht besetzt
+000
+0
+0
+0
+0
+0
+0
+0
+0
+0
+45
+test1
+EG
+fsdf
+34234
+34234
+fsfdsd
+nicht besetzt
+000
+0
+0
+0
+0
+0
+0
+0
+0
+0
+77
+Zulieferung
+UG 1
+Weserstarﬂe
+56
+27283
+Verden
+nicht besetzt
+000
+0
+0
+0
+0
+0
+0
+0
+0
+0
+88
+Zeichnen
+EG
+asdasd
+323
+31233
+sdfsdfsdf
+nicht besetzt
+000
+0
+0
+0
+0
+0
+0
+0
+0
+0

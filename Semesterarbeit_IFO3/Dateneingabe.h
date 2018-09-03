@@ -79,13 +79,13 @@ namespace Semesterarbeit_IFO3 {
 	private: System::Windows::Forms::Label^  lbl_hausnummer;
 	private: System::Windows::Forms::TextBox^  txt_hausnummer;
 	private: System::Windows::Forms::Label^  lbl_postleitzahl;
-	private: System::Windows::Forms::TextBox^  txt_postleitzahl;
+
 	private: System::Windows::Forms::Label^  lbl_ort;
 	private: System::Windows::Forms::TextBox^  txt_wohnort;
 	private: System::Windows::Forms::Label^  lbl_festnetznummer;
 	private: System::Windows::Forms::Label^  lbl_mobilnummer;
-	private: System::Windows::Forms::TextBox^  txt_festnetznummer;
-	private: System::Windows::Forms::TextBox^  txt_mobilnummer;
+
+
 	private: System::Windows::Forms::Label^  lbl_abteilungsid;
 	private: System::Windows::Forms::Label^  lbl_abteilungsname;
 	private: System::Windows::Forms::TextBox^  txt_abteilungsname;
@@ -107,6 +107,9 @@ namespace Semesterarbeit_IFO3 {
 	private: System::Windows::Forms::MaskedTextBox^  mtxt_mitarbeiternummer;
 	private: System::Windows::Forms::Label^  lbl_error_mmitarbeiternummer;
 	private: System::Windows::Forms::ComboBox^  cbx_Abteilung;
+	private: System::Windows::Forms::MaskedTextBox^  mtxt_postleitzahl;
+	private: System::Windows::Forms::MaskedTextBox^  mtxt_festnetznummer;
+	private: System::Windows::Forms::MaskedTextBox^  mtxt_mobilnummer;
 
 
 
@@ -153,13 +156,10 @@ namespace Semesterarbeit_IFO3 {
 			this->lbl_hausnummer = (gcnew System::Windows::Forms::Label());
 			this->txt_hausnummer = (gcnew System::Windows::Forms::TextBox());
 			this->lbl_postleitzahl = (gcnew System::Windows::Forms::Label());
-			this->txt_postleitzahl = (gcnew System::Windows::Forms::TextBox());
 			this->lbl_ort = (gcnew System::Windows::Forms::Label());
 			this->txt_wohnort = (gcnew System::Windows::Forms::TextBox());
 			this->lbl_festnetznummer = (gcnew System::Windows::Forms::Label());
 			this->lbl_mobilnummer = (gcnew System::Windows::Forms::Label());
-			this->txt_festnetznummer = (gcnew System::Windows::Forms::TextBox());
-			this->txt_mobilnummer = (gcnew System::Windows::Forms::TextBox());
 			this->lbl_abteilungsid = (gcnew System::Windows::Forms::Label());
 			this->lbl_abteilungsname = (gcnew System::Windows::Forms::Label());
 			this->txt_abteilungsname = (gcnew System::Windows::Forms::TextBox());
@@ -176,6 +176,9 @@ namespace Semesterarbeit_IFO3 {
 			this->mtxt_mitarbeiternummer = (gcnew System::Windows::Forms::MaskedTextBox());
 			this->lbl_error_mmitarbeiternummer = (gcnew System::Windows::Forms::Label());
 			this->cbx_Abteilung = (gcnew System::Windows::Forms::ComboBox());
+			this->mtxt_postleitzahl = (gcnew System::Windows::Forms::MaskedTextBox());
+			this->mtxt_festnetznummer = (gcnew System::Windows::Forms::MaskedTextBox());
+			this->mtxt_mobilnummer = (gcnew System::Windows::Forms::MaskedTextBox());
 			this->SuspendLayout();
 			// 
 			// btn_speichern
@@ -219,6 +222,7 @@ namespace Semesterarbeit_IFO3 {
 			// txt_vorname
 			// 
 			this->txt_vorname->Location = System::Drawing::Point(112, 171);
+			this->txt_vorname->MaxLength = 20;
 			this->txt_vorname->Name = L"txt_vorname";
 			this->txt_vorname->Size = System::Drawing::Size(100, 20);
 			this->txt_vorname->TabIndex = 5;
@@ -235,6 +239,7 @@ namespace Semesterarbeit_IFO3 {
 			// txt_name
 			// 
 			this->txt_name->Location = System::Drawing::Point(112, 197);
+			this->txt_name->MaxLength = 20;
 			this->txt_name->Name = L"txt_name";
 			this->txt_name->Size = System::Drawing::Size(100, 20);
 			this->txt_name->TabIndex = 7;
@@ -354,6 +359,7 @@ namespace Semesterarbeit_IFO3 {
 			// txt_strasse
 			// 
 			this->txt_strasse->Location = System::Drawing::Point(112, 223);
+			this->txt_strasse->MaxLength = 20;
 			this->txt_strasse->Name = L"txt_strasse";
 			this->txt_strasse->Size = System::Drawing::Size(100, 20);
 			this->txt_strasse->TabIndex = 18;
@@ -370,6 +376,7 @@ namespace Semesterarbeit_IFO3 {
 			// txt_hausnummer
 			// 
 			this->txt_hausnummer->Location = System::Drawing::Point(112, 249);
+			this->txt_hausnummer->MaxLength = 20;
 			this->txt_hausnummer->Name = L"txt_hausnummer";
 			this->txt_hausnummer->Size = System::Drawing::Size(100, 20);
 			this->txt_hausnummer->TabIndex = 20;
@@ -383,13 +390,6 @@ namespace Semesterarbeit_IFO3 {
 			this->lbl_postleitzahl->TabIndex = 21;
 			this->lbl_postleitzahl->Text = L"Postleitzahl";
 			// 
-			// txt_postleitzahl
-			// 
-			this->txt_postleitzahl->Location = System::Drawing::Point(112, 275);
-			this->txt_postleitzahl->Name = L"txt_postleitzahl";
-			this->txt_postleitzahl->Size = System::Drawing::Size(100, 20);
-			this->txt_postleitzahl->TabIndex = 22;
-			// 
 			// lbl_ort
 			// 
 			this->lbl_ort->AutoSize = true;
@@ -402,6 +402,7 @@ namespace Semesterarbeit_IFO3 {
 			// txt_wohnort
 			// 
 			this->txt_wohnort->Location = System::Drawing::Point(112, 301);
+			this->txt_wohnort->MaxLength = 20;
 			this->txt_wohnort->Name = L"txt_wohnort";
 			this->txt_wohnort->Size = System::Drawing::Size(100, 20);
 			this->txt_wohnort->TabIndex = 24;
@@ -423,20 +424,6 @@ namespace Semesterarbeit_IFO3 {
 			this->lbl_mobilnummer->Size = System::Drawing::Size(69, 13);
 			this->lbl_mobilnummer->TabIndex = 26;
 			this->lbl_mobilnummer->Text = L"Mobilnummer";
-			// 
-			// txt_festnetznummer
-			// 
-			this->txt_festnetznummer->Location = System::Drawing::Point(112, 327);
-			this->txt_festnetznummer->Name = L"txt_festnetznummer";
-			this->txt_festnetznummer->Size = System::Drawing::Size(100, 20);
-			this->txt_festnetznummer->TabIndex = 27;
-			// 
-			// txt_mobilnummer
-			// 
-			this->txt_mobilnummer->Location = System::Drawing::Point(112, 353);
-			this->txt_mobilnummer->Name = L"txt_mobilnummer";
-			this->txt_mobilnummer->Size = System::Drawing::Size(100, 20);
-			this->txt_mobilnummer->TabIndex = 28;
 			// 
 			// lbl_abteilungsid
 			// 
@@ -460,6 +447,7 @@ namespace Semesterarbeit_IFO3 {
 			// txt_abteilungsname
 			// 
 			this->txt_abteilungsname->Location = System::Drawing::Point(112, 119);
+			this->txt_abteilungsname->MaxLength = 20;
 			this->txt_abteilungsname->Name = L"txt_abteilungsname";
 			this->txt_abteilungsname->Size = System::Drawing::Size(100, 20);
 			this->txt_abteilungsname->TabIndex = 31;
@@ -537,6 +525,7 @@ namespace Semesterarbeit_IFO3 {
 			// txt_standort
 			// 
 			this->txt_standort->Location = System::Drawing::Point(112, 145);
+			this->txt_standort->MaxLength = 20;
 			this->txt_standort->Name = L"txt_standort";
 			this->txt_standort->Size = System::Drawing::Size(100, 20);
 			this->txt_standort->TabIndex = 41;
@@ -544,6 +533,7 @@ namespace Semesterarbeit_IFO3 {
 			// 
 			// mtxt_abteilingsid
 			// 
+			this->mtxt_abteilingsid->HidePromptOnLeave = true;
 			this->mtxt_abteilingsid->Location = System::Drawing::Point(112, 68);
 			this->mtxt_abteilingsid->Mask = L"999";
 			this->mtxt_abteilingsid->Name = L"mtxt_abteilingsid";
@@ -565,6 +555,7 @@ namespace Semesterarbeit_IFO3 {
 			// 
 			// mtxt_mitarbeiternummer
 			// 
+			this->mtxt_mitarbeiternummer->HidePromptOnLeave = true;
 			this->mtxt_mitarbeiternummer->Location = System::Drawing::Point(112, 94);
 			this->mtxt_mitarbeiternummer->Mask = L"999";
 			this->mtxt_mitarbeiternummer->Name = L"mtxt_mitarbeiternummer";
@@ -585,17 +576,48 @@ namespace Semesterarbeit_IFO3 {
 			// 
 			// cbx_Abteilung
 			// 
+			this->cbx_Abteilung->DropDownStyle = System::Windows::Forms::ComboBoxStyle::DropDownList;
 			this->cbx_Abteilung->FormattingEnabled = true;
 			this->cbx_Abteilung->Location = System::Drawing::Point(112, 119);
 			this->cbx_Abteilung->Name = L"cbx_Abteilung";
 			this->cbx_Abteilung->Size = System::Drawing::Size(100, 21);
 			this->cbx_Abteilung->TabIndex = 46;
 			// 
+			// mtxt_postleitzahl
+			// 
+			this->mtxt_postleitzahl->HidePromptOnLeave = true;
+			this->mtxt_postleitzahl->Location = System::Drawing::Point(112, 275);
+			this->mtxt_postleitzahl->Mask = L"99999";
+			this->mtxt_postleitzahl->Name = L"mtxt_postleitzahl";
+			this->mtxt_postleitzahl->Size = System::Drawing::Size(100, 20);
+			this->mtxt_postleitzahl->TabIndex = 47;
+			// 
+			// mtxt_festnetznummer
+			// 
+			this->mtxt_festnetznummer->HidePromptOnLeave = true;
+			this->mtxt_festnetznummer->Location = System::Drawing::Point(112, 327);
+			this->mtxt_festnetznummer->Mask = L"999999999999999";
+			this->mtxt_festnetznummer->Name = L"mtxt_festnetznummer";
+			this->mtxt_festnetznummer->Size = System::Drawing::Size(100, 20);
+			this->mtxt_festnetznummer->TabIndex = 48;
+			// 
+			// mtxt_mobilnummer
+			// 
+			this->mtxt_mobilnummer->HidePromptOnLeave = true;
+			this->mtxt_mobilnummer->Location = System::Drawing::Point(112, 353);
+			this->mtxt_mobilnummer->Mask = L"999999999999999";
+			this->mtxt_mobilnummer->Name = L"mtxt_mobilnummer";
+			this->mtxt_mobilnummer->Size = System::Drawing::Size(100, 20);
+			this->mtxt_mobilnummer->TabIndex = 49;
+			// 
 			// Dateneingabe
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(595, 471);
+			this->Controls->Add(this->mtxt_mobilnummer);
+			this->Controls->Add(this->mtxt_festnetznummer);
+			this->Controls->Add(this->mtxt_postleitzahl);
 			this->Controls->Add(this->cbx_Abteilung);
 			this->Controls->Add(this->lbl_error_mmitarbeiternummer);
 			this->Controls->Add(this->mtxt_mitarbeiternummer);
@@ -611,13 +633,10 @@ namespace Semesterarbeit_IFO3 {
 			this->Controls->Add(this->txt_abteilungsname);
 			this->Controls->Add(this->lbl_abteilungsname);
 			this->Controls->Add(this->lbl_abteilungsid);
-			this->Controls->Add(this->txt_mobilnummer);
-			this->Controls->Add(this->txt_festnetznummer);
 			this->Controls->Add(this->lbl_mobilnummer);
 			this->Controls->Add(this->lbl_festnetznummer);
 			this->Controls->Add(this->txt_wohnort);
 			this->Controls->Add(this->lbl_ort);
-			this->Controls->Add(this->txt_postleitzahl);
 			this->Controls->Add(this->lbl_postleitzahl);
 			this->Controls->Add(this->txt_hausnummer);
 			this->Controls->Add(this->lbl_hausnummer);
@@ -664,9 +683,8 @@ namespace Semesterarbeit_IFO3 {
 		int done = 1;
 
 		read_eingabe();
-		mtxt_abteilingsid->HidePromptOnLeave = true;
-		mtxt_mitarbeiternummer->HidePromptOnLeave = true;
-		do {
+		
+		do {//Drop Down Menü der Abteilungen beschreiben
 			zähler++;
 			laden_zähler = zähler;
 			datensatz_laden_abteilung(laden_na, laden_str, laden_hnr, laden_post, laden_ort, laden_abl, laden_nr, laden_st, laden_zähler);
@@ -735,7 +753,7 @@ namespace Semesterarbeit_IFO3 {
 
 		if (rdo_mitarbeiter->Checked==true)//Mitarbeiter speichern
 		{
-			if (mtxt_mitarbeiternummer->Text == leer || cbx_Abteilung->Text == leer || txt_vorname->Text == leer || txt_name->Text == leer || txt_strasse->Text == leer || txt_hausnummer->Text == leer || txt_postleitzahl->Text == leer || txt_wohnort->Text == leer || txt_festnetznummer->Text == leer || txt_mobilnummer->Text == leer || cbx_monat->Text == leer || cbx_jahr->Text == leer)
+			if (mtxt_mitarbeiternummer->Text == leer || cbx_Abteilung->Text == leer || txt_vorname->Text == leer || txt_name->Text == leer || txt_strasse->Text == leer || txt_hausnummer->Text == leer || mtxt_postleitzahl->Text == leer || txt_wohnort->Text == leer || mtxt_festnetznummer->Text == leer || mtxt_mobilnummer->Text == leer || cbx_monat->Text == leer || cbx_jahr->Text == leer)
 			{
 				MessageBox::Show("Bitte füllen sie den Datensatz komplett aus!");
 				felderlöschen = 1;
@@ -766,7 +784,7 @@ namespace Semesterarbeit_IFO3 {
 				sprintf(speichern_hnr, "%s", hnr);
 
 				String ^post;
-				post = txt_postleitzahl->Text;
+				post = mtxt_postleitzahl->Text;
 				sprintf(speichern_post, "%s", post);
 
 				String ^ort;
@@ -774,11 +792,11 @@ namespace Semesterarbeit_IFO3 {
 				sprintf(speichern_ort, "%s", ort);
 
 				String ^mnr;
-				mnr = txt_mobilnummer->Text;
+				mnr = mtxt_mobilnummer->Text;
 				sprintf(speichern_mnr, "%s", mnr);
 
 				String ^fnr;
-				fnr = txt_festnetznummer->Text;
+				fnr = mtxt_festnetznummer->Text;
 				sprintf(speichern_fnr, "%s", fnr);
 
 				String ^em;
@@ -845,7 +863,7 @@ namespace Semesterarbeit_IFO3 {
 		
 		if (rdo_abteilungsleiter->Checked == true)//Abteilungsleiter speichern
 		{
-			if (cbx_Abteilung->Text == leer || txt_vorname->Text == leer || txt_name->Text == leer || txt_strasse->Text == leer || txt_hausnummer->Text == leer || txt_postleitzahl->Text == leer || txt_wohnort->Text == leer || txt_festnetznummer->Text == leer || txt_mobilnummer->Text == leer)
+			if (cbx_Abteilung->Text == leer || txt_vorname->Text == leer || txt_name->Text == leer || txt_strasse->Text == leer || txt_hausnummer->Text == leer || mtxt_postleitzahl->Text == leer || txt_wohnort->Text == leer || mtxt_festnetznummer->Text == leer || mtxt_mobilnummer->Text == leer)
 			{
 				MessageBox::Show("Bitte füllen sie den Datensatz komplett aus!");
 				felderlöschen = 1;
@@ -871,7 +889,7 @@ namespace Semesterarbeit_IFO3 {
 				sprintf(speichern_hnr, "%s", hnr);
 
 				String ^post;
-				post = txt_postleitzahl->Text;
+				post = mtxt_postleitzahl->Text;
 				sprintf(speichern_post, "%s", post);
 
 				String ^ort;
@@ -879,11 +897,11 @@ namespace Semesterarbeit_IFO3 {
 				sprintf(speichern_ort, "%s", ort);
 
 				String ^mnr;
-				mnr = txt_mobilnummer->Text;
+				mnr = mtxt_mobilnummer->Text;
 				sprintf(speichern_mnr, "%s", mnr);
 
 				String ^fnr;
-				fnr = txt_festnetznummer->Text;
+				fnr = mtxt_festnetznummer->Text;
 				sprintf(speichern_fnr, "%s", fnr);
 
 				String ^ab;
@@ -937,7 +955,7 @@ namespace Semesterarbeit_IFO3 {
 
 		if (rdo_abteilung->Checked == true)//Abteilung speichern
 		{
-			if (mtxt_abteilingsid->Text == leer || txt_abteilungsname->Text == leer || txt_strasse->Text == leer || txt_hausnummer->Text == leer || txt_postleitzahl->Text == leer || txt_wohnort->Text == leer || txt_standort->Text == leer)
+			if (mtxt_abteilingsid->Text == leer || txt_abteilungsname->Text == leer || txt_strasse->Text == leer || txt_hausnummer->Text == leer || mtxt_postleitzahl->Text == leer || txt_wohnort->Text == leer || txt_standort->Text == leer)
 			{
 				MessageBox::Show("Bitte füllen sie den Datensatz komplett aus!");
 				felderlöschen = 1;
@@ -953,7 +971,7 @@ namespace Semesterarbeit_IFO3 {
 				sprintf(speichern_hnr, "%s", hnr);
 
 				String ^post;
-				post = txt_postleitzahl->Text;
+				post = mtxt_postleitzahl->Text;
 				sprintf(speichern_post, "%s", post);
 
 				String ^ort;
@@ -993,6 +1011,23 @@ namespace Semesterarbeit_IFO3 {
 				String ^sst = gcnew String(laden_st);
 				String ^sid = gcnew String(laden_nr);
 
+				cbx_Abteilung->Items->Clear();
+
+				do {//Drop Down Menü der Abteilungen beschreiben
+					zähler++;
+					laden_zähler = zähler;
+					datensatz_laden_abteilung(laden_na, laden_str, laden_hnr, laden_post, laden_ort, laden_abl, laden_nr, laden_st, laden_zähler);
+
+					if (strlen(laden_na) != 0) {
+						String ^na = gcnew String(laden_na);
+						cbx_Abteilung->Items->Add(na);
+					}
+
+					if (zähler == 100) {
+						done = 0;
+					}
+				} while (done == 1);
+
 				MessageBox::Show("Abteilung erfolgreich gespeichert!\n\nAbteilungs ID: " + sid + "\nAbteilungsname: " + sab + "\nStraße: " + sstr + "\nHausnummer: " + shnr + "\nPostleitzahl: " + spost + "\nWohnort: " + sort + "\nStandort: " + sst + "\n");
 			}
 		}
@@ -1007,13 +1042,16 @@ namespace Semesterarbeit_IFO3 {
 			txt_name->Text = entleeren;
 			txt_strasse->Text = entleeren;
 			txt_hausnummer->Text = entleeren;
-			txt_postleitzahl->Text = entleeren;
+			mtxt_postleitzahl->Text = entleeren;
 			txt_wohnort->Text = entleeren;
-			txt_festnetznummer->Text = entleeren;
-			txt_mobilnummer->Text = entleeren;
+			mtxt_festnetznummer->Text = entleeren;
+			mtxt_mobilnummer->Text = entleeren;
 			cbx_jahr->SelectedIndex = -1;
 			cbx_monat->SelectedIndex = -1;
 			cbx_Abteilung->SelectedIndex = -1;
+
+			lbl_error_abteilungsname->Visible = false;
+			btn_speichern->Visible = true;
 		}
 	}
 	//Bei drücken von Speichern werden die Variablen in der textdatei gespeichert
@@ -1045,9 +1083,17 @@ namespace Semesterarbeit_IFO3 {
 		lbl_name->Visible = true;
 		txt_name->Visible = true;
 		lbl_festnetznummer->Visible = true;
-		txt_festnetznummer->Visible = true;
+		mtxt_festnetznummer->Visible = true;
 		lbl_mobilnummer->Visible = true;
-		txt_mobilnummer->Visible = true;
+		mtxt_mobilnummer->Visible = true;
+
+		lbl_error_abteilung->Visible = false;
+		lbl_error_abteilungsid->Visible = false;
+		lbl_error_abteilungsleiter->Visible = false;
+		lbl_error_abteilungsname->Visible = false;
+		lbl_error_mabteilungsid->Visible = false;
+		lbl_error_mitarbeiternr->Visible = false;
+		lbl_error_mmitarbeiternummer->Visible = false;
 
 		//Eingabefelder bereinigen
 		String ^entleeren = "";
@@ -1060,10 +1106,10 @@ namespace Semesterarbeit_IFO3 {
 		txt_name->Text = entleeren;
 		txt_strasse->Text = entleeren;
 		txt_hausnummer->Text = entleeren;
-		txt_postleitzahl->Text = entleeren;
+		mtxt_postleitzahl->Text = entleeren;
 		txt_wohnort->Text = entleeren;
-		txt_festnetznummer->Text = entleeren;
-		txt_mobilnummer->Text = entleeren;
+		mtxt_festnetznummer->Text = entleeren;
+		mtxt_mobilnummer->Text = entleeren;
 		cbx_jahr->SelectedIndex = -1;
 		cbx_monat->SelectedIndex = -1;
 		cbx_Abteilung->SelectedIndex = -1;
@@ -1076,10 +1122,7 @@ namespace Semesterarbeit_IFO3 {
 		mtxt_abteilingsid->Visible = false;
 		lbl_mitarbeiternummer->Visible = false;
 		mtxt_mitarbeiternummer->Visible = false;
-
-		cbx_Abteilung->Visible = true;
 		txt_abteilungsname->Visible = false;
-
 		lbl_eintrittsdatum->Visible = false;
 		lbl_monat->Visible = false;
 		lbl_jahr->Visible = false;
@@ -1093,9 +1136,18 @@ namespace Semesterarbeit_IFO3 {
 		lbl_name->Visible = true;
 		txt_name->Visible = true;
 		lbl_festnetznummer->Visible = true;
-		txt_festnetznummer->Visible = true;
+		mtxt_festnetznummer->Visible = true;
 		lbl_mobilnummer->Visible = true;
-		txt_mobilnummer->Visible = true;
+		mtxt_mobilnummer->Visible = true;
+		cbx_Abteilung->Visible = true;
+
+		lbl_error_abteilung->Visible = false;
+		lbl_error_abteilungsid->Visible = false;
+		lbl_error_abteilungsleiter->Visible = false;
+		lbl_error_abteilungsname->Visible = false;
+		lbl_error_mabteilungsid->Visible = false;
+		lbl_error_mitarbeiternr->Visible = false;
+		lbl_error_mmitarbeiternummer->Visible = false;
 		
 		//Eingabefelder bereinigen
 		String ^entleeren = "";
@@ -1108,10 +1160,10 @@ namespace Semesterarbeit_IFO3 {
 		txt_name->Text = entleeren;
 		txt_strasse->Text = entleeren;
 		txt_hausnummer->Text = entleeren;
-		txt_postleitzahl->Text = entleeren;
+		mtxt_postleitzahl->Text = entleeren;
 		txt_wohnort->Text = entleeren;
-		txt_festnetznummer->Text = entleeren;
-		txt_mobilnummer->Text = entleeren;
+		mtxt_festnetznummer->Text = entleeren;
+		mtxt_mobilnummer->Text = entleeren;
 		cbx_jahr->SelectedIndex = -1;
 		cbx_monat->SelectedIndex = -1;
 		cbx_Abteilung->SelectedIndex = -1;
@@ -1126,22 +1178,29 @@ namespace Semesterarbeit_IFO3 {
 		lbl_mitarbeiternummer->Visible = false;
 		mtxt_mitarbeiternummer->Visible = false;
 		cbx_Abteilung->Visible = false;
-		txt_abteilungsname->Visible = true;
-
 		lbl_eintrittsdatum->Visible = false;
 		lbl_monat->Visible = false;
 		lbl_jahr->Visible = false;
 		cbx_monat->Visible = false;
 		cbx_jahr->Visible = false;
 		lbl_festnetznummer->Visible = false;
-		txt_festnetznummer->Visible = false;
+		mtxt_festnetznummer->Visible = false;
 		lbl_mobilnummer->Visible = false;
-		txt_mobilnummer->Visible = false;
+		mtxt_mobilnummer->Visible = false;
 
+		txt_abteilungsname->Visible = true;
 		lbl_abteilungsid->Visible = true;
 		mtxt_abteilingsid->Visible = true;
 		lbl_standort->Visible = true;
 		txt_standort->Visible = true;
+
+		lbl_error_abteilung->Visible = false;
+		lbl_error_abteilungsid->Visible = false;
+		lbl_error_abteilungsleiter->Visible = false;
+		lbl_error_abteilungsname->Visible = false;
+		lbl_error_mabteilungsid->Visible = false;
+		lbl_error_mitarbeiternr->Visible = false;
+		lbl_error_mmitarbeiternummer->Visible = false;
 
 		//Eingabefelder bereinigen
 		String ^entleeren = "";
@@ -1154,10 +1213,10 @@ namespace Semesterarbeit_IFO3 {
 		txt_name->Text = entleeren;
 		txt_strasse->Text = entleeren;
 		txt_hausnummer->Text = entleeren;
-		txt_postleitzahl->Text = entleeren;
+		mtxt_postleitzahl->Text = entleeren;
 		txt_wohnort->Text = entleeren;
-		txt_festnetznummer->Text = entleeren;
-		txt_mobilnummer->Text = entleeren;
+		mtxt_festnetznummer->Text = entleeren;
+		mtxt_mobilnummer->Text = entleeren;
 		cbx_jahr->SelectedIndex = -1;
 		cbx_monat->SelectedIndex = -1;
 		cbx_Abteilung->SelectedIndex = -1;
