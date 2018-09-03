@@ -151,9 +151,9 @@ namespace Semesterarbeit_IFO3 {
 			this->lbl_info->AutoSize = true;
 			this->lbl_info->Location = System::Drawing::Point(42, 27);
 			this->lbl_info->Name = L"lbl_info";
-			this->lbl_info->Size = System::Drawing::Size(292, 13);
+			this->lbl_info->Size = System::Drawing::Size(294, 13);
 			this->lbl_info->TabIndex = 7;
-			this->lbl_info->Text = L"Wilkommen in der Mitarbeiterdatenbank der Firma Daddeldu.";
+			this->lbl_info->Text = L"Willkommen in der Mitarbeiterdatenbank der Firma Daddeldu.";
 			// 
 			// lbl_info1
 			// 
