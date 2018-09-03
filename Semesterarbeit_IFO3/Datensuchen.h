@@ -635,8 +635,10 @@ namespace Semesterarbeit_IFO3 {
 			{
 				String^ name = gcnew String(abteilungsleiter[i].NA);
 
-				if (strcmp(abteilungsleiter[i].NA, "XYZ") != 0)
+				if (strcmp(abteilungsleiter[i].NA, "XYZ") != 0) {
+					if(strcmp(abteilungsleiter[i].NA,"000") !=0)
 					comboBox_Abteilung->Items->Add(name);
+				}
 			}
 
 		}
