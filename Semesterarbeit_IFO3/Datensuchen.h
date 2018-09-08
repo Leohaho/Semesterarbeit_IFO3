@@ -189,6 +189,7 @@ namespace Semesterarbeit_IFO3 {
 			this->button3->TabIndex = 6;
 			this->button3->Text = L"Bearbeiten";
 			this->button3->UseVisualStyleBackColor = true;
+			this->button3->Visible = false;
 			this->button3->Click += gcnew System::EventHandler(this, &Datensuchen::button3_Click);
 			// 
 			// dataGridView1
@@ -357,7 +358,7 @@ namespace Semesterarbeit_IFO3 {
 			// 
 			this->comboBox3->DropDownStyle = System::Windows::Forms::ComboBoxStyle::DropDownList;
 			this->comboBox3->FormattingEnabled = true;
-			this->comboBox3->Location = System::Drawing::Point(586, 71);
+			this->comboBox3->Location = System::Drawing::Point(586, 100);
 			this->comboBox3->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->comboBox3->Name = L"comboBox3";
 			this->comboBox3->Size = System::Drawing::Size(121, 24);
@@ -389,7 +390,7 @@ namespace Semesterarbeit_IFO3 {
 			this->MinimumSize = System::Drawing::Size(1125, 497);
 			this->Name = L"Datensuchen";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::Manual;
-			this->Text = L"Datensuchen";
+			this->Text = L"Daten suchen";
 			this->Load += gcnew System::EventHandler(this, &Datensuchen::Datensuchen_Load_1);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->EndInit();
 			this->ResumeLayout(false);
