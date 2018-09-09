@@ -44,12 +44,12 @@ namespace Semesterarbeit_IFO3 {
 				delete components;
 			}
 		}
-	private: System::Windows::Forms::Button^  button1;
+
 	private: System::Windows::Forms::Button^  button2;
 	private: System::Windows::Forms::RadioButton^  radioButton1;
 	private: System::Windows::Forms::RadioButton^  radioButton2;
 
-	private: System::Windows::Forms::TextBox^  textBox1;
+	private: System::Windows::Forms::MaskedTextBox^  textBox1;
 	private: System::Windows::Forms::Label^  label1;
 	private: System::Windows::Forms::Label^  label2;
 	protected:
@@ -67,25 +67,13 @@ namespace Semesterarbeit_IFO3 {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->button2 = (gcnew System::Windows::Forms::Button());
 			this->radioButton1 = (gcnew System::Windows::Forms::RadioButton());
 			this->radioButton2 = (gcnew System::Windows::Forms::RadioButton());
-			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
+			this->textBox1 = (gcnew System::Windows::Forms::MaskedTextBox());
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->SuspendLayout();
-			// 
-			// button1
-			// 
-			this->button1->Location = System::Drawing::Point(220, 87);
-			this->button1->Margin = System::Windows::Forms::Padding(4);
-			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(153, 31);
-			this->button1->TabIndex = 0;
-			this->button1->Text = L"Speichern";
-			this->button1->UseVisualStyleBackColor = true;
-			this->button1->Click += gcnew System::EventHandler(this, &Datenlöschen::button1_Click);
 			// 
 			// button2
 			// 
@@ -122,6 +110,7 @@ namespace Semesterarbeit_IFO3 {
 			// textBox1
 			// 
 			this->textBox1->Location = System::Drawing::Point(104, 9);
+			this->textBox1->Mask = L"999";
 			this->textBox1->Name = L"textBox1";
 			this->textBox1->Size = System::Drawing::Size(134, 22);
 			this->textBox1->TabIndex = 5;
@@ -155,7 +144,6 @@ namespace Semesterarbeit_IFO3 {
 			this->Controls->Add(this->radioButton2);
 			this->Controls->Add(this->radioButton1);
 			this->Controls->Add(this->button2);
-			this->Controls->Add(this->button1);
 			this->Margin = System::Windows::Forms::Padding(4);
 			this->Name = L"Datenlöschen";
 			this->Text = L"Datenlöschen";
@@ -165,14 +153,12 @@ namespace Semesterarbeit_IFO3 {
 
 		}
 #pragma endregion
+	//Beim Laden des Fenster werden die Daten aus der Textdatei in die Variablen geladen
 	private: System::Void Datenlöschen_Load(System::Object^  sender, System::EventArgs^  e) {
 		read_löschen();
 	}
 
-	private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
-		speichern_löschen();
-	}
-
+	//Beim Drücken von Löschen wird der Datensatz gesucht und die Bestätigung aufgerufen
 	private: System::Void button2_Click(System::Object^  sender, System::EventArgs^  e) {
 		String ^nr = this->textBox1->Text;
 		if(nr!=""){

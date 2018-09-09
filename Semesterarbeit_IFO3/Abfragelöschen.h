@@ -110,15 +110,19 @@ namespace Semesterarbeit_IFO3 {
 			this->PerformLayout();
 		}
 #pragma endregion
-		
+	
+	//Beim Laden des Fenster wird der Name des Mitarbeiter oder des Abteilungsleiter geladen
 	private: System::Void Abfragelöschen_Load(System::Object^  sender, System::EventArgs^  e) {
 		label1->Text = "Sind Sie sich sicher, dass Sie die Daten von\n" +gcnew System::String(namelöschen()) + " löschen möchten?";
 	}
 
+	//Beim Drücken von Ok werden die Daten gelöscht
 	private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
 		löschen(); 
 		this->Close();
 	}
+
+	//Beim Drücken von Abbrechen wird das Fenster geschlossen ohne die Daten zu löschen
 	private: System::Void button2_Click(System::Object^  sender, System::EventArgs^  e) {
 		this->Close();
 	}

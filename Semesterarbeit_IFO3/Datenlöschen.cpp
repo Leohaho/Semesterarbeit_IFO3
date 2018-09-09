@@ -32,9 +32,20 @@ void löschen() {
 		MA[T].NR = 108;
 	}
 	else{
+		int i = 0;
+		char ablname[100];
+		
+		for (i = 0; i < 102; i++) {
+			
+			if (strcmp(MA[i].AB, AT[B].FA) == 0) {
+				strcpy(MA[i].VG, "nicht besetzt");
+			}
+		}
+
 		strcpy(AL[B].NA, "000");
 		strcpy(AT[B].ABL, "nicht besetzt");
 	}
+	speichern_löschen();
 }
 
 void read_löschen() {

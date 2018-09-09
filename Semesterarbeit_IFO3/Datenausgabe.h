@@ -158,12 +158,14 @@ namespace Semesterarbeit_IFO3 {
 
 		}
 #pragma endregion
+	
+	//Beim Laden des Fenster werden die Daten aus der Textdatei in die Variablen geladen	
 	private: System::Void Datenausgabe_Load(System::Object^  sender, System::EventArgs^  e) {
 		read_ausgabe();
 	}
 
+	//Beim Drücken auf Ausgeben wird das Datagrid angepasst und die Daten werden hineingeschrieben 
 	private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
-		//speichern_ausgabe(); wozu?
 		this->dataGridView1->Visible = true;
 		int i = 0;
 		int j = 0;
@@ -191,7 +193,7 @@ namespace Semesterarbeit_IFO3 {
 
 		}
 		if (this->radioButton2->Checked) {
-			this->dataGridView1->Size = System::Drawing::Size(600, 228);
+			this->dataGridView1->Size = System::Drawing::Size(600, 238);
 			this->ClientSize = System::Drawing::Size(640, 333);
 			i = 2;
 			this->dataGridView1->RowCount = 10;
@@ -207,7 +209,7 @@ namespace Semesterarbeit_IFO3 {
 			this->dataGridView1->Rows[9]->HeaderCell->Value = "Ort/Stadt";
 		}
 		if (this->radioButton3->Checked) {
-			this->dataGridView1->Size = System::Drawing::Size(600, 188);
+			this->dataGridView1->Size = System::Drawing::Size(600, 198);
 			this->ClientSize = System::Drawing::Size(640, 280);
 			i = 3;
 			this->dataGridView1->RowCount = 8;
