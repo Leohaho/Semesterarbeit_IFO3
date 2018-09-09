@@ -1,3 +1,21 @@
+0
+Ø€|
+
+
+»îş
+
+:ş
+nicht besetzt
+
+
+besetzt
+
+ğ/
+
+¡'
+tzt
+
+
 2
 kbr
 Standort
@@ -41,13 +59,13 @@ karolinestasse
 2
 27283
 Verden
-nicht besetzt
+0000
 000
 0
+buchhaltung
 0
 0
-0
-0
+0.000@daddeldu.com
 0
 0
 0
@@ -56,10 +74,10 @@ nicht besetzt
 technik
 asddas
 dasasd
-2312
+23
 13123
 dasd
-nicht besetzt
+0000
 000
 0
 0

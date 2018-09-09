@@ -49,7 +49,7 @@ namespace Semesterarbeit_IFO3 {
 				delete components;
 			}
 		}
-	private: System::Windows::Forms::Button^  button1;
+
 	private: System::Windows::Forms::TextBox^  textBox1;
 	private: System::Windows::Forms::Button^  button2;
 	private: System::Windows::Forms::TextBox^  textBox2;
@@ -69,6 +69,7 @@ namespace Semesterarbeit_IFO3 {
 	private: System::Windows::Forms::RadioButton^  radioButton1;
 	private: System::Windows::Forms::RadioButton^  radioButton2;
 	private: System::Windows::Forms::Label^  label7;
+	private: System::Windows::Forms::ComboBox^  comboBox1;
 
 
 	protected:
@@ -86,7 +87,6 @@ namespace Semesterarbeit_IFO3 {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
 			this->button2 = (gcnew System::Windows::Forms::Button());
 			this->textBox2 = (gcnew System::Windows::Forms::TextBox());
@@ -102,21 +102,13 @@ namespace Semesterarbeit_IFO3 {
 			this->radioButton1 = (gcnew System::Windows::Forms::RadioButton());
 			this->radioButton2 = (gcnew System::Windows::Forms::RadioButton());
 			this->label7 = (gcnew System::Windows::Forms::Label());
+			this->comboBox1 = (gcnew System::Windows::Forms::ComboBox());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
 			this->SuspendLayout();
 			// 
-			// button1
-			// 
-			this->button1->Location = System::Drawing::Point(83, 323);
-			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(101, 35);
-			this->button1->TabIndex = 0;
-			this->button1->Text = L"Speichern";
-			this->button1->UseVisualStyleBackColor = true;
-			this->button1->Click += gcnew System::EventHandler(this, &Datenändern::button1_Click);
-			// 
 			// textBox1
 			// 
+			this->textBox1->Enabled = false;
 			this->textBox1->Location = System::Drawing::Point(121, 32);
 			this->textBox1->Name = L"textBox1";
 			this->textBox1->Size = System::Drawing::Size(100, 20);
@@ -222,17 +214,19 @@ namespace Semesterarbeit_IFO3 {
 			this->radioButton1->TabStop = true;
 			this->radioButton1->Text = L"Mitarbeiter";
 			this->radioButton1->UseVisualStyleBackColor = true;
+			this->radioButton1->CheckedChanged += gcnew System::EventHandler(this, &Datenändern::radioButton1_CheckedChanged);
 			// 
 			// radioButton2
 			// 
 			this->radioButton2->AutoSize = true;
-			this->radioButton2->Location = System::Drawing::Point(192, 9);
+			this->radioButton2->Location = System::Drawing::Point(121, 66);
 			this->radioButton2->Name = L"radioButton2";
 			this->radioButton2->Size = System::Drawing::Size(107, 17);
 			this->radioButton2->TabIndex = 16;
 			this->radioButton2->TabStop = true;
 			this->radioButton2->Text = L"Abteilung + Leiter";
 			this->radioButton2->UseVisualStyleBackColor = true;
+			this->radioButton2->CheckedChanged += gcnew System::EventHandler(this, &Datenändern::radioButton2_CheckedChanged);
 			// 
 			// label7
 			// 
@@ -243,11 +237,21 @@ namespace Semesterarbeit_IFO3 {
 			this->label7->TabIndex = 17;
 			this->label7->Text = L"Art der Änderung:";
 			// 
+			// comboBox1
+			// 
+			this->comboBox1->Enabled = false;
+			this->comboBox1->FormattingEnabled = true;
+			this->comboBox1->Location = System::Drawing::Point(121, 89);
+			this->comboBox1->Name = L"comboBox1";
+			this->comboBox1->Size = System::Drawing::Size(121, 21);
+			this->comboBox1->TabIndex = 18;
+			// 
 			// Datenändern
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(611, 355);
+			this->Controls->Add(this->comboBox1);
 			this->Controls->Add(this->label7);
 			this->Controls->Add(this->radioButton2);
 			this->Controls->Add(this->radioButton1);
@@ -261,7 +265,6 @@ namespace Semesterarbeit_IFO3 {
 			this->Controls->Add(this->textBox2);
 			this->Controls->Add(this->button2);
 			this->Controls->Add(this->textBox1);
-			this->Controls->Add(this->button1);
 			this->Name = L"Datenändern";
 			this->Text = L"Datenändern";
 			this->Load += gcnew System::EventHandler(this, &Datenändern::Datenändern_Load);
@@ -273,9 +276,28 @@ namespace Semesterarbeit_IFO3 {
 
 		int i;
 
+
 #pragma endregion
 	private: System::Void Datenändern_Load(System::Object^  sender, System::EventArgs^  e) {
 		read_ändern();
+		ABT AT[100];
+		ABL AL[100];
+		for (int i = 0; i < 100; i++)
+		{
+			strcpy(AT[i].FA, "");
+			strcpy(AL[i].NA, "");
+		}
+
+		readal(AT, AL);
+
+		for (i = 0; i < 100; i++)
+		{
+			String^ name = gcnew String(AT[i].FA);
+
+			if (strcmp(AT[i].FA, "") != 0) {
+				comboBox1->Items->Add(name);
+			}
+		}
 	}
 
 	private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
@@ -284,6 +306,8 @@ namespace Semesterarbeit_IFO3 {
 	private: System::Void button2_Click(System::Object^  sender, System::EventArgs^  e) {
 		// suchen-knopf und daten ausgeben
 		//initData();
+
+		dataGridView1->Rows->Clear();
 
 		//Mitarbeiter ändern
 		if (radioButton1->Checked == true) {
@@ -295,10 +319,18 @@ namespace Semesterarbeit_IFO3 {
 				String^ nrstring = textBox1->Text;
 				int nrint = int::Parse(nrstring);
 
+				if (nrint > 100) {
+					MessageBox::Show("Es kann keine Nummer über 100 verwendet werden.");
+					return;
+				}
+
 				Mitarb MA[100];
 				readma(MA);
+				bool found = false;
+
 				for (i = 0; i < 100; i++) {
 					if (MA[i].NR == nrint && MA[i].NR == i) { // erweiterte Abfrage um ausgabe durch daten im Speicher zu verhindern
+						found = true;
 						//MessageBox::Show("Datensatz gefunden!"); // für Testzwecke
 						String^ vname = gcnew String(MA[i].VNA);
 						String^ name = gcnew String(MA[i].NA);
@@ -330,33 +362,39 @@ namespace Semesterarbeit_IFO3 {
 						dataGridView1->Rows->Add("Eintrittsmonat", eintritsmonat);
 						dataGridView1->Rows->Add("Eintrittsjahr", eintritsjahr);
 
+						dataGridView1->Rows[0]->Cells[1]->ReadOnly = true;
+						dataGridView1->Rows[5]->Cells[1]->ReadOnly = true;
+
 						speichernma(MA);
 					}
-					//else { MessageBox::Show("Es wurde kein Datensatz gefunden!"); }
-					;
-
+				}
+				if (!found) {
+					MessageBox::Show("Es wurde kein Datensatz gefunden!");
 				}
 			}
 		}
 		//Abteilung + Leiter ändern
-		else if (radioButton2->Checked == true) {//ABeteilung und Leiter müssen Gleichzeitig eingelsen werden für Posiisiton in Datei.
-												 // Abteilung
-			if (textBox1->Text->Length == 0) {
-				MessageBox::Show("Es wurde keine Nummer eingegeben!");
+		else if (radioButton2->Checked == true) {
+			//ABeteilung und Leiter müssen Gleichzeitig eingelsen werden für Posiisiton in Datei.
+
+			// Abteilung
+			if (comboBox1->SelectedIndex == -1) {
+				MessageBox::Show("Es wurde keine Abteilung ausgewählt!");
 			}
 			else {
-				String^ nrstring = textBox1->Text;
-				int nrint = int::Parse(nrstring);
-
 				ABT AT[100];
 				ABL AL[100];
 				readal(AT, AL);
+				//datenEinlesen(AT, AL);
 
+				char selectedTextChar[20];
+				//sprintf(selectedTextChar, "%s", comboBox1->SelectedItem);
+				sprintf(selectedTextChar, "%s", comboBox1->SelectedItem->ToString());
 
 				for (i = 0; i < 100; i++) {
-					if (AT[i].ID == nrint && AT[i].ID == i) { // erweiterte Abfrage um ausgabe durch daten im Speicher zu verhindern
-						//MessageBox::Show("erfolg"); // für Testzwecke
-													//Abteilung
+					if (strcmp(AT[i].FA, selectedTextChar) == 0) { // erweiterte Abfrage um ausgabe durch daten im Speicher zu verhindern
+																   //MessageBox::Show("erfolg"); // für Testzwecke
+																   //Abteilung
 						String^ abteilungname = gcnew String(AT[i].FA);
 						String^ abteilungstandort = gcnew String(AT[i].ST);
 						String^ abteilungstr = gcnew String(AT[i].STR);
@@ -379,7 +417,7 @@ namespace Semesterarbeit_IFO3 {
 
 						//Abteilung
 						dataGridView1->Rows->Add("Nummer", i);						//0
-						dataGridView1->Rows->Add("Firma Name", abteilungname);		//1
+						dataGridView1->Rows->Add("Abteilungsname", abteilungname);		//1
 						dataGridView1->Rows->Add("Standort", abteilungstandort);	//2
 						dataGridView1->Rows->Add("Straße", abteilungstr);			//3
 						dataGridView1->Rows->Add("Hausnummer", abteilunghnr);		//4
@@ -398,6 +436,13 @@ namespace Semesterarbeit_IFO3 {
 						dataGridView1->Rows->Add("Postleitzahl", leiterpost);		//16
 						dataGridView1->Rows->Add("Ort", leiterort);					//17
 
+						dataGridView1->Rows[0]->Cells[1]->ReadOnly = true;
+						dataGridView1->Rows[1]->Cells[1]->ReadOnly = true;
+						dataGridView1->Rows[7]->Cells[1]->ReadOnly = true;
+						dataGridView1->Rows[13]->Cells[1]->ReadOnly = true;
+
+
+
 						speichernal(AT, AL);
 
 					}
@@ -411,7 +456,10 @@ namespace Semesterarbeit_IFO3 {
 
 
 	private: System::Void button3_Click(System::Object^  sender, System::EventArgs^  e) {
-
+		if (dataGridView1->RowCount < 2) {
+			MessageBox::Show("Es wurden zuvor keine Werte eingelesen.");
+			return;
+		}
 
 		//neue Daten einlesen 
 		//Mitarbeiter
@@ -424,6 +472,35 @@ namespace Semesterarbeit_IFO3 {
 			MessageBox::Show("Es wurden keine Daten eingelesen!");
 			}
 			else {*/
+			bool empty = false;
+			//MessageBox::Show("for");
+			for (int j = 0; j < 13; j++) {
+				Object^ value = dataGridView1->Rows[j]->Cells[1]->Value;
+
+				if (value != nullptr) {
+					String^ test = value->ToString();
+
+					if (String::IsNullOrEmpty(test)) {
+						empty = true;
+						break;
+					}
+				}
+				else {
+					//MessageBox::Show("Kagge!");
+					empty = true;
+					break;
+				}
+			}
+
+			if (empty) {
+				MessageBox::Show("Mindestens ein Feld ist leer!");
+				return;
+			}
+
+			String^ emptyChar;
+			emptyChar->Concat(empty);
+
+
 			String^ newnr = dataGridView1->Rows[0]->Cells[1]->Value->ToString();
 			int x = int::Parse(newnr);
 
@@ -440,6 +517,7 @@ namespace Semesterarbeit_IFO3 {
 			String^ newabteilungsleiter = dataGridView1->Rows[11]->Cells[1]->Value->ToString();
 			String^ neweintritsmonat = dataGridView1->Rows[12]->Cells[1]->Value->ToString();
 			String^ neweintritsjahr = dataGridView1->Rows[13]->Cells[1]->Value->ToString();
+
 
 			//testfelder
 
@@ -473,6 +551,7 @@ namespace Semesterarbeit_IFO3 {
 			sprintf(newfestnetzchar, "%s", newfestnetz);
 			sprintf(newmailchar, "%s", newmail);
 			sprintf(newstrchar, "%s", newstr);
+			sprintf(newhausnrchar, "%s", newhausnr);
 			sprintf(newplzchar, "%s", newplz);
 			sprintf(newortchar, "%s", newort);
 			sprintf(newabteilungchar, "%s", newabteilung);
@@ -501,6 +580,7 @@ namespace Semesterarbeit_IFO3 {
 				strcat(MA[x].mail, "@daddeldu.com");
 
 				strcpy(MA[x].STR, newstrchar);
+				strcpy(MA[x].HNR, newhausnrchar);
 				strcpy(MA[x].POST, newplzchar);
 				strcpy(MA[x].ORT, newortchar);
 				strcpy(MA[x].AB, newabteilungchar);
@@ -533,18 +613,49 @@ namespace Semesterarbeit_IFO3 {
 				}
 				// Zeilen kommentiert bzw. geändert von Leo: 299;399;418-462
 				fclose(fpma);
-
+				MessageBox::Show("Die Daten wurden erfolgreich gespeichert.");
 			}
 
 		}
 		//Abteilung und Leiter
 		else if (radioButton2->Checked == true) {
+			//-------------------------------------Fehler bei leeren Feldern-----------------------------------------------------
+			bool empty = false;
+			//MessageBox::Show("for");
+			for (int j = 0; j < 17; j++) {
+				Object^ value = dataGridView1->Rows[j]->Cells[1]->Value;
+
+				if (value != nullptr) {
+					String^ test = value->ToString();
+
+					if (String::IsNullOrEmpty(test)) {
+						empty = true;
+						break;
+					}
+				}
+				else {
+					//MessageBox::Show("Kagge!");
+					empty = true;
+					break;
+				}
+			}
+
+			if (empty) {
+				MessageBox::Show("Mindestens ein Feld ist leer!");
+				return;
+			}
+
+			String^ emptyChar;
+			emptyChar->Concat(empty);
+			//			MessageBox::Show(emptyChar);
+
 
 			//Abteilung
 			String^ newnr = dataGridView1->Rows[0]->Cells[1]->Value->ToString();
 			int x = int::Parse(newnr);
 			String^ newabteilungname = dataGridView1->Rows[1]->Cells[1]->Value->ToString();
 			String^ newabteilungstandort = dataGridView1->Rows[2]->Cells[1]->Value->ToString();
+
 			String^ newabteilungstr = dataGridView1->Rows[3]->Cells[1]->Value->ToString();
 			String^ newabteilunghnr = dataGridView1->Rows[4]->Cells[1]->Value->ToString();
 			String^ newabteilungpost = dataGridView1->Rows[5]->Cells[1]->Value->ToString();
@@ -609,7 +720,6 @@ namespace Semesterarbeit_IFO3 {
 			sprintf(newleiterhnrchar, "%s", newleiterhnr);
 			sprintf(newleiterpostchar, "%s", newleiterpost);
 			sprintf(newleiterortchar, "%s", newleiterort);
-
 
 			//noch zu bearbeiten
 			FILE *fpal;
@@ -679,10 +789,29 @@ namespace Semesterarbeit_IFO3 {
 
 			}//else zu
 			fclose(fpal);
+			MessageBox::Show("Die Daten wurden erfolgreich gespeichert.");
 		}// IF RB2 ZU
-		else MessageBox::Show("Es wurde nicht ausgewählt, was geändert werden soll!");
+		else {
+			MessageBox::Show("Es wurde nicht ausgewählt, was geändert werden soll!");
+		}
 	}
 
+	private: System::Void radioButton1_CheckedChanged(System::Object^  sender, System::EventArgs^  e) {
+		if (radioButton1->Checked) {
+			textBox1->Enabled = true;
+		}
+		else {
+			textBox1->Enabled = false;
+		}
+	}
+	private: System::Void radioButton2_CheckedChanged(System::Object^  sender, System::EventArgs^  e) {
+		if (radioButton2->Checked) {
+			comboBox1->Enabled = true;
+		}
+		else {
+			comboBox1->Enabled = false;
+		}
+	}
 	};
 }
 
