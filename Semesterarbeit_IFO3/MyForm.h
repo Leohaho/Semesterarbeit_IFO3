@@ -92,7 +92,7 @@ namespace Semesterarbeit_IFO3 {
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(145, 30);
 			this->button1->TabIndex = 0;
-			this->button1->Text = L"Datensatz Eingabe";
+			this->button1->Text = L"Datensatz eingeben";
 			this->button1->UseVisualStyleBackColor = true;
 			this->button1->Click += gcnew System::EventHandler(this, &MyForm::button1_Click);
 			// 
