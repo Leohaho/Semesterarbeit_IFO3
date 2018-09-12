@@ -489,7 +489,7 @@ namespace Semesterarbeit_IFO3 {
 					}
 				}
 				else {
-					//MessageBox::Show("Kagge!");
+					//MessageBox::Show("Fehler!");
 					empty = true;
 					break;
 				}
@@ -577,7 +577,7 @@ namespace Semesterarbeit_IFO3 {
 				strcpy(MA[x].MNR, newmobilchar);
 				strcpy(MA[x].FNR, newfestnetzchar);
 
-				strcpy(MA[x].mail, newvnamechar);			//nötig? abfrage ob Name bzw. Vorname geändert, wenn ja mail adresse anpassen.
+				strcpy(MA[x].mail, newvnamechar);			
 				strcat(MA[x].mail, ".");
 				strcat(MA[x].mail, newnamechar);
 				strcat(MA[x].mail, "@daddeldu.com");
@@ -590,7 +590,7 @@ namespace Semesterarbeit_IFO3 {
 				strcpy(MA[x].VG, newabteilungsleiterchar);
 				strcpy(MA[x].EM, neweintritsmonatchar);
 				strcpy(MA[x].EJ, neweintritsjahrchar);
-				// Eintritsmonat-Jahr fehlen?
+				
 
 				for (int Z = 0; Z < 100; Z++) {
 					if (MA[Z].NR == Z) {
@@ -612,7 +612,7 @@ namespace Semesterarbeit_IFO3 {
 						fprintf(fpma, "%s\n", MA[Z].AB);
 						fprintf(fpma, "%s\n", MA[Z].VG);
 
-					}; //Semicolon gesetzt, keine Ahnung ob nötig ^^
+					}; 
 				}
 				// Zeilen kommentiert bzw. geändert von Leo: 299;399;418-462
 				fclose(fpma);
@@ -637,7 +637,7 @@ namespace Semesterarbeit_IFO3 {
 					}
 				}
 				else {
-					//MessageBox::Show("Kagge!");
+					//MessageBox::Show("Fehler");
 					empty = true;
 					break;
 				}
@@ -724,7 +724,7 @@ namespace Semesterarbeit_IFO3 {
 			sprintf(newleiterpostchar, "%s", newleiterpost);
 			sprintf(newleiterortchar, "%s", newleiterort);
 
-			//noch zu bearbeiten
+		
 			FILE *fpal;
 			fpal = fopen("Abteilung.txt", "w");
 			// abfrage korrektes datei öffnen.
