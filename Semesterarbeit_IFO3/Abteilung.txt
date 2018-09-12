@@ -1,16 +1,16 @@
 0
-Ø€|
+ )‚
 
 
-»îş
 
-:ş
+go Wilkens
+
 nicht besetzt
 
 
 besetzt
 
-ğ/
+ğH
 
 ¡'
 tzt
@@ -41,13 +41,13 @@ Karolinestrasse
 11
 27283
 Verden
-nicht besetzt
+0000
 000
 0
+service
 0
 0
-0
-0
+0.000@daddeldu.com
 0
 0
 0
@@ -62,10 +62,10 @@ Verden
 0000
 000
 0
-buchhaltung
 0
 0
-0.000@daddeldu.com
+0
+0
 0
 0
 0

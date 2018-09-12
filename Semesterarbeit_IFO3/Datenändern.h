@@ -50,7 +50,7 @@ namespace Semesterarbeit_IFO3 {
 			}
 		}
 
-	private: System::Windows::Forms::TextBox^  textBox1;
+
 	private: System::Windows::Forms::Button^  button2;
 	private: System::Windows::Forms::TextBox^  textBox2;
 	private: System::Windows::Forms::Button^  button3;
@@ -70,6 +70,7 @@ namespace Semesterarbeit_IFO3 {
 	private: System::Windows::Forms::RadioButton^  radioButton2;
 	private: System::Windows::Forms::Label^  label7;
 	private: System::Windows::Forms::ComboBox^  comboBox1;
+	private: System::Windows::Forms::MaskedTextBox^  maskedTextBox1;
 
 
 	protected:
@@ -87,7 +88,6 @@ namespace Semesterarbeit_IFO3 {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
 			this->button2 = (gcnew System::Windows::Forms::Button());
 			this->textBox2 = (gcnew System::Windows::Forms::TextBox());
 			this->button3 = (gcnew System::Windows::Forms::Button());
@@ -103,22 +103,15 @@ namespace Semesterarbeit_IFO3 {
 			this->radioButton2 = (gcnew System::Windows::Forms::RadioButton());
 			this->label7 = (gcnew System::Windows::Forms::Label());
 			this->comboBox1 = (gcnew System::Windows::Forms::ComboBox());
+			this->maskedTextBox1 = (gcnew System::Windows::Forms::MaskedTextBox());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
 			this->SuspendLayout();
 			// 
-			// textBox1
-			// 
-			this->textBox1->Enabled = false;
-			this->textBox1->Location = System::Drawing::Point(121, 32);
-			this->textBox1->Name = L"textBox1";
-			this->textBox1->Size = System::Drawing::Size(100, 20);
-			this->textBox1->TabIndex = 1;
-			// 
 			// button2
 			// 
-			this->button2->Location = System::Drawing::Point(244, 32);
+			this->button2->Location = System::Drawing::Point(234, 32);
 			this->button2->Name = L"button2";
-			this->button2->Size = System::Drawing::Size(75, 23);
+			this->button2->Size = System::Drawing::Size(85, 23);
 			this->button2->TabIndex = 2;
 			this->button2->Text = L"Suchen";
 			this->button2->UseVisualStyleBackColor = true;
@@ -133,9 +126,9 @@ namespace Semesterarbeit_IFO3 {
 			// 
 			// button3
 			// 
-			this->button3->Location = System::Drawing::Point(244, 66);
+			this->button3->Location = System::Drawing::Point(234, 66);
 			this->button3->Name = L"button3";
-			this->button3->Size = System::Drawing::Size(75, 23);
+			this->button3->Size = System::Drawing::Size(85, 23);
 			this->button3->TabIndex = 4;
 			this->button3->Text = L"Übernehmen";
 			this->button3->UseVisualStyleBackColor = true;
@@ -246,11 +239,22 @@ namespace Semesterarbeit_IFO3 {
 			this->comboBox1->Size = System::Drawing::Size(121, 21);
 			this->comboBox1->TabIndex = 18;
 			// 
+			// maskedTextBox1
+			// 
+			this->maskedTextBox1->Enabled = false;
+			this->maskedTextBox1->HidePromptOnLeave = true;
+			this->maskedTextBox1->Location = System::Drawing::Point(121, 32);
+			this->maskedTextBox1->Mask = L"999";
+			this->maskedTextBox1->Name = L"maskedTextBox1";
+			this->maskedTextBox1->Size = System::Drawing::Size(100, 20);
+			this->maskedTextBox1->TabIndex = 19;
+			// 
 			// Datenändern
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(611, 355);
+			this->Controls->Add(this->maskedTextBox1);
 			this->Controls->Add(this->comboBox1);
 			this->Controls->Add(this->label7);
 			this->Controls->Add(this->radioButton2);
@@ -264,7 +268,6 @@ namespace Semesterarbeit_IFO3 {
 			this->Controls->Add(this->button3);
 			this->Controls->Add(this->textBox2);
 			this->Controls->Add(this->button2);
-			this->Controls->Add(this->textBox1);
 			this->Name = L"Datenändern";
 			this->Text = L"Datenändern";
 			this->Load += gcnew System::EventHandler(this, &Datenändern::Datenändern_Load);
@@ -312,11 +315,11 @@ namespace Semesterarbeit_IFO3 {
 		//Mitarbeiter ändern
 		if (radioButton1->Checked == true) {
 
-			if (textBox1->Text->Length == 0) {
+			if (maskedTextBox1->Text->Length == 0) {
 				MessageBox::Show("Es wurde keine Nummer eingegeben!");
 			}
 			else {
-				String^ nrstring = textBox1->Text;
+				String^ nrstring = maskedTextBox1->Text;
 				int nrint = int::Parse(nrstring);
 
 				if (nrint > 100) {
@@ -457,7 +460,7 @@ namespace Semesterarbeit_IFO3 {
 
 	private: System::Void button3_Click(System::Object^  sender, System::EventArgs^  e) {
 		if (dataGridView1->RowCount < 2) {
-			MessageBox::Show("Es wurden zuvor keine Werte eingelesen.");
+			MessageBox::Show("Es wurde zuvor keine Werte eingelesen.");
 			return;
 		}
 
@@ -542,7 +545,7 @@ namespace Semesterarbeit_IFO3 {
 			char neweintritsmonatchar[20];
 			char neweintritsjahrchar[20];
 
-			String^ nrstring = textBox1->Text;
+			String^ nrstring = maskedTextBox1->Text;
 			int nrint = int::Parse(nrstring);
 
 			sprintf(newvnamechar, "%s", newvname);
@@ -783,7 +786,7 @@ namespace Semesterarbeit_IFO3 {
 						fprintf(fpal, "%s\n", AL[Z].POST);
 						fprintf(fpal, "%s\n", AL[Z].ORT);
 
-					};//Semicolon gesetzt, keine Ahnung ob nötig ^^
+					};
 				}
 
 
@@ -798,10 +801,10 @@ namespace Semesterarbeit_IFO3 {
 
 	private: System::Void radioButton1_CheckedChanged(System::Object^  sender, System::EventArgs^  e) {
 		if (radioButton1->Checked) {
-			textBox1->Enabled = true;
+			maskedTextBox1->Enabled = true;
 		}
 		else {
-			textBox1->Enabled = false;
+			maskedTextBox1->Enabled = false;
 		}
 	}
 	private: System::Void radioButton2_CheckedChanged(System::Object^  sender, System::EventArgs^  e) {
