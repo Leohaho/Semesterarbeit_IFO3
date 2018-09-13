@@ -818,7 +818,7 @@ namespace Semesterarbeit_IFO3 {
 				vna = txt_vorname->Text;
 				sprintf(speichern_vna, "%s", vna);
 
-				sprintf(speichern_mail, "%s.%s@daddeldu.com", vna, na);
+				sprintf(speichern_mail, "%s@daddeldu.com", na);
 
 				String ^str;
 				str = txt_strasse->Text;
@@ -923,7 +923,7 @@ namespace Semesterarbeit_IFO3 {
 				vna = txt_vorname->Text;
 				sprintf(speichern_vna, "%s", vna);
 
-				sprintf(speichern_mail, "%s.%s@daddeldu.com", vna, na);
+				sprintf(speichern_mail, "%s@daddeldu.com", na);
 
 				String ^str;
 				str = txt_strasse->Text;
