@@ -47,7 +47,7 @@ char* ausgeben2(int i) {
 	case 2: {
 		for (int N = 0; N < 102; N++) {
 
-			if (strcmp(AT[N].ABL, "nicht besetzt") != 0) {
+			if (strcmp(AT[N].ABL, "nicht besetzt") != 0 ) {
 
 				std::string NA(AL[N].NA);
 				std::string VNA(AL[N].VNA);
@@ -68,7 +68,7 @@ char* ausgeben2(int i) {
 	}
 	case 3: {
 		for (int N = 0; N < 102; N++) {
-			if (AT[N].ID != 0) {
+			if (AT[N].ID != 0 && AT[N].ID < 102 ) {
 				std::string ID(std::to_string(AT[N].ID));
 				std::string FA(AT[N].FA);
 				std::string ST(AT[N].ST);
