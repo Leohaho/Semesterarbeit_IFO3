@@ -100,6 +100,8 @@ namespace Semesterarbeit_IFO3 {
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(274, 201);
+			this->MaximumSize = System::Drawing::Size(274, 201);
+			this->MinimumSize = System::Drawing::Size(274, 201);
 			this->Controls->Add(this->label1);
 			this->Controls->Add(this->button1);
 			this->Controls->Add(this->button2);

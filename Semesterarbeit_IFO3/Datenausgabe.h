@@ -81,10 +81,9 @@ namespace Semesterarbeit_IFO3 {
 			// 
 			// button1
 			// 
-			this->button1->Location = System::Drawing::Point(174, 26);
-			this->button1->Margin = System::Windows::Forms::Padding(4);
+			this->button1->Location = System::Drawing::Point(130, 21);
 			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(181, 34);
+			this->button1->Size = System::Drawing::Size(136, 28);
 			this->button1->TabIndex = 0;
 			this->button1->Text = L"Ausgeben";
 			this->button1->UseVisualStyleBackColor = true;
@@ -94,9 +93,10 @@ namespace Semesterarbeit_IFO3 {
 			// 
 			this->radioButton1->AutoSize = true;
 			this->radioButton1->Checked = true;
-			this->radioButton1->Location = System::Drawing::Point(12, 12);
+			this->radioButton1->Location = System::Drawing::Point(9, 10);
+			this->radioButton1->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->radioButton1->Name = L"radioButton1";
-			this->radioButton1->Size = System::Drawing::Size(96, 21);
+			this->radioButton1->Size = System::Drawing::Size(74, 17);
 			this->radioButton1->TabIndex = 1;
 			this->radioButton1->TabStop = true;
 			this->radioButton1->Text = L"Mitarbeiter";
@@ -105,9 +105,10 @@ namespace Semesterarbeit_IFO3 {
 			// radioButton2
 			// 
 			this->radioButton2->AutoSize = true;
-			this->radioButton2->Location = System::Drawing::Point(12, 39);
+			this->radioButton2->Location = System::Drawing::Point(9, 32);
+			this->radioButton2->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->radioButton2->Name = L"radioButton2";
-			this->radioButton2->Size = System::Drawing::Size(126, 21);
+			this->radioButton2->Size = System::Drawing::Size(96, 17);
 			this->radioButton2->TabIndex = 2;
 			this->radioButton2->Text = L"Abteilungsleiter";
 			this->radioButton2->UseVisualStyleBackColor = true;
@@ -115,9 +116,10 @@ namespace Semesterarbeit_IFO3 {
 			// radioButton3
 			// 
 			this->radioButton3->AutoSize = true;
-			this->radioButton3->Location = System::Drawing::Point(12, 66);
+			this->radioButton3->Location = System::Drawing::Point(9, 54);
+			this->radioButton3->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->radioButton3->Name = L"radioButton3";
-			this->radioButton3->Size = System::Drawing::Size(104, 21);
+			this->radioButton3->Size = System::Drawing::Size(81, 17);
 			this->radioButton3->TabIndex = 3;
 			this->radioButton3->Text = L"Abteilungen";
 			this->radioButton3->UseVisualStyleBackColor = true;
@@ -129,26 +131,28 @@ namespace Semesterarbeit_IFO3 {
 			this->dataGridView1->AutoSizeColumnsMode = System::Windows::Forms::DataGridViewAutoSizeColumnsMode::AllCells;
 			this->dataGridView1->AutoSizeRowsMode = System::Windows::Forms::DataGridViewAutoSizeRowsMode::AllCells;
 			this->dataGridView1->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-			this->dataGridView1->Location = System::Drawing::Point(12, 93);
+			this->dataGridView1->Location = System::Drawing::Point(9, 76);
+			this->dataGridView1->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->dataGridView1->Name = L"dataGridView1";
 			this->dataGridView1->ReadOnly = true;
 			this->dataGridView1->RowHeadersWidth = 130;
 			this->dataGridView1->RowTemplate->Height = 24;
-			this->dataGridView1->Size = System::Drawing::Size(200, 100);
+			this->dataGridView1->Size = System::Drawing::Size(150, 81);
 			this->dataGridView1->TabIndex = 7;
 			this->dataGridView1->Visible = false;
 			// 
 			// Datenausgabe
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
+			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(382, 305);
+			this->ClientSize = System::Drawing::Size(284, 79);
 			this->Controls->Add(this->dataGridView1);
 			this->Controls->Add(this->radioButton3);
 			this->Controls->Add(this->radioButton2);
 			this->Controls->Add(this->radioButton1);
 			this->Controls->Add(this->button1);
-			this->Margin = System::Windows::Forms::Padding(4);
+			this->MaximumSize = System::Drawing::Size(300, 117);
+			this->MinimumSize = System::Drawing::Size(300, 117);
 			this->Name = L"Datenausgabe";
 			this->Text = L"Datenausgabe";
 			this->Load += gcnew System::EventHandler(this, &Datenausgabe::Datenausgabe_Load);
@@ -172,8 +176,10 @@ namespace Semesterarbeit_IFO3 {
 		int h = 0;
 		this->dataGridView1->ColumnCount = 0;
 		if (this->radioButton1->Checked) {
-			this->dataGridView1->Size = System::Drawing::Size(600, 318);
-			this->ClientSize = System::Drawing::Size(640, 423);
+			this->dataGridView1->Size = System::Drawing::Size(600, 320);
+			this->ClientSize = System::Drawing::Size(640, 445);
+			this->MaximumSize = System::Drawing::Size(640, 445);
+			this->MinimumSize = System::Drawing::Size(640, 445);
 			i = 1;
 			this->dataGridView1->RowCount = 14;
 			this->dataGridView1->Rows[0]->HeaderCell->Value = "Nummer";
@@ -193,8 +199,10 @@ namespace Semesterarbeit_IFO3 {
 
 		}
 		if (this->radioButton2->Checked) {
-			this->dataGridView1->Size = System::Drawing::Size(600, 238);
-			this->ClientSize = System::Drawing::Size(640, 333);
+			this->dataGridView1->Size = System::Drawing::Size(600, 240);
+			this->ClientSize = System::Drawing::Size(640, 365);
+			this->MaximumSize = System::Drawing::Size(640, 365);
+			this->MinimumSize = System::Drawing::Size(640, 365);
 			i = 2;
 			this->dataGridView1->RowCount = 10;
 			this->dataGridView1->Rows[0]->HeaderCell->Value = "Name";
@@ -209,8 +217,10 @@ namespace Semesterarbeit_IFO3 {
 			this->dataGridView1->Rows[9]->HeaderCell->Value = "Ort/Stadt";
 		}
 		if (this->radioButton3->Checked) {
-			this->dataGridView1->Size = System::Drawing::Size(600, 198);
-			this->ClientSize = System::Drawing::Size(640, 280);
+			this->dataGridView1->Size = System::Drawing::Size(600, 180);
+			this->ClientSize = System::Drawing::Size(640, 305);
+			this->MaximumSize = System::Drawing::Size(640, 305);
+			this->MinimumSize = System::Drawing::Size(640, 305);
 			i = 3;
 			this->dataGridView1->RowCount = 8;
 

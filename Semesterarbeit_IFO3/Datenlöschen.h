@@ -77,9 +77,10 @@ namespace Semesterarbeit_IFO3 {
 			// 
 			// button2
 			// 
-			this->button2->Location = System::Drawing::Point(12, 87);
+			this->button2->Location = System::Drawing::Point(9, 71);
+			this->button2->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->button2->Name = L"button2";
-			this->button2->Size = System::Drawing::Size(151, 32);
+			this->button2->Size = System::Drawing::Size(113, 26);
 			this->button2->TabIndex = 1;
 			this->button2->Text = L"Löschen";
 			this->button2->UseVisualStyleBackColor = true;
@@ -89,9 +90,10 @@ namespace Semesterarbeit_IFO3 {
 			// 
 			this->radioButton1->AutoSize = true;
 			this->radioButton1->Checked = true;
-			this->radioButton1->Location = System::Drawing::Point(258, 14);
+			this->radioButton1->Location = System::Drawing::Point(194, 11);
+			this->radioButton1->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->radioButton1->Name = L"radioButton1";
-			this->radioButton1->Size = System::Drawing::Size(96, 21);
+			this->radioButton1->Size = System::Drawing::Size(74, 17);
 			this->radioButton1->TabIndex = 2;
 			this->radioButton1->TabStop = true;
 			this->radioButton1->Text = L"Mitarbeiter";
@@ -100,27 +102,30 @@ namespace Semesterarbeit_IFO3 {
 			// radioButton2
 			// 
 			this->radioButton2->AutoSize = true;
-			this->radioButton2->Location = System::Drawing::Point(258, 41);
+			this->radioButton2->Location = System::Drawing::Point(194, 33);
+			this->radioButton2->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->radioButton2->Name = L"radioButton2";
-			this->radioButton2->Size = System::Drawing::Size(126, 21);
+			this->radioButton2->Size = System::Drawing::Size(96, 17);
 			this->radioButton2->TabIndex = 3;
 			this->radioButton2->Text = L"Abteilungsleiter";
 			this->radioButton2->UseVisualStyleBackColor = true;
 			// 
 			// textBox1
 			// 
-			this->textBox1->Location = System::Drawing::Point(104, 9);
+			this->textBox1->Location = System::Drawing::Point(78, 7);
+			this->textBox1->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->textBox1->Mask = L"999";
 			this->textBox1->Name = L"textBox1";
-			this->textBox1->Size = System::Drawing::Size(134, 22);
+			this->textBox1->Size = System::Drawing::Size(102, 20);
 			this->textBox1->TabIndex = 5;
 			// 
 			// label1
 			// 
 			this->label1->AutoSize = true;
-			this->label1->Location = System::Drawing::Point(12, 9);
+			this->label1->Location = System::Drawing::Point(9, 7);
+			this->label1->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(86, 17);
+			this->label1->Size = System::Drawing::Size(68, 13);
 			this->label1->TabIndex = 6;
 			this->label1->Text = L"Nummer / ID";
 			// 
@@ -128,23 +133,25 @@ namespace Semesterarbeit_IFO3 {
 			// 
 			this->label2->AutoSize = true;
 			this->label2->ForeColor = System::Drawing::Color::Red;
-			this->label2->Location = System::Drawing::Point(83, 38);
+			this->label2->Location = System::Drawing::Point(62, 31);
+			this->label2->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(0, 17);
+			this->label2->Size = System::Drawing::Size(0, 13);
 			this->label2->TabIndex = 7;
 			// 
 			// Datenlöschen
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
+			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(386, 142);
+			this->ClientSize = System::Drawing::Size(290, 115);
 			this->Controls->Add(this->label2);
 			this->Controls->Add(this->label1);
 			this->Controls->Add(this->textBox1);
 			this->Controls->Add(this->radioButton2);
 			this->Controls->Add(this->radioButton1);
 			this->Controls->Add(this->button2);
-			this->Margin = System::Windows::Forms::Padding(4);
+			this->MaximumSize = System::Drawing::Size(306, 153);
+			this->MinimumSize = System::Drawing::Size(306, 153);
 			this->Name = L"Datenlöschen";
 			this->Text = L"Datenlöschen";
 			this->Load += gcnew System::EventHandler(this, &Datenlöschen::Datenlöschen_Load);

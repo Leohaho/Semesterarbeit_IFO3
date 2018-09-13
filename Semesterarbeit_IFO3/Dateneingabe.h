@@ -183,10 +183,9 @@ namespace Semesterarbeit_IFO3 {
 			// 
 			// btn_speichern
 			// 
-			this->btn_speichern->Location = System::Drawing::Point(133, 523);
-			this->btn_speichern->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->btn_speichern->Location = System::Drawing::Point(100, 425);
 			this->btn_speichern->Name = L"btn_speichern";
-			this->btn_speichern->Size = System::Drawing::Size(135, 31);
+			this->btn_speichern->Size = System::Drawing::Size(101, 25);
 			this->btn_speichern->TabIndex = 18;
 			this->btn_speichern->Text = L"Speichern";
 			this->btn_speichern->UseVisualStyleBackColor = true;
@@ -194,10 +193,9 @@ namespace Semesterarbeit_IFO3 {
 			// 
 			// btn_abbrechen
 			// 
-			this->btn_abbrechen->Location = System::Drawing::Point(527, 523);
-			this->btn_abbrechen->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->btn_abbrechen->Location = System::Drawing::Point(395, 425);
 			this->btn_abbrechen->Name = L"btn_abbrechen";
-			this->btn_abbrechen->Size = System::Drawing::Size(135, 31);
+			this->btn_abbrechen->Size = System::Drawing::Size(101, 25);
 			this->btn_abbrechen->TabIndex = 19;
 			this->btn_abbrechen->Text = L"Zurück";
 			this->btn_abbrechen->UseVisualStyleBackColor = true;
@@ -206,58 +204,52 @@ namespace Semesterarbeit_IFO3 {
 			// lbl_mitarbeiternummer
 			// 
 			this->lbl_mitarbeiternummer->AutoSize = true;
-			this->lbl_mitarbeiternummer->Location = System::Drawing::Point(16, 119);
-			this->lbl_mitarbeiternummer->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+			this->lbl_mitarbeiternummer->Location = System::Drawing::Point(12, 97);
 			this->lbl_mitarbeiternummer->Name = L"lbl_mitarbeiternummer";
-			this->lbl_mitarbeiternummer->Size = System::Drawing::Size(126, 17);
+			this->lbl_mitarbeiternummer->Size = System::Drawing::Size(93, 13);
 			this->lbl_mitarbeiternummer->TabIndex = 2;
 			this->lbl_mitarbeiternummer->Text = L"Mitarbeiternummer";
 			// 
 			// lbl_vorname
 			// 
 			this->lbl_vorname->AutoSize = true;
-			this->lbl_vorname->Location = System::Drawing::Point(16, 215);
-			this->lbl_vorname->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+			this->lbl_vorname->Location = System::Drawing::Point(12, 175);
 			this->lbl_vorname->Name = L"lbl_vorname";
-			this->lbl_vorname->Size = System::Drawing::Size(65, 17);
+			this->lbl_vorname->Size = System::Drawing::Size(49, 13);
 			this->lbl_vorname->TabIndex = 4;
 			this->lbl_vorname->Text = L"Vorname";
 			// 
 			// txt_vorname
 			// 
-			this->txt_vorname->Location = System::Drawing::Point(149, 210);
-			this->txt_vorname->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->txt_vorname->Location = System::Drawing::Point(112, 171);
 			this->txt_vorname->MaxLength = 20;
 			this->txt_vorname->Name = L"txt_vorname";
-			this->txt_vorname->Size = System::Drawing::Size(132, 22);
+			this->txt_vorname->Size = System::Drawing::Size(100, 20);
 			this->txt_vorname->TabIndex = 8;
 			// 
 			// lbl_name
 			// 
 			this->lbl_name->AutoSize = true;
-			this->lbl_name->Location = System::Drawing::Point(16, 247);
-			this->lbl_name->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+			this->lbl_name->Location = System::Drawing::Point(12, 201);
 			this->lbl_name->Name = L"lbl_name";
-			this->lbl_name->Size = System::Drawing::Size(45, 17);
+			this->lbl_name->Size = System::Drawing::Size(35, 13);
 			this->lbl_name->TabIndex = 6;
 			this->lbl_name->Text = L"Name";
 			// 
 			// txt_name
 			// 
-			this->txt_name->Location = System::Drawing::Point(149, 242);
-			this->txt_name->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->txt_name->Location = System::Drawing::Point(112, 197);
 			this->txt_name->MaxLength = 20;
 			this->txt_name->Name = L"txt_name";
-			this->txt_name->Size = System::Drawing::Size(132, 22);
+			this->txt_name->Size = System::Drawing::Size(100, 20);
 			this->txt_name->TabIndex = 9;
 			// 
 			// lbl_mitarbeitertyp
 			// 
 			this->lbl_mitarbeitertyp->AutoSize = true;
-			this->lbl_mitarbeitertyp->Location = System::Drawing::Point(16, 46);
-			this->lbl_mitarbeitertyp->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+			this->lbl_mitarbeitertyp->Location = System::Drawing::Point(12, 37);
 			this->lbl_mitarbeitertyp->Name = L"lbl_mitarbeitertyp";
-			this->lbl_mitarbeitertyp->Size = System::Drawing::Size(184, 17);
+			this->lbl_mitarbeitertyp->Size = System::Drawing::Size(139, 13);
 			this->lbl_mitarbeitertyp->TabIndex = 8;
 			this->lbl_mitarbeitertyp->Text = L"Was möchten Sie erstellen\?";
 			// 
@@ -265,10 +257,9 @@ namespace Semesterarbeit_IFO3 {
 			// 
 			this->rdo_mitarbeiter->AutoSize = true;
 			this->rdo_mitarbeiter->Checked = true;
-			this->rdo_mitarbeiter->Location = System::Drawing::Point(251, 43);
-			this->rdo_mitarbeiter->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->rdo_mitarbeiter->Location = System::Drawing::Point(188, 35);
 			this->rdo_mitarbeiter->Name = L"rdo_mitarbeiter";
-			this->rdo_mitarbeiter->Size = System::Drawing::Size(96, 21);
+			this->rdo_mitarbeiter->Size = System::Drawing::Size(74, 17);
 			this->rdo_mitarbeiter->TabIndex = 1;
 			this->rdo_mitarbeiter->TabStop = true;
 			this->rdo_mitarbeiter->Text = L"Mitarbeiter";
@@ -278,10 +269,9 @@ namespace Semesterarbeit_IFO3 {
 			// rdo_abteilungsleiter
 			// 
 			this->rdo_abteilungsleiter->AutoSize = true;
-			this->rdo_abteilungsleiter->Location = System::Drawing::Point(415, 43);
-			this->rdo_abteilungsleiter->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->rdo_abteilungsleiter->Location = System::Drawing::Point(311, 35);
 			this->rdo_abteilungsleiter->Name = L"rdo_abteilungsleiter";
-			this->rdo_abteilungsleiter->Size = System::Drawing::Size(126, 21);
+			this->rdo_abteilungsleiter->Size = System::Drawing::Size(96, 17);
 			this->rdo_abteilungsleiter->TabIndex = 2;
 			this->rdo_abteilungsleiter->TabStop = true;
 			this->rdo_abteilungsleiter->Text = L"Abteilungsleiter";
@@ -291,10 +281,9 @@ namespace Semesterarbeit_IFO3 {
 			// rdo_abteilung
 			// 
 			this->rdo_abteilung->AutoSize = true;
-			this->rdo_abteilung->Location = System::Drawing::Point(608, 43);
-			this->rdo_abteilung->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->rdo_abteilung->Location = System::Drawing::Point(456, 35);
 			this->rdo_abteilung->Name = L"rdo_abteilung";
-			this->rdo_abteilung->Size = System::Drawing::Size(88, 21);
+			this->rdo_abteilung->Size = System::Drawing::Size(69, 17);
 			this->rdo_abteilung->TabIndex = 3;
 			this->rdo_abteilung->TabStop = true;
 			this->rdo_abteilung->Text = L"Abteilung";
@@ -309,10 +298,9 @@ namespace Semesterarbeit_IFO3 {
 				L"1", L"2", L"3", L"4", L"5", L"6", L"7", L"8",
 					L"9", L"10", L"11", L"12"
 			});
-			this->cbx_monat->Location = System::Drawing::Point(149, 466);
-			this->cbx_monat->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->cbx_monat->Location = System::Drawing::Point(112, 379);
 			this->cbx_monat->Name = L"cbx_monat";
-			this->cbx_monat->Size = System::Drawing::Size(67, 24);
+			this->cbx_monat->Size = System::Drawing::Size(51, 21);
 			this->cbx_monat->TabIndex = 16;
 			// 
 			// cbx_jahr
@@ -327,136 +315,122 @@ namespace Semesterarbeit_IFO3 {
 					L"1998", L"1999", L"2000", L"2001", L"2002", L"2003", L"2004", L"2005", L"2006", L"2007", L"2008", L"2009", L"2010", L"2011",
 					L"2012", L"2013", L"2014", L"2015", L"2016", L"2017", L"2018", L"2019"
 			});
-			this->cbx_jahr->Location = System::Drawing::Point(280, 466);
-			this->cbx_jahr->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->cbx_jahr->Location = System::Drawing::Point(210, 379);
 			this->cbx_jahr->Name = L"cbx_jahr";
-			this->cbx_jahr->Size = System::Drawing::Size(67, 24);
+			this->cbx_jahr->Size = System::Drawing::Size(51, 21);
 			this->cbx_jahr->TabIndex = 17;
 			// 
 			// lbl_eintrittsdatum
 			// 
 			this->lbl_eintrittsdatum->AutoSize = true;
-			this->lbl_eintrittsdatum->Location = System::Drawing::Point(16, 471);
-			this->lbl_eintrittsdatum->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+			this->lbl_eintrittsdatum->Location = System::Drawing::Point(12, 383);
 			this->lbl_eintrittsdatum->Name = L"lbl_eintrittsdatum";
-			this->lbl_eintrittsdatum->Size = System::Drawing::Size(94, 17);
+			this->lbl_eintrittsdatum->Size = System::Drawing::Size(70, 13);
 			this->lbl_eintrittsdatum->TabIndex = 14;
 			this->lbl_eintrittsdatum->Text = L"Eintrittsdatum";
 			// 
 			// lbl_monat
 			// 
 			this->lbl_monat->AutoSize = true;
-			this->lbl_monat->Location = System::Drawing::Point(224, 471);
-			this->lbl_monat->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+			this->lbl_monat->Location = System::Drawing::Point(168, 383);
 			this->lbl_monat->Name = L"lbl_monat";
-			this->lbl_monat->Size = System::Drawing::Size(47, 17);
+			this->lbl_monat->Size = System::Drawing::Size(37, 13);
 			this->lbl_monat->TabIndex = 15;
 			this->lbl_monat->Text = L"Monat";
 			// 
 			// lbl_jahr
 			// 
 			this->lbl_jahr->AutoSize = true;
-			this->lbl_jahr->Location = System::Drawing::Point(355, 471);
-			this->lbl_jahr->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+			this->lbl_jahr->Location = System::Drawing::Point(266, 383);
 			this->lbl_jahr->Name = L"lbl_jahr";
-			this->lbl_jahr->Size = System::Drawing::Size(36, 17);
+			this->lbl_jahr->Size = System::Drawing::Size(27, 13);
 			this->lbl_jahr->TabIndex = 16;
 			this->lbl_jahr->Text = L"Jahr";
 			// 
 			// lbl_strasse
 			// 
 			this->lbl_strasse->AutoSize = true;
-			this->lbl_strasse->Location = System::Drawing::Point(16, 279);
-			this->lbl_strasse->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+			this->lbl_strasse->Location = System::Drawing::Point(12, 227);
 			this->lbl_strasse->Name = L"lbl_strasse";
-			this->lbl_strasse->Size = System::Drawing::Size(51, 17);
+			this->lbl_strasse->Size = System::Drawing::Size(38, 13);
 			this->lbl_strasse->TabIndex = 17;
 			this->lbl_strasse->Text = L"Straße";
 			// 
 			// txt_strasse
 			// 
-			this->txt_strasse->Location = System::Drawing::Point(149, 274);
-			this->txt_strasse->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->txt_strasse->Location = System::Drawing::Point(112, 223);
 			this->txt_strasse->MaxLength = 20;
 			this->txt_strasse->Name = L"txt_strasse";
-			this->txt_strasse->Size = System::Drawing::Size(132, 22);
+			this->txt_strasse->Size = System::Drawing::Size(100, 20);
 			this->txt_strasse->TabIndex = 10;
 			// 
 			// lbl_hausnummer
 			// 
 			this->lbl_hausnummer->AutoSize = true;
-			this->lbl_hausnummer->Location = System::Drawing::Point(16, 311);
-			this->lbl_hausnummer->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+			this->lbl_hausnummer->Location = System::Drawing::Point(12, 253);
 			this->lbl_hausnummer->Name = L"lbl_hausnummer";
-			this->lbl_hausnummer->Size = System::Drawing::Size(92, 17);
+			this->lbl_hausnummer->Size = System::Drawing::Size(69, 13);
 			this->lbl_hausnummer->TabIndex = 19;
 			this->lbl_hausnummer->Text = L"Hausnummer";
 			// 
 			// txt_hausnummer
 			// 
-			this->txt_hausnummer->Location = System::Drawing::Point(149, 306);
-			this->txt_hausnummer->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->txt_hausnummer->Location = System::Drawing::Point(112, 249);
 			this->txt_hausnummer->MaxLength = 20;
 			this->txt_hausnummer->Name = L"txt_hausnummer";
-			this->txt_hausnummer->Size = System::Drawing::Size(132, 22);
+			this->txt_hausnummer->Size = System::Drawing::Size(100, 20);
 			this->txt_hausnummer->TabIndex = 11;
 			// 
 			// lbl_postleitzahl
 			// 
 			this->lbl_postleitzahl->AutoSize = true;
-			this->lbl_postleitzahl->Location = System::Drawing::Point(16, 343);
-			this->lbl_postleitzahl->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+			this->lbl_postleitzahl->Location = System::Drawing::Point(12, 279);
 			this->lbl_postleitzahl->Name = L"lbl_postleitzahl";
-			this->lbl_postleitzahl->Size = System::Drawing::Size(80, 17);
+			this->lbl_postleitzahl->Size = System::Drawing::Size(60, 13);
 			this->lbl_postleitzahl->TabIndex = 21;
 			this->lbl_postleitzahl->Text = L"Postleitzahl";
 			// 
 			// lbl_ort
 			// 
 			this->lbl_ort->AutoSize = true;
-			this->lbl_ort->Location = System::Drawing::Point(16, 375);
-			this->lbl_ort->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+			this->lbl_ort->Location = System::Drawing::Point(12, 305);
 			this->lbl_ort->Name = L"lbl_ort";
-			this->lbl_ort->Size = System::Drawing::Size(28, 17);
+			this->lbl_ort->Size = System::Drawing::Size(21, 13);
 			this->lbl_ort->TabIndex = 23;
 			this->lbl_ort->Text = L"Ort";
 			// 
 			// txt_wohnort
 			// 
-			this->txt_wohnort->Location = System::Drawing::Point(149, 370);
-			this->txt_wohnort->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->txt_wohnort->Location = System::Drawing::Point(112, 301);
 			this->txt_wohnort->MaxLength = 20;
 			this->txt_wohnort->Name = L"txt_wohnort";
-			this->txt_wohnort->Size = System::Drawing::Size(132, 22);
+			this->txt_wohnort->Size = System::Drawing::Size(100, 20);
 			this->txt_wohnort->TabIndex = 13;
 			// 
 			// lbl_festnetznummer
 			// 
 			this->lbl_festnetznummer->AutoSize = true;
-			this->lbl_festnetznummer->Location = System::Drawing::Point(16, 407);
-			this->lbl_festnetznummer->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+			this->lbl_festnetznummer->Location = System::Drawing::Point(12, 331);
 			this->lbl_festnetznummer->Name = L"lbl_festnetznummer";
-			this->lbl_festnetznummer->Size = System::Drawing::Size(113, 17);
+			this->lbl_festnetznummer->Size = System::Drawing::Size(84, 13);
 			this->lbl_festnetznummer->TabIndex = 25;
 			this->lbl_festnetznummer->Text = L"Festnetznummer";
 			// 
 			// lbl_mobilnummer
 			// 
 			this->lbl_mobilnummer->AutoSize = true;
-			this->lbl_mobilnummer->Location = System::Drawing::Point(16, 439);
-			this->lbl_mobilnummer->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+			this->lbl_mobilnummer->Location = System::Drawing::Point(12, 357);
 			this->lbl_mobilnummer->Name = L"lbl_mobilnummer";
-			this->lbl_mobilnummer->Size = System::Drawing::Size(92, 17);
+			this->lbl_mobilnummer->Size = System::Drawing::Size(69, 13);
 			this->lbl_mobilnummer->TabIndex = 26;
 			this->lbl_mobilnummer->Text = L"Mobilnummer";
 			// 
 			// lbl_abteilungsid
 			// 
 			this->lbl_abteilungsid->AutoSize = true;
-			this->lbl_abteilungsid->Location = System::Drawing::Point(16, 87);
-			this->lbl_abteilungsid->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+			this->lbl_abteilungsid->Location = System::Drawing::Point(12, 71);
 			this->lbl_abteilungsid->Name = L"lbl_abteilungsid";
-			this->lbl_abteilungsid->Size = System::Drawing::Size(91, 17);
+			this->lbl_abteilungsid->Size = System::Drawing::Size(70, 13);
 			this->lbl_abteilungsid->TabIndex = 29;
 			this->lbl_abteilungsid->Text = L"Abteilungs ID";
 			this->lbl_abteilungsid->Visible = false;
@@ -464,20 +438,18 @@ namespace Semesterarbeit_IFO3 {
 			// lbl_abteilungsname
 			// 
 			this->lbl_abteilungsname->AutoSize = true;
-			this->lbl_abteilungsname->Location = System::Drawing::Point(16, 151);
-			this->lbl_abteilungsname->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+			this->lbl_abteilungsname->Location = System::Drawing::Point(12, 123);
 			this->lbl_abteilungsname->Name = L"lbl_abteilungsname";
-			this->lbl_abteilungsname->Size = System::Drawing::Size(109, 17);
+			this->lbl_abteilungsname->Size = System::Drawing::Size(82, 13);
 			this->lbl_abteilungsname->TabIndex = 30;
 			this->lbl_abteilungsname->Text = L"Abteilungsname";
 			// 
 			// txt_abteilungsname
 			// 
-			this->txt_abteilungsname->Location = System::Drawing::Point(149, 146);
-			this->txt_abteilungsname->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->txt_abteilungsname->Location = System::Drawing::Point(112, 119);
 			this->txt_abteilungsname->MaxLength = 20;
 			this->txt_abteilungsname->Name = L"txt_abteilungsname";
-			this->txt_abteilungsname->Size = System::Drawing::Size(132, 22);
+			this->txt_abteilungsname->Size = System::Drawing::Size(100, 20);
 			this->txt_abteilungsname->TabIndex = 31;
 			this->txt_abteilungsname->TextChanged += gcnew System::EventHandler(this, &Dateneingabe::txt_abteilungsname_TextChanged);
 			// 
@@ -485,10 +457,9 @@ namespace Semesterarbeit_IFO3 {
 			// 
 			this->lbl_error_mitarbeiternr->AutoSize = true;
 			this->lbl_error_mitarbeiternr->ForeColor = System::Drawing::Color::Red;
-			this->lbl_error_mitarbeiternr->Location = System::Drawing::Point(328, 119);
-			this->lbl_error_mitarbeiternr->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+			this->lbl_error_mitarbeiternr->Location = System::Drawing::Point(246, 97);
 			this->lbl_error_mitarbeiternr->Name = L"lbl_error_mitarbeiternr";
-			this->lbl_error_mitarbeiternr->Size = System::Drawing::Size(161, 20);
+			this->lbl_error_mitarbeiternr->Size = System::Drawing::Size(136, 17);
 			this->lbl_error_mitarbeiternr->TabIndex = 35;
 			this->lbl_error_mitarbeiternr->Text = L"Mitarbeiternummer belegt!";
 			this->lbl_error_mitarbeiternr->UseCompatibleTextRendering = true;
@@ -498,10 +469,9 @@ namespace Semesterarbeit_IFO3 {
 			// 
 			this->lbl_error_abteilungsid->AutoSize = true;
 			this->lbl_error_abteilungsid->ForeColor = System::Drawing::Color::Red;
-			this->lbl_error_abteilungsid->Location = System::Drawing::Point(328, 87);
-			this->lbl_error_abteilungsid->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+			this->lbl_error_abteilungsid->Location = System::Drawing::Point(246, 71);
 			this->lbl_error_abteilungsid->Name = L"lbl_error_abteilungsid";
-			this->lbl_error_abteilungsid->Size = System::Drawing::Size(137, 17);
+			this->lbl_error_abteilungsid->Size = System::Drawing::Size(105, 13);
 			this->lbl_error_abteilungsid->TabIndex = 36;
 			this->lbl_error_abteilungsid->Text = L"Abteilungs ID belegt!";
 			this->lbl_error_abteilungsid->Visible = false;
@@ -510,10 +480,9 @@ namespace Semesterarbeit_IFO3 {
 			// 
 			this->lbl_error_abteilung->AutoSize = true;
 			this->lbl_error_abteilung->ForeColor = System::Drawing::Color::Red;
-			this->lbl_error_abteilung->Location = System::Drawing::Point(328, 149);
-			this->lbl_error_abteilung->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+			this->lbl_error_abteilung->Location = System::Drawing::Point(246, 121);
 			this->lbl_error_abteilung->Name = L"lbl_error_abteilung";
-			this->lbl_error_abteilung->Size = System::Drawing::Size(146, 20);
+			this->lbl_error_abteilung->Size = System::Drawing::Size(124, 17);
 			this->lbl_error_abteilung->TabIndex = 37;
 			this->lbl_error_abteilung->Text = L"Abteilung existiert nicht!";
 			this->lbl_error_abteilung->UseCompatibleTextRendering = true;
@@ -523,10 +492,9 @@ namespace Semesterarbeit_IFO3 {
 			// 
 			this->lbl_error_abteilungsleiter->AutoSize = true;
 			this->lbl_error_abteilungsleiter->ForeColor = System::Drawing::Color::Red;
-			this->lbl_error_abteilungsleiter->Location = System::Drawing::Point(328, 149);
-			this->lbl_error_abteilungsleiter->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+			this->lbl_error_abteilungsleiter->Location = System::Drawing::Point(246, 121);
 			this->lbl_error_abteilungsleiter->Name = L"lbl_error_abteilungsleiter";
-			this->lbl_error_abteilungsleiter->Size = System::Drawing::Size(141, 20);
+			this->lbl_error_abteilungsleiter->Size = System::Drawing::Size(119, 17);
 			this->lbl_error_abteilungsleiter->TabIndex = 38;
 			this->lbl_error_abteilungsleiter->Text = L"Abteilungsleiter belegt!";
 			this->lbl_error_abteilungsleiter->UseCompatibleTextRendering = true;
@@ -536,10 +504,9 @@ namespace Semesterarbeit_IFO3 {
 			// 
 			this->lbl_error_abteilungsname->AutoSize = true;
 			this->lbl_error_abteilungsname->ForeColor = System::Drawing::Color::Red;
-			this->lbl_error_abteilungsname->Location = System::Drawing::Point(328, 149);
-			this->lbl_error_abteilungsname->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+			this->lbl_error_abteilungsname->Location = System::Drawing::Point(246, 121);
 			this->lbl_error_abteilungsname->Name = L"lbl_error_abteilungsname";
-			this->lbl_error_abteilungsname->Size = System::Drawing::Size(198, 20);
+			this->lbl_error_abteilungsname->Size = System::Drawing::Size(168, 17);
 			this->lbl_error_abteilungsname->TabIndex = 39;
 			this->lbl_error_abteilungsname->Text = L"Abteilungsname existiert bereits!";
 			this->lbl_error_abteilungsname->UseCompatibleTextRendering = true;
@@ -548,32 +515,29 @@ namespace Semesterarbeit_IFO3 {
 			// lbl_standort
 			// 
 			this->lbl_standort->AutoSize = true;
-			this->lbl_standort->Location = System::Drawing::Point(16, 183);
-			this->lbl_standort->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+			this->lbl_standort->Location = System::Drawing::Point(12, 149);
 			this->lbl_standort->Name = L"lbl_standort";
-			this->lbl_standort->Size = System::Drawing::Size(103, 17);
+			this->lbl_standort->Size = System::Drawing::Size(80, 13);
 			this->lbl_standort->TabIndex = 40;
 			this->lbl_standort->Text = L"Standort/Etage";
 			this->lbl_standort->Visible = false;
 			// 
 			// txt_standort
 			// 
-			this->txt_standort->Location = System::Drawing::Point(149, 178);
-			this->txt_standort->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->txt_standort->Location = System::Drawing::Point(112, 145);
 			this->txt_standort->MaxLength = 20;
 			this->txt_standort->Name = L"txt_standort";
-			this->txt_standort->Size = System::Drawing::Size(132, 22);
+			this->txt_standort->Size = System::Drawing::Size(100, 20);
 			this->txt_standort->TabIndex = 7;
 			this->txt_standort->Visible = false;
 			// 
 			// mtxt_abteilingsid
 			// 
 			this->mtxt_abteilingsid->HidePromptOnLeave = true;
-			this->mtxt_abteilingsid->Location = System::Drawing::Point(149, 84);
-			this->mtxt_abteilingsid->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->mtxt_abteilingsid->Location = System::Drawing::Point(112, 68);
 			this->mtxt_abteilingsid->Mask = L"999";
 			this->mtxt_abteilingsid->Name = L"mtxt_abteilingsid";
-			this->mtxt_abteilingsid->Size = System::Drawing::Size(132, 22);
+			this->mtxt_abteilingsid->Size = System::Drawing::Size(100, 20);
 			this->mtxt_abteilingsid->TabIndex = 4;
 			this->mtxt_abteilingsid->Visible = false;
 			this->mtxt_abteilingsid->TextChanged += gcnew System::EventHandler(this, &Dateneingabe::mtxt_abteilingsid_TextChanged);
@@ -582,10 +546,9 @@ namespace Semesterarbeit_IFO3 {
 			// 
 			this->lbl_error_mabteilungsid->AutoSize = true;
 			this->lbl_error_mabteilungsid->ForeColor = System::Drawing::Color::Red;
-			this->lbl_error_mabteilungsid->Location = System::Drawing::Point(555, 87);
-			this->lbl_error_mabteilungsid->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+			this->lbl_error_mabteilungsid->Location = System::Drawing::Point(416, 71);
 			this->lbl_error_mabteilungsid->Name = L"lbl_error_mabteilungsid";
-			this->lbl_error_mabteilungsid->Size = System::Drawing::Size(184, 17);
+			this->lbl_error_mabteilungsid->Size = System::Drawing::Size(140, 13);
 			this->lbl_error_mabteilungsid->TabIndex = 43;
 			this->lbl_error_mabteilungsid->Text = L"Nur Zahlen zwischen 1-100!";
 			this->lbl_error_mabteilungsid->Visible = false;
@@ -593,11 +556,10 @@ namespace Semesterarbeit_IFO3 {
 			// mtxt_mitarbeiternummer
 			// 
 			this->mtxt_mitarbeiternummer->HidePromptOnLeave = true;
-			this->mtxt_mitarbeiternummer->Location = System::Drawing::Point(149, 116);
-			this->mtxt_mitarbeiternummer->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->mtxt_mitarbeiternummer->Location = System::Drawing::Point(112, 94);
 			this->mtxt_mitarbeiternummer->Mask = L"999";
 			this->mtxt_mitarbeiternummer->Name = L"mtxt_mitarbeiternummer";
-			this->mtxt_mitarbeiternummer->Size = System::Drawing::Size(132, 22);
+			this->mtxt_mitarbeiternummer->Size = System::Drawing::Size(100, 20);
 			this->mtxt_mitarbeiternummer->TabIndex = 5;
 			this->mtxt_mitarbeiternummer->TextChanged += gcnew System::EventHandler(this, &Dateneingabe::mtxt_mitarbeiternummer_TextChanged);
 			// 
@@ -605,10 +567,9 @@ namespace Semesterarbeit_IFO3 {
 			// 
 			this->lbl_error_mmitarbeiternummer->AutoSize = true;
 			this->lbl_error_mmitarbeiternummer->ForeColor = System::Drawing::Color::Red;
-			this->lbl_error_mmitarbeiternummer->Location = System::Drawing::Point(555, 122);
-			this->lbl_error_mmitarbeiternummer->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+			this->lbl_error_mmitarbeiternummer->Location = System::Drawing::Point(416, 99);
 			this->lbl_error_mmitarbeiternummer->Name = L"lbl_error_mmitarbeiternummer";
-			this->lbl_error_mmitarbeiternummer->Size = System::Drawing::Size(184, 17);
+			this->lbl_error_mmitarbeiternummer->Size = System::Drawing::Size(140, 13);
 			this->lbl_error_mmitarbeiternummer->TabIndex = 45;
 			this->lbl_error_mmitarbeiternummer->Text = L"Nur Zahlen zwischen 1-100!";
 			this->lbl_error_mmitarbeiternummer->Visible = false;
@@ -617,48 +578,44 @@ namespace Semesterarbeit_IFO3 {
 			// 
 			this->cbx_Abteilung->DropDownStyle = System::Windows::Forms::ComboBoxStyle::DropDownList;
 			this->cbx_Abteilung->FormattingEnabled = true;
-			this->cbx_Abteilung->Location = System::Drawing::Point(149, 146);
-			this->cbx_Abteilung->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->cbx_Abteilung->Location = System::Drawing::Point(112, 119);
 			this->cbx_Abteilung->Name = L"cbx_Abteilung";
-			this->cbx_Abteilung->Size = System::Drawing::Size(132, 24);
+			this->cbx_Abteilung->Size = System::Drawing::Size(100, 21);
 			this->cbx_Abteilung->TabIndex = 6;
 			this->cbx_Abteilung->TextChanged += gcnew System::EventHandler(this, &Dateneingabe::cbx_Abteilung_TextChanged);
 			// 
 			// mtxt_postleitzahl
 			// 
 			this->mtxt_postleitzahl->HidePromptOnLeave = true;
-			this->mtxt_postleitzahl->Location = System::Drawing::Point(149, 338);
-			this->mtxt_postleitzahl->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->mtxt_postleitzahl->Location = System::Drawing::Point(112, 275);
 			this->mtxt_postleitzahl->Mask = L"99999";
 			this->mtxt_postleitzahl->Name = L"mtxt_postleitzahl";
-			this->mtxt_postleitzahl->Size = System::Drawing::Size(132, 22);
+			this->mtxt_postleitzahl->Size = System::Drawing::Size(100, 20);
 			this->mtxt_postleitzahl->TabIndex = 12;
 			// 
 			// mtxt_festnetznummer
 			// 
 			this->mtxt_festnetznummer->HidePromptOnLeave = true;
-			this->mtxt_festnetznummer->Location = System::Drawing::Point(149, 402);
-			this->mtxt_festnetznummer->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->mtxt_festnetznummer->Location = System::Drawing::Point(112, 327);
 			this->mtxt_festnetznummer->Mask = L"999999999999999";
 			this->mtxt_festnetznummer->Name = L"mtxt_festnetznummer";
-			this->mtxt_festnetznummer->Size = System::Drawing::Size(132, 22);
+			this->mtxt_festnetznummer->Size = System::Drawing::Size(100, 20);
 			this->mtxt_festnetznummer->TabIndex = 14;
 			// 
 			// mtxt_mobilnummer
 			// 
 			this->mtxt_mobilnummer->HidePromptOnLeave = true;
-			this->mtxt_mobilnummer->Location = System::Drawing::Point(149, 434);
-			this->mtxt_mobilnummer->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->mtxt_mobilnummer->Location = System::Drawing::Point(112, 353);
 			this->mtxt_mobilnummer->Mask = L"999999999999999";
 			this->mtxt_mobilnummer->Name = L"mtxt_mobilnummer";
-			this->mtxt_mobilnummer->Size = System::Drawing::Size(132, 22);
+			this->mtxt_mobilnummer->Size = System::Drawing::Size(100, 20);
 			this->mtxt_mobilnummer->TabIndex = 15;
 			// 
 			// Dateneingabe
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
+			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(793, 580);
+			this->ClientSize = System::Drawing::Size(595, 471);
 			this->Controls->Add(this->mtxt_mobilnummer);
 			this->Controls->Add(this->mtxt_festnetznummer);
 			this->Controls->Add(this->mtxt_postleitzahl);
@@ -702,7 +659,8 @@ namespace Semesterarbeit_IFO3 {
 			this->Controls->Add(this->lbl_mitarbeiternummer);
 			this->Controls->Add(this->btn_abbrechen);
 			this->Controls->Add(this->btn_speichern);
-			this->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->MaximumSize = System::Drawing::Size(611, 509);
+			this->MinimumSize = System::Drawing::Size(611, 509);
 			this->Name = L"Dateneingabe";
 			this->Text = L"Dateneingabe";
 			this->Load += gcnew System::EventHandler(this, &Dateneingabe::Dateneingabe_Load);

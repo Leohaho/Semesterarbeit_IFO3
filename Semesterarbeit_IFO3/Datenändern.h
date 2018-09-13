@@ -268,6 +268,8 @@ namespace Semesterarbeit_IFO3 {
 			this->Controls->Add(this->button3);
 			this->Controls->Add(this->textBox2);
 			this->Controls->Add(this->button2);
+			this->MaximumSize = System::Drawing::Size(627, 393);
+			this->MinimumSize = System::Drawing::Size(627, 393);
 			this->Name = L"Datenändern";
 			this->Text = L"Datenändern";
 			this->Load += gcnew System::EventHandler(this, &Datenändern::Datenändern_Load);
